@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PORTAL DE CALIDAD: Site UXMAL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+background:
+
+radial-gradient(
+circle at top right,
+rgba(253,208,0,.20),
+transparent 30%
+),
+
+linear-gradient(
+180deg,
+#ffffff 0%,
+#fff7d6 100%
+);
+
+min-height:100vh;
+
+display:block;
+
+}
+
+.appbar{
+
+height:76px;
+
+background:
+linear-gradient(
+90deg,
+#A00023,
+#CF002E
+);
+
+display:flex;
+align-items:center;
+
+padding:0 14px;
+
+color:white;
+}
+
+.logoQA{
+
+width:40px;
+height:40px;
+
+background:#FDD000;
+
+border-radius:8px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-weight:bold;
+color:black;
+
+margin-right:14px;
+}
+
+.tituloSistema{
+line-height:1.2;
+}
+
+.titulo1{
+font-size:12px;
+font-weight:500;
+letter-spacing:.5px;
+opacity:.9;
+}
+
+.titulo2{
+font-size:16px;
+font-weight:700;
+}
+
+.fy{
+
+margin-left:auto;
+
+padding:6px 12px;
+
+border-radius:20px;
+
+background:
+rgba(255,255,255,.15);
+
+font-size:14px;
+}
+
+.btn-home{
+width:38px !important;
+height:38px !important;
+min-height:38px !important;
+padding:0 !important;
+margin:0 !important;
+border-radius:50% !important;
+background:#374151 !important;
+color:white !important;
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+font-size:18px !important;
+cursor:pointer;
+flex-shrink:0;
+}
+
+.hidden{
+display:none;
+}
+
+.card{
+
+background:#ffffff;
+
+width:92%;
+max-width:420px;
+
+margin:25px auto;
+
+padding:30px 24px;
+
+border-radius:24px;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.08);
+
+text-align:center;
+
+}
+
+.logo{
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:#003366;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:40px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+h1{
+margin-bottom:25px;
+color:#1f2937;
+font-size:32px;
+}
+
+input,
+select{
+
+background:#fff;
+font-weight:500;
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+margin-top:10px;
+}
+
+.btn-login{
+background:#CF002E;
+color:white;
+font-weight:bold;
+}
+
+.menu button{
+margin-bottom:12px;
+}
+
+.btn-dashboard,
+.btn-alerta,
+.btn-auditoria,
+.btn-incidencia{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:center;
+width:100%;
+min-height:92px;
+padding:18px 22px;
+margin-bottom:14px;
+background:#fff;
+border:none;
+border-left:6px solid #CF002E;
+border-radius:20px;
+font-size:18px;
+font-weight:700;
+color:#1f2937;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.25s;
+position:relative;
+overflow:hidden;
+text-align:left;
+}
+.btn-dashboard:hover,
+.btn-alerta:hover,
+.btn-auditoria:hover,
+.btn-incidencia:hover{
+transform:translateY(-3px);
+box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+.btn-dashboard::after,
+.btn-alerta::after,
+.btn-auditoria::after,
+.btn-incidencia::after{
+content:"›";
+position:absolute;
+right:22px;
+top:50%;
+transform:translateY(-50%);
+font-size:30px;
+color:#CF002E;
+}
+.btn-alerta{border-left-color:#f4b400;}
+.btn-auditoria{border-left-color:#1976d2;}
+.btn-incidencia{border-left-color:#e53935;}
+.btn-dashboard{border-left-color:#00a884;}
+.tituloBoton{font-size:18px;font-weight:800;margin-bottom:5px;}
+.subtituloBoton{font-size:13px;color:#6b7280;font-weight:500;}
+.usuario{
+margin-bottom:20px;
+font-weight:bold;
+color:#555;
+}
+
+.card-title{
+font-size:16px;
+font-weight:800;
+letter-spacing:.3px;
+text-align:left;
+color:#1f2937;
+margin-bottom:20px;
+}
+
+.separador{
+border:none;
+border-top:1px solid #ddd;
+margin-bottom:25px;
+}
+
+.fila{
+display:flex;
+gap:10px;
+margin-bottom:12px;
+}
+
+.datoAuto{
+flex:1;
+}
+
+.etiqueta{
+font-size:12px;
+font-weight:700;
+color:#555;
+margin-bottom:5px;
+text-align:left;
+}
+
+#cuadrilla,
+#area,
+#fecha{
+background:#f3f4f6;
+font-weight:600;
+}
+
+@media(max-width:600px){
+
+.card{
+width:95%;
+padding:25px;
+}
+
+h1{
+font-size:24px;
+}
+
+}
+
+
+.mensaje-error{
+display:none;
+background:#FEE2E2;
+color:#B91C1C;
+border:1px solid #FCA5A5;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+font-size:14px;
+font-weight:600;
+text-align:left;
+}
+
+.mensaje-ok{
+display:none;
+background:#DCFCE7;
+color:#166534;
+border:1px solid #86EFAC;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+font-size:14px;
+font-weight:600;
+text-align:left;
+}
+
+.swal2-popup{
+    border-radius:18px !important;
+    padding:28px !important;
+    font-family:'Inter',sans-serif !important;
+}
+
+.swal2-title{
+    font-size:22px !important;
+    font-weight:800 !important;
+    color:#1f2937 !important;
+}
+
+.swal2-html-container{
+    font-size:15px !important;
+    color:#6b7280 !important;
+}
+
+.swal2-confirm{
+    border-radius:10px !important;
+    padding:11px 24px !important;
+    font-weight:700 !important;
+}
+
+.swal2-icon{
+    margin-bottom:10px !important;
+}
+
+.creditos{
+text-align:center;
+font-size:11px;
+color:#6b7280;
+margin:20px 0 30px 0;
+font-weight:500;
+}
+
+.creditos b{
+color:#CF002E;
+}
+
+.card-login{
+
+padding-top:85px !important;
+
+}
+
+.logo-login{
+
+width:120px;
+height:120px;
+
+margin:auto;
+
+margin-top:-90px;
+margin-bottom:20px;
+
+border-radius:50%;
+
+background:#FDD000;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:54px;
+font-weight:800;
+
+color:#A00023;
+
+border:8px solid #fff;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.login-subtitle{
+
+font-size:15px;
+color:#6b7280;
+
+margin-bottom:6px;
+
+}
+
+.login-title{
+
+font-size:20px;
+font-weight:800;
+
+color:#1f2937;
+
+margin-bottom:6px;
+
+}
+
+.login-system{
+
+font-size:16px;
+font-weight:700;
+
+color:#CF002E;
+
+margin-bottom:20px;
+
+}
+
+.encabezado-visitante{
+
+position:relative;
+
+margin-bottom:10px;
+
+}
+
+.encabezado-visitante .logo-login{
+
+margin-top:0;
+
+margin-bottom:18px;
+
+}
+
+.encabezado-visitante .btn-home{
+
+position:absolute;
+
+top:0;
+
+right:0;
+
+}
+
+.card-visitante{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+background:#ffffff;
+
+padding:20px;
+
+margin-top:16px;
+
+border-radius:22px;
+
+box-shadow:
+0 12px 28px rgba(0,0,0,.08);
+
+border-left:8px solid #FDD000;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.card-visitante:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 18px 35px rgba(0,0,0,.12);
+
+}
+
+.card-visitante:hover{
+
+transform:translateY(-2px);
+
+}
+
+.visitante-icono{
+
+width:55px;
+height:55px;
+
+background:#FFF4CC;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+
+}
+
+.visitante-texto{
+
+flex:1;
+
+text-align:left;
+
+}
+
+.visitante-titulo{
+
+font-size:17px;
+font-weight:800;
+
+color:#1f2937;
+
+}
+
+.visitante-sub{
+
+font-size:13px;
+
+color:#6b7280;
+
+margin-top:3px;
+
+}
+
+.visitante-flecha{
+
+font-size:30px;
+font-weight:700;
+
+color:#CF002E;
+
+}
+
+.btn-login{
+
+width:100%;
+
+height:62px;
+
+background:#CF002E;
+
+border:none;
+
+border-radius:18px;
+
+color:white;
+
+font-size:20px;
+
+font-weight:800;
+
+letter-spacing:.4px;
+
+cursor:pointer;
+
+transition:all .25s ease;
+
+box-shadow:
+0 8px 20px rgba(207,0,46,.18);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+.btn-login:hover{
+
+background:#B00028;
+
+transform:translateY(-2px);
+
+box-shadow:
+0 14px 28px rgba(207,0,46,.25);
+
+}
+
+.btn-login:active{
+
+transform:translateY(0);
+
+box-shadow:
+0 6px 14px rgba(207,0,46,.18);
+
+}
+
+.home-shell{
+  width:calc(100% - 32px);
+  max-width:1180px;
+  margin:26px auto 34px;
+  padding:0;
+  overflow:hidden;
+  border-radius:26px;
+  background:#fff;
+  text-align:left;
+  box-shadow:0 18px 50px rgba(0,0,0,.09);
+}
+
+.home-header{
+  min-height:145px;
+  padding:28px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(253,208,0,.18),transparent 28%),
+    linear-gradient(110deg,#6E0018 0%,#A00023 48%,#CF002E 100%);
+}
+
+.home-brand{
+  display:flex;
+  align-items:center;
+  gap:17px;
+  min-width:0;
+}
+
+.home-logo{
+  width:62px;
+  height:62px;
+  flex:0 0 62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:17px;
+  background:#FDD000;
+  color:#6E0018;
+  font-size:22px;
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(0,0,0,.16);
+}
+
+.home-kicker{
+  margin-bottom:5px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  opacity:.82;
+}
+
+.home-title{
+  margin:0 !important;
+  color:#fff !important;
+  font-size:29px !important;
+  line-height:1.1;
+  font-weight:800;
+}
+
+.home-user-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.home-logout{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:8px 12px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.12);color:#fff;font:700 12px/1 Arial,sans-serif;cursor:pointer;transition:.18s ease;box-shadow:0 4px 12px rgba(0,0,0,.10)}
+.home-logout:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+.home-logout:active{transform:translateY(0)}
+.home-logout-icon{font-size:17px;line-height:1}
+@media(max-width:600px){.home-user-row{gap:8px}.home-logout{min-height:34px;padding:7px 10px;font-size:11px}}
+.home-user{
+  margin-top:7px;
+  color:rgba(255,255,255,.88);
+  font-size:13px;
+  font-weight:600;
+}
+
+.home-fy{
+  flex:0 0 auto;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  font-size:12px;
+  font-weight:800;
+}
+
+.home-body{
+  padding:28px 34px 22px;
+}
+
+.home-section{
+  margin-bottom:28px;
+}
+
+.home-section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.home-section-kicker{
+  margin-bottom:4px;
+  color:#CF002E;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.home-section-head h2{
+  margin:0 !important;
+  color:#1f2937;
+  font-size:17px;
+  font-weight:850;
+  text-transform:uppercase;
+}
+
+.home-number{
+  min-width:31px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 8px;
+  border-radius:999px;
+  background:#FFF4CC;
+  color:#A00023;
+  font-size:10px;
+  font-weight:900;
+}
+
+.home-grid{
+  display:grid;
+  gap:12px;
+}
+
+.home-grid-templates{grid-template-columns:repeat(3,minmax(0,1fr));}
+.home-grid-dashboards{grid-template-columns:repeat(4,minmax(0,1fr));}
+.home-grid-data{grid-template-columns:repeat(3,minmax(0,1fr));}
+
+.home-card{
+  position:relative;
+  width:100%;
+  min-height:100px;
+  margin:0 !important;
+  padding:15px;
+  display:grid;
+  grid-template-columns:40px minmax(0,1fr) 16px;
+  align-items:center;
+  gap:11px;
+  border:1px solid #e7e9ed;
+  border-left:5px solid #CF002E;
+  border-radius:16px;
+  background:#fff;
+  color:#1f2937;
+  text-align:left;
+  box-shadow:0 5px 16px rgba(15,23,42,.055);
+  cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.home-card:hover{
+  transform:translateY(-3px);
+  border-color:#d7dae0;
+  box-shadow:0 13px 27px rgba(15,23,42,.11);
+}
+
+.home-card-icon{
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:#FFF4CC;
+  color:#A00023;
+  font-size:15px;
+  font-weight:900;
+}
+
+.home-alerta{border-left-color:#FDD000;}
+.home-auditoria{border-left-color:#1976d2;}
+.home-incidencia{border-left-color:#e53935;}
+.home-dashboard{border-left-color:#00a884;}
+.home-data{border-left-color:#CF002E;}
+
+.home-auditoria .home-card-icon{background:#e8f1ff;color:#1976d2;}
+.home-incidencia .home-card-icon{background:#fee8e8;color:#c62828;}
+.home-dashboard .home-card-icon{background:#e3f7f1;color:#08785f;}
+.home-data .home-card-icon{background:#fde9ee;color:#A00023;}
+
+.home-card-text{min-width:0;}
+
+.home-card .tituloBoton{
+  display:block;
+  margin:0 0 5px;
+  color:#1f2937;
+  font-size:13.5px;
+  line-height:1.2;
+  font-weight:850;
+}
+
+.home-card .subtituloBoton{
+  display:block;
+  color:#6b7280;
+  font-size:11px;
+  line-height:1.35;
+  font-weight:500;
+}
+
+.home-arrow{
+  color:#CF002E;
+  font-size:25px;
+  line-height:1;
+  font-weight:500;
+}
+
+.home-footer{
+  padding-top:18px;
+  border-top:1px solid #eef0f3;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.home-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#6b7280;
+  font-size:11px;
+  font-weight:700;
+}
+
+.home-status span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#1B8A3A;
+  box-shadow:0 0 0 4px rgba(27,138,58,.10);
+}
+
+.home-footer .btn-salir{
+  width:auto;
+  min-width:150px;
+  margin:0 !important;
+  padding:10px 16px;
+  border:1px solid #eadde1;
+  border-radius:11px;
+  background:#fff;
+  color:#A00023;
+  font-size:12px;
+  font-weight:800;
+}
+
+.home-footer .btn-salir:hover{
+  background:#fff5f7;
+  border-color:#CF002E;
+}
+
+.home-shell.home-admin{
+  max-width:1280px;
+}
+
+.home-shell.home-admin .home-grid-templates{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.home-shell.home-admin .home-grid-dashboards{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.home-shell.home-admin .home-grid-data{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+@media(max-width:900px){
+  .home-shell,
+  .home-shell.home-admin{
+    width:calc(100% - 24px);
+    max-width:720px;
+  }
+
+  .home-grid-templates,
+  .home-grid-dashboards,
+  .home-grid-data,
+  .home-shell.home-admin .home-grid-templates,
+  .home-shell.home-admin .home-grid-dashboards,
+  .home-shell.home-admin .home-grid-data{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px){
+  .home-shell,
+  .home-shell.home-admin{
+    width:95%;
+    margin:15px auto 24px;
+    border-radius:21px;
+  }
+
+  .home-header{
+    min-height:0;
+    padding:20px 16px;
+  }
+
+  .home-logo{
+    width:47px;
+    height:47px;
+    flex-basis:47px;
+    border-radius:13px;
+    font-size:17px;
+  }
+
+  .home-brand{gap:11px;}
+
+  .home-kicker{
+    font-size:8px;
+    letter-spacing:1px;
+  }
+
+  .home-title{
+    font-size:21px !important;
+  }
+
+  .home-user{
+    font-size:11px;
+  }
+
+  .home-fy{
+    padding:6px 9px;
+    font-size:9px;
+  }
+
+  .home-body{
+    padding:21px 14px 18px;
+  }
+
+  .home-section{
+    margin-bottom:23px;
+  }
+
+  .home-section-head h2{
+    font-size:14px;
+  }
+
+  .home-grid-templates,
+  .home-grid-dashboards,
+  .home-grid-data,
+  .home-shell.home-admin .home-grid-templates,
+  .home-shell.home-admin .home-grid-dashboards,
+  .home-shell.home-admin .home-grid-data{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .home-card{
+    min-height:73px;
+    padding:12px;
+    grid-template-columns:37px minmax(0,1fr) 14px;
+    gap:9px;
+    border-radius:14px;
+  }
+
+  .home-card-icon{
+    width:37px;
+    height:37px;
+    border-radius:10px;
+  }
+
+  .home-card .tituloBoton{font-size:12.5px;}
+  .home-card .subtituloBoton{font-size:10.5px;}
+  .home-arrow{font-size:23px;}
+
+  .home-footer{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .home-footer .btn-salir{
+    width:100%;
+  }
+}
+
+</style>
+<style id="qa-global-aesthetic">
+:root{--qa-red:#cf002e;--qa-red-dark:#8b001f;--qa-yellow:#fdd000;--qa-ink:#111827;--qa-muted:#667085}
+body{background:radial-gradient(ellipse at 8% 0%,rgba(253,208,0,.16),transparent 30%),linear-gradient(180deg,#f3f5f9,#e9eef5)!important;color:var(--qa-ink)}
+header,.header,.encabezado,.encabezado-principal{background:linear-gradient(115deg,#0b1220,#17263d 72%,#241526)!important;box-shadow:0 10px 30px rgba(11,18,32,.22)!important;position:relative;overflow:hidden}
+header::after,.header::after,.encabezado::after,.encabezado-principal::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#cf002e,#ff4d6d,#fdd000,transparent)}
+.card,.login-card,.module-card,.dashboard-card,.menu-card{border:1px solid #e1e7f0!important;border-radius:16px!important;box-shadow:0 12px 34px rgba(16,24,40,.08)!important;transition:transform .18s,box-shadow .18s}
+.module-card:hover,.dashboard-card:hover,.menu-card:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(16,24,40,.13)!important}
+button,.btn{transition:filter .15s,box-shadow .15s,transform .15s}input,select,textarea{border-radius:9px!important}button:focus-visible,a:focus-visible{outline:3px solid rgba(253,208,0,.8)!important;outline-offset:2px}
+</style>
+
+<style id="qa-redesign-v3-index">
+:root{--qa-red:#cf002e;--qa-yellow:#fdd000;--qa-ink:#172235}
+body{
+ background:radial-gradient(ellipse at 92% 0%,rgba(207,0,46,.09),transparent 31%),
+ radial-gradient(ellipse at 5% 100%,rgba(253,208,0,.14),transparent 32%),
+ linear-gradient(135deg,#edf1f7 0%,#f8fafc 55%,#f4f0f1 100%)!important;
+ color:var(--qa-ink)!important;font-family:Inter,"Segoe UI",Arial,sans-serif!important;
+}
+.appbar{background:linear-gradient(112deg,#101b2d,#1b2b43 72%,#2b1a2b)!important;box-shadow:0 10px 28px rgba(16,27,45,.2)!important;position:relative}
+.appbar::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#cf002e,#ff4d6d,#fdd000,transparent)}
+.card{border:1px solid #dce4ee!important;border-radius:22px!important;box-shadow:0 20px 48px rgba(24,39,62,.11)!important;background:rgba(255,255,255,.94)!important;backdrop-filter:blur(12px)}
+button,.btn,input[type=submit],input[type=button]{border-radius:11px!important;transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
+button:hover,.btn:hover,input[type=submit]:hover,input[type=button]:hover{filter:brightness(1.04);box-shadow:0 7px 18px rgba(16,27,45,.14)}
+input,select{border-radius:10px!important;border-color:#d7e0ec!important}
+input:focus,select:focus{outline:3px solid rgba(207,0,46,.12)!important;border-color:#cf002e!important}
+.logoQA{box-shadow:0 6px 16px rgba(253,208,0,.25);border-radius:12px!important}
+</style>
+
+<style id="qa-index-premium-polish">
+:root{--portal-red:#CF002E;--portal-deep:#A00023;--portal-gold:#FDD000;--portal-ink:#202938;--portal-muted:#667085;--portal-line:#e5e9f0}
+body{background:#f3f5f8!important;color:var(--portal-ink)!important;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important}
+body:before{content:"";position:fixed;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#CF002E 0 68%,#FDD000 68% 100%);z-index:9999;pointer-events:none}
+.appbar{background:#151d2b!important;background-image:none!important;min-height:74px!important;padding:12px clamp(16px,3vw,42px)!important;box-shadow:0 4px 18px #10182814!important;border-bottom:1px solid #293345!important;gap:12px!important}
+.logoQA{background:var(--portal-red)!important;color:#fff!important;border-radius:11px!important;box-shadow:0 5px 14px #cf002e35!important}.titulo1{letter-spacing:.14em!important;font-size:10px!important}.titulo2{font-size:18px!important;letter-spacing:-.02em!important}.fy{background:#273244!important;border:1px solid #3b4658!important;color:#f4f6fa!important}
+.card{background:#fff!important;border:1px solid var(--portal-line)!important;border-radius:18px!important;box-shadow:0 12px 34px #18263b0d!important;padding:clamp(22px,3vw,32px)!important}.logo{background:#151d2b!important;border:4px solid #f1f3f6!important;box-shadow:0 0 0 1px #e3e8ef!important;color:#fff!important}.card h1,h1{color:#1d2736!important;letter-spacing:-.035em!important}
+input,select,textarea{border:1px solid #d6dce5!important;border-radius:9px!important;background:#fff!important;color:#202938!important;min-height:42px!important;box-shadow:none!important}input:focus,select:focus,textarea:focus{border-color:#CF002E!important;box-shadow:0 0 0 3px #cf002e12!important;outline:0!important}
+button,.btn{border-radius:9px!important;font-weight:700!important;letter-spacing:0!important;box-shadow:none!important}button:hover,.btn:hover{filter:brightness(.98)}.btn-login{background:#CF002E!important;color:#fff!important;min-height:44px!important;box-shadow:0 5px 12px #cf002e20!important}.btn-home{background:#263244!important;color:#fff!important}
+.btn-dashboard,.btn-alerta,.btn-auditoria,.btn-incidencia{min-height:88px!important;padding:17px 52px 17px 19px!important;border:1px solid #e3e8ef!important;border-left:4px solid #CF002E!important;border-radius:13px!important;background:#fff!important;box-shadow:0 5px 16px #1018280a!important;color:#202938!important;font-size:15px!important;line-height:1.35!important}.btn-alerta{border-left-color:#e0a800!important}.btn-auditoria{border-left-color:#263d5b!important}.btn-incidencia{border-left-color:#cf002e!important}.btn-dashboard:hover,.btn-alerta:hover,.btn-auditoria:hover,.btn-incidencia:hover{transform:translateY(-2px)!important;box-shadow:0 10px 24px #10182812!important;border-color:#d5dbe5!important}.btn-dashboard:after,.btn-alerta:after,.btn-auditoria:after,.btn-incidencia:after{right:18px!important;font-size:25px!important;color:#CF002E!important}
+.menu{gap:12px!important}.home-grid-templates,.home-grid-dashboards,.home-grid-data{gap:13px!important}.home-shell{max-width:1240px!important}.home-footer{border-top:1px solid #e6eaf0!important;color:#667085!important}
+@media(max-width:760px){.appbar{padding:12px 14px!important}.titulo2{font-size:15px!important}.fy{font-size:11px!important;padding:5px 8px!important}.card{width:calc(100% - 24px)!important;margin:18px auto!important;padding:22px 17px!important}.btn-dashboard,.btn-alerta,.btn-auditoria,.btn-incidencia{min-height:76px!important;font-size:14px!important;padding-left:15px!important}.home-shell.home-admin .home-grid-templates,.home-shell.home-admin .home-grid-dashboards,.home-shell.home-admin .home-grid-data{grid-template-columns:repeat(1,minmax(0,1fr))!important}}
+</style>
+
+<style id="uxmal-home-brand-contrast">
+/* Contraste del nombre del portal en el encabezado del home */
+.home-header .home-title,
+.home-brand .home-title{color:#fff!important;text-shadow:0 1px 3px rgba(0,0,0,.28)!important}
+</style>
+
+<style id="qa-final-brand-uppercase-home">
+.qtn-rail,.qtn-rail *{text-transform:uppercase!important}.qtn-brand{padding:24px 18px 22px!important}.qtn-brand-name{color:#fff!important;font-size:clamp(17px,1.25vw,21px)!important;font-weight:900!important;letter-spacing:.065em!important;line-height:1.25!important;white-space:normal!important;text-wrap:balance;text-shadow:0 2px 16px rgba(0,0,0,.28)}.qtn-brand-meta{display:none!important}.qtn-home-link{color:#fff!important}.qa-creditos-unificados{font-size:12px!important;font-weight:700!important;color:#596579!important;letter-spacing:.15px!important}.qa-creditos-unificados strong{color:#263244!important;font-weight:900!important}
+.qtn-home-float.qa-no-panel-home{position:fixed!important;z-index:100000!important;left:16px!important;bottom:18px!important;top:auto!important;right:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:46px!important;padding:12px 17px!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:14px!important;background:linear-gradient(135deg,#CF002E,#8B001F)!important;color:#fff!important;box-shadow:0 8px 26px rgba(20,28,43,.25)!important;font-size:12px!important;font-weight:900!important;letter-spacing:.04em!important;text-decoration:none!important;text-transform:uppercase!important;line-height:1.1!important}
+@media(max-width:640px){.qtn-home-float.qa-no-panel-home{left:12px!important;bottom:12px!important;min-height:44px!important;padding:11px 14px!important;font-size:12px!important;max-width:calc(100vw - 24px)!important}.qa-creditos-unificados{font-size:11px!important}}
+</style>
+
+</head>
+<body>
+
+<div id="loginBox" class="card card-login">
+
+<div class="logo-login">
+QA
+</div>
+
+<div class="login-subtitle">
+Bienvenido
+</div>
+
+<div class="login-title">
+PORTAL DE CALIDAD: Site UXMAL
+</div>
+
+<div class="login-system">
+Sistema QA
+</div>
+
+<hr class="separador">
+
+<div id="mensajeError" class="mensaje-error"></div>
+<input
+type="text"
+id="usuario"
+placeholder="Escribe tu nombre"
+list="listaUsuarios"
+oninput="actualizarDatos()">
+
+<datalist id="listaUsuarios">
+</datalist>
+
+<input
+type="password"
+id="password"
+placeholder="Contraseña">
+
+<div class="fila">
+
+<div class="datoAuto">
+<div class="etiqueta">CUADRILLA</div>
+<input
+type="text"
+id="cuadrilla"
+readonly>
+</div>
+
+<div class="datoAuto">
+<div class="etiqueta">ÁREA</div>
+<input
+type="text"
+id="area"
+readonly>
+</div>
+
+</div>
+
+<div class="fila">
+
+<div class="datoAuto">
+<div class="etiqueta">TURNO</div>
+
+<select id="turno">
+
+<option value="">
+Seleccionar
+</option>
+
+<option value="1">
+1RO
+</option>
+
+<option value="2">
+2DO
+</option>
+
+<option value="3">
+3RO
+</option>
+
+<option value="MIXTO">
+MIXTO
+</option>
+
+</select>
+
+</div>
+
+<div class="datoAuto">
+<div class="etiqueta">FECHA</div>
+
+<input
+type="text"
+id="fecha"
+readonly>
+
+</div>
+
+</div>
+
+<button
+class="btn-login"
+onclick="login()">
+INGRESAR
+</button>
+
+<div
+class="card-visitante"
+onclick="mostrarCliente()">
+
+<div class="visitante-icono">
+👤
+</div>
+
+<div class="visitante-texto">
+
+<div class="visitante-titulo">
+Acceso para visitantes
+</div>
+
+<div class="visitante-sub">
+Registrar alerta sin cuenta
+</div>
+
+</div>
+
+<div class="visitante-flecha">
+›
+</div>
+
+</div>
+
+</div>
+
+<div id="clienteBox" class="card hidden">
+
+<div class="encabezado-visitante">
+
+<div class="btn-home"
+onclick="volverInicio()">
+🏠
+</div>
+
+<div class="logo-login">
+QA
+</div>
+
+<div class="login-subtitle">
+Bienvenido
+</div>
+
+<div class="login-title">
+Acceso para Visitantes
+</div>
+
+<div class="login-system">
+PORTAL DE CALIDAD: Site UXMAL
+</div>
+
+</div>
+
+<hr class="separador">
+
+<input
+type="text"
+id="clienteNombre"
+placeholder="Nombre completo">
+
+<select id="clienteEmpresa" onchange="validarDHL()">
+<option value="">Selecciona compañía</option>
+<option value="DHL">DHL</option>
+<option value="COORSA">COORSA</option>
+<option value="P&G">P&G</option>
+<option value="NIMU">NIMU</option>
+</select>
+
+<div id="bloqueSMO" class="hidden">
+
+<select id="esSMO">
+<option value="">¿Eres de SMO?</option>
+<option value="SI">SI</option>
+<option value="NO">NO</option>
+</select>
+
+<select id="smoArea" class="hidden">
+<option value="">Selecciona área</option>
+
+<option value="HS&E">HS&E</option>
+<option value="RH">RH</option>
+<option value="CALIDAD">CALIDAD</option>
+<option value="ENTRENAMIENTOS">ENTRENAMIENTOS</option>
+<option value="OMS">OMS</option>
+<option value="INVENTARIOS">INVENTARIOS</option>
+<option value="CRYD">CRYD</option>
+<option value="PFCT">PFCT</option>
+<option value="CUSTOMIZADO">CUSTOMIZADO</option>
+<option value="CONTROLES INTERNOS">CONTROLES INTERNOS</option>
+<option value="SISTEMAS">SISTEMAS</option>
+<option value="PROYECTOS">PROYECTOS</option>
+<option value="TRANSPORTE">TRANSPORTE</option>
+<option value="OPERACIONES">OPERACIONES</option>
+</select>
+
+<select id="smoCuadrilla" class="hidden">
+<option value="">Selecciona cuadrilla</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="STAFF">STAFF</option>
+</select>
+
+</div>
+
+<button
+class="btn-login"
+onclick="ingresarCliente()">
+INGRESAR
+</button>
+
+</div>
+
+<div id="homeBox" class="card hidden home-shell">
+
+  <div class="home-header">
+    <div class="home-brand">
+      <div class="home-logo">QA</div>
+      <div>
+        <div class="home-kicker">SISTEMA DE GESTIÓN DE CALIDAD</div>
+        <h1 class="home-title">PORTAL DE CALIDAD: Site UXMAL</h1>
+        <div class="home-user-row">
+          <div id="usuarioActual" class="home-user"></div>
+        </div>
+      </div>
+    </div>
+    <div class="home-fy">FY2627</div>
+  </div>
+
+  <div class="home-body">
+
+    <section class="home-section">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">OPERACIÓN</div>
+          <h2 id="tituloTemplates">Templates</h2>
+        </div>
+      </div>
+
+      <div class="home-grid home-grid-templates">
+        <button id="btnAlertas" class="home-card home-alerta" onclick="location.href='Alertas de calidad.html'">
+          <span class="home-card-text">
+            <span class="tituloBoton">Sistema Alertas</span>
+            <span class="subtituloBoton">Registrar hallazgos de calidad</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnAuditoria" class="home-card home-auditoria" onclick="location.href='Auditoría recibo.html'">
+          <span class="home-card-text">
+            <span class="tituloBoton">Sistema Auditorías</span>
+            <span class="subtituloBoton">Captura de auditorías de recibo</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnIncidencia" class="home-card home-incidencia" onclick="location.href='Incidencia en Recibo.html'">
+          <span class="home-card-text">
+            <span class="tituloBoton">Sistema Incidencias</span>
+            <span class="subtituloBoton">Registro de incidencias operativas</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">MONITOREO</div>
+          <h2 id="tituloDashboards">Dashboards</h2>
+        </div>
+      </div>
+
+      <div class="home-grid home-grid-dashboards">
+        <button id="btnDashboardAlertas" class="home-card home-dashboard" onclick="location.href='dashboard.html'">
+          <span class="home-card-text">
+            <span class="tituloBoton">Dashboard Alertas</span>
+            <span class="subtituloBoton">Indicadores y tendencias</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnDashboardAuditorias" class="home-card home-dashboard" onclick="location.href='dashboard-auditorias.html'">
+          <span class="home-card-text">
+            <span class="tituloBoton">Dashboard Auditorías</span>
+            <span class="subtituloBoton">Resultados de auditorías</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnDashboardIncidencias" class="home-card home-dashboard" onclick="location.href='dashboard-incidencias.html'">
+          <span class="home-card-text">
+            <span class="tituloBoton">Dashboard Incidencias</span>
+            <span class="subtituloBoton">Seguimiento de incidencias</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+</div>
+    </section>
+
+    <section class="home-section">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">DATOS</div>
+          <h2 id="tituloConcentrados">Concentrados</h2>
+        </div>
+      </div>
+
+      <div class="home-grid home-grid-data">
+        <button id="btnExcelAlertas" class="home-card home-data" onclick="descargarExcelAlertas()">
+          <span class="home-card-icon">↓</span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Excel Alertas</span>
+            <span class="subtituloBoton">Descargar base completa</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnExcelAuditorias" class="home-card home-data" onclick="descargarExcelAuditorias()">
+          <span class="home-card-icon">↓</span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Excel Auditorías</span>
+            <span class="subtituloBoton">Descargar base completa</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnExcelIncidencias" class="home-card home-data" onclick="descargarExcelIncidencias()">
+          <span class="home-card-icon">↓</span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Excel Incidencias</span>
+            <span class="subtituloBoton">Descargar base completa</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="home-footer">
+      <button class="btn-salir" onclick="logout()">🚪 Cerrar sesión</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="uxmal-client.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<script>
+
+/*USUARIOS*/
+
+const personal = {
+
+"ANGEL MORENO": {cuadrilla:"EMBARQUE", area:"CALIDAD", pass:"AMG765"},
+"ANTONIO BADILLO": {cuadrilla:"RECIBO", area:"CALIDAD", pass:"BAA244"},
+"ARIADNA ROSAS": {cuadrilla:"RECIBO", area:"CALIDAD", pass:"AAR239"},
+"CARLOS CRUZ": {cuadrilla:"EMBARQUE", area:"CALIDAD", pass:"CCC891"},
+"DANIELA MARTINEZ": {cuadrilla:"IMPORTADOS", area:"CALIDAD", pass:"DMS146"},
+"EDITH PEREZ": {cuadrilla:"PFCT", area:"CALIDAD", pass:"EPG272"},
+"EDUARDO NAVA": {cuadrilla:"PFCT", area:"CALIDAD", pass:"JNL789"},
+"GABRIELA ALVARADO": {cuadrilla:"RECIBO", area:"CALIDAD", pass:"GAR390"},
+"GREGORIO PEREZ": {cuadrilla:"EMBARQUE", area:"CALIDAD", pass:"JPP284"},
+"IVAN COXANTEJE": {cuadrilla:"RECIBO", area:"CALIDAD", pass:"ICC432"},
+"JESUS GONZALEZ": {cuadrilla:"EMBARQUE", area:"CALIDAD", pass:"JGA186"},
+"LILIANA SOTELO": {cuadrilla:"PFCT", area:"CALIDAD", pass:"LSC374"},
+"MANUEL CHAGALA": {cuadrilla:"CRYD", area:"CALIDAD", pass:"MCD607"},
+"NATALIA JUAREZ": {cuadrilla:"CUSTOMIZADO", area:"CALIDAD", pass:"NJV609"},
+"PAOLA RAMIREZ": {cuadrilla:"COORDINADOR", area:"CALIDAD", pass:"PRS997"},
+"ROGELIO SOTO": {cuadrilla:"COORDINADOR", area:"CALIDAD", pass:"RGS895"},
+"ROSA ESPINO": {cuadrilla:"PFCT", area:"CALIDAD", pass:"REL697"},
+"SAMANTHA GONZALEZ": {cuadrilla:"CUSTOMIZADO", area:"CALIDAD", pass:"SGF168"},
+"SARA POZOS": {cuadrilla:"CRYD", area:"CALIDAD", pass:"SPC567"},
+"VALERIA FUENTES": {cuadrilla:"CRYD", area:"CALIDAD", pass:"VFG432"},
+"VICTOR ORTIZ": {cuadrilla:"MASTER DATA", area:"CALIDAD", pass:"VHO587"},
+"COORDINADOR A": {cuadrilla:"A", area:"OPERACIONES", pass:"OPS123"},
+"COORDINADOR B": {cuadrilla:"B", area:"OPERACIONES", pass:"OPS123"},
+"COORDINADOR C": {cuadrilla:"C", area:"OPERACIONES", pass:"OPS123"},
+"COORDINADOR D": {cuadrilla:"D", area:"OPERACIONES", pass:"OPS123"},
+"HS&E A": {cuadrilla:"A", area:"HS&E", pass:"HSE123"},
+"HS&E B": {cuadrilla:"B", area:"HS&E", pass:"HSE123"},
+"HS&E C": {cuadrilla:"C", area:"HS&E", pass:"HSE123"},
+"HS&E D": {cuadrilla:"D", area:"HS&E", pass:"HSE123"},
+"ANALISTA QA1": {cuadrilla:"UXMAL", area:"CALIDAD", pass:"CALIDAD2627"},
+"ANALISTA QA2": {cuadrilla:"UXMAL", area:"CALIDAD", pass:"CALIDAD2627"},
+"ANALISTA QA3": {cuadrilla:"UXMAL", area:"CALIDAD", pass:"CALIDAD2627"},
+"ANALISTA QA4": {cuadrilla:"UXMAL", area:"CALIDAD", pass:"CALIDAD2627"},
+"Felix Montoya": {cuadrilla:"ADMIN", area:"CALIDAD", pass:"Itzel1710", admin:true},
+"adminuxmal": {cuadrilla:"ADMIN", area:"CALIDAD", pass:"Itzel1710", admin:true},
+
+"JUAN ROQUE": {
+    cuadrilla:"P&G",
+    area:"OPERACIONES",
+    pass:"Alessandra/9",
+    rol:"VISUALIZADOR"
+},
+
+"JIMENA VELASCO": {
+    cuadrilla:"P&G",
+    area:"CALIDAD",
+    pass:"JV1710",
+    rol:"VISUALIZADOR"
+},
+
+"PABLO BECERRA": {
+    cuadrilla:"P&G",
+    area:"CALIDAD",
+    pass:"PB123",
+    rol:"VISUALIZADOR"
+},
+
+"JULIO ARAIZA": {
+    cuadrilla:"P&G",
+    area:"CALIDAD",
+    pass:"JA123",
+    rol:"VISUALIZADOR"
+},
+
+"TRANSPORTE": {
+    cuadrilla:"N/A",
+    area:"TRANSPORTE",
+    pass:"TRANSPORTE1710",
+    rol:"VISUALIZADOR"
+},
+
+"YOLEANA VALENCIANO": {
+    cuadrilla:"P&G",
+    area:"OPERACIONES",
+    pass:"ONETEAMONEGOAL",
+    rol:"VISUALIZADOR"
+},
+
+"DIEGO TRUJILLO": {
+    cuadrilla:"P&G",
+    area:"OPERACIONES",
+    pass:"ONETEAMONEGOAL",
+    rol:"VISUALIZADOR"
+},
+
+"ALAIN CLETO": {
+    cuadrilla:"P&G",
+    area:"OPERACIONES",
+    pass:"AC1710",
+    rol:"VISUALIZADOR"
+},
+
+"GUILLERMO MOLINA": {
+    cuadrilla:"P&G",
+    area:"OPERACIONES",
+    pass:"MEJORAMIGOMEMO10",
+    rol:"VISUALIZADOR"
+},
+
+"OMAR MENDOZA": {
+    cuadrilla:"SUPERVISOR",
+    area:"CALIDAD",
+    pass:"IloveDHL2X30",
+    rol:"VISUALIZADOR"
+}
+
+};
+
+function cargarUsuarios(){
+
+const lista =
+document.getElementById("listaUsuarios");
+
+lista.innerHTML = "";
+
+for(const nombre in personal){
+
+const opcion =
+document.createElement("option");
+
+opcion.value = nombre;
+
+lista.appendChild(opcion);
+
+}
+
+}
+
+function actualizarDatos(){
+
+const usuario =
+document.getElementById("usuario").value.trim();
+
+const info = personal[usuario] || JSON.parse(localStorage.getItem("uxmalUserProfile") || "null");
+
+if(info){
+
+document.getElementById("cuadrilla").value =
+info.cuadrilla;
+
+document.getElementById("area").value =
+info.area;
+
+}else{
+
+document.getElementById("cuadrilla").value="";
+document.getElementById("area").value="";
+
+}
+
+}
+
+function mostrarCliente(){
+
+document.getElementById("loginBox")
+.classList.add("hidden");
+
+document.getElementById("clienteBox")
+.classList.remove("hidden");
+
+}
+
+function volverInicio(){
+
+document.getElementById("clienteBox")
+.classList.add("hidden");
+
+document.getElementById("loginBox")
+.classList.remove("hidden");
+
+}
+
+function validarDHL(){
+
+const empresa =
+document.getElementById("clienteEmpresa").value;
+
+if(empresa === "DHL"){
+
+document.getElementById("bloqueSMO")
+.classList.remove("hidden");
+
+}else{
+
+document.getElementById("bloqueSMO")
+.classList.add("hidden");
+
+}
+
+}
+
+document.addEventListener("change",(e)=>{
+
+if(e.target.id==="esSMO"){
+
+if(e.target.value==="SI"){
+
+document.getElementById("smoArea")
+.classList.remove("hidden");
+
+document.getElementById("smoCuadrilla")
+.classList.remove("hidden");
+
+}else{
+
+document.getElementById("smoArea")
+.classList.add("hidden");
+
+document.getElementById("smoCuadrilla")
+.classList.add("hidden");
+
+}
+
+}
+
+});
+
+function ingresarCliente(){
+
+const nombre =
+document.getElementById("clienteNombre")
+.value.trim();
+
+const empresa =
+document.getElementById("clienteEmpresa")
+.value;
+
+const esSMO =
+document.getElementById("esSMO").value;
+
+const smoArea =
+document.getElementById("smoArea").value;
+
+const smoCuadrilla =
+document.getElementById("smoCuadrilla").value;
+
+if(!nombre || !empresa){
+
+Swal.fire({
+icon:'warning',
+title:'Información requerida',
+text:'Captura nombre y compañía',
+confirmButtonColor:'#CF002E'
+});
+
+return;
+
+}
+
+if(
+empresa === "DHL" &&
+esSMO === "SI" &&
+(!smoArea || !smoCuadrilla)
+){
+
+Swal.fire({
+icon:'warning',
+title:'Información requerida',
+text:'Selecciona área y cuadrilla',
+confirmButtonColor:'#CF002E'
+});
+
+return;
+
+}
+
+const sesionActiva = {
+datos:{
+nombre:nombre,
+
+cuadrilla:
+empresa === "DHL" && esSMO === "SI"
+? smoCuadrilla
+: "VISITA",
+
+area:
+empresa === "DHL" && esSMO === "SI"
+? smoArea
+: empresa,
+
+turno:"VISITA",
+
+fecha:document.getElementById("fecha").value,
+
+empresa:empresa,
+
+tipo:"INVITADO"
+},
+inicio:Date.now()
+};
+
+localStorage.setItem(
+"sesionActiva",
+JSON.stringify(sesionActiva)
+);
+
+localStorage.setItem(
+"usuarioPortal",
+nombre
+);
+
+localStorage.setItem(
+"tipoUsuario",
+"INVITADO"
+);
+
+location.href="Alertas de calidad.html";
+
+}
+
+async function login(){
+
+const usuario =
+document.getElementById("usuario").value.trim();
+
+const password =
+document.getElementById("password").value.trim();
+
+const turno =
+document.getElementById("turno").value;
+
+let user = personal[usuario];
+let gatewayUser = null;
+try {
+  const resp = await window.uxmalGatewayRequest({action:"login",username:usuario,password});
+  if(resp.error) throw new Error(resp.error.message);
+  gatewayUser = resp.data.user;
+  localStorage.setItem("uxmalSessionToken", resp.data.token);
+  const legacyProfile = {...gatewayUser, rol: gatewayUser.role === "HSE" ? "HS&E" : gatewayUser.role, admin: gatewayUser.role === "ADMIN"};
+  localStorage.setItem("uxmalUserProfile", JSON.stringify(legacyProfile));
+  user = legacyProfile;
+} catch (gatewayError) {
+  // Sin conexión al gateway no se permite el acceso con cuentas operativas locales.
+  if(!user || user.pass !== password){
+    Swal.fire({icon:'error',title:'No fue posible iniciar sesión',text:gatewayError.message||'Verifica la conexión al servicio de acceso de Uxmal.',confirmButtonText:'Aceptar',confirmButtonColor:'#CF002E'});
+    return;
+  }
+  return;
+}
+
+if(user && (gatewayUser || user.pass === password)){
+
+if(!turno){
+
+Swal.fire({
+  icon: 'warning',
+  title: 'Turno requerido',
+  text: 'Selecciona un turno para continuar',
+  confirmButtonText: 'Aceptar',
+  confirmButtonColor: '#CF002E'
+});
+return;
+
+}
+
+localStorage.setItem(
+"usuarioPortal",
+usuario
+);
+
+localStorage.setItem(
+"adminPortal",
+user.admin ? "true" : "false"
+);
+
+localStorage.setItem(
+"permisoDashboards",
+(user.admin || user.rol === "VISUALIZADOR" || (gatewayUser && (gatewayUser.dashboard_permissions||[]).length)) ? "true" : "false"
+);
+localStorage.removeItem("tipoUsuario");
+
+const sesionActiva = {
+datos:{
+nombre: usuario,
+cuadrilla: user.cuadrilla,
+area: user.area,
+turno: turno,
+fecha: document.getElementById("fecha").value
+},
+inicio: Date.now()
+};
+
+localStorage.setItem(
+"sesionActiva",
+JSON.stringify(sesionActiva)
+);
+
+mostrarHome(usuario);
+
+}else{
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Acceso denegado',
+        text: 'Usuario o contraseña incorrectos',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#CF002E',
+        background: '#ffffff',
+        color: '#1f2937'
+    });
+
+}
+
+}
+
+function mostrarHome(usuario){
+
+const info = personal[usuario] || JSON.parse(localStorage.getItem("uxmalUserProfile") || "null");
+
+document.getElementById("homeBox").classList.toggle("home-admin", !!(info && info.admin));
+
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("homeBox").classList.remove("hidden");
+document.getElementById("usuarioActual").innerText = usuario;
+
+const botones = [
+"btnAlertas","btnAuditoria","btnIncidencia",
+"btnDashboardAlertas","btnDashboardAuditorias","btnDashboardIncidencias",
+"btnExcelAlertas","btnExcelAuditorias","btnExcelIncidencias",
+"tituloTemplates","tituloDashboards","tituloConcentrados"
+];
+
+botones.forEach(id=>{
+  const elemento = document.getElementById(id);
+  if(elemento) elemento.style.display="none";
+});
+
+const seccionDashboards = document.getElementById("tituloDashboards").closest(".home-section");
+const seccionConcentrados = document.getElementById("tituloConcentrados").closest(".home-section");
+if(seccionDashboards) seccionDashboards.style.display="none";
+if(seccionConcentrados) seccionConcentrados.style.display="none";
+
+const tituloTemplates = document.getElementById("tituloTemplates");
+if(tituloTemplates) tituloTemplates.style.display="block";
+
+if(info.admin){
+  document.getElementById("tituloDashboards").style.display="block";
+  document.getElementById("tituloConcentrados").style.display="block";
+  if(seccionDashboards) seccionDashboards.style.display="block";
+  if(seccionConcentrados) seccionConcentrados.style.display="block";
+
+  document.getElementById("btnAlertas").style.display="block";
+  document.getElementById("btnAuditoria").style.display="block";
+  document.getElementById("btnIncidencia").style.display="block";
+
+  document.getElementById("btnDashboardAlertas").style.display="block";
+  document.getElementById("btnDashboardAuditorias").style.display="block";
+  document.getElementById("btnDashboardIncidencias").style.display="block";
+
+  // Los concentrados Excel están disponibles para el perfil administrador.
+  document.getElementById("btnExcelAlertas").style.display="grid";
+  document.getElementById("btnExcelAuditorias").style.display="grid";
+  document.getElementById("btnExcelIncidencias").style.display="grid";
+  return;
+}
+
+if(info.rol === "VISUALIZADOR"){
+  document.getElementById("tituloDashboards").style.display="block";
+  if(seccionDashboards) seccionDashboards.style.display="block";
+
+  document.getElementById("btnAlertas").style.display="block";
+  document.getElementById("btnDashboardAlertas").style.display="block";
+  document.getElementById("btnDashboardAuditorias").style.display="block";
+  document.getElementById("btnDashboardIncidencias").style.display="block";
+  return;
+}
+
+if(usuario.startsWith("COORDINADOR") || usuario.startsWith("HS&E")){
+  document.getElementById("btnAlertas").style.display="block";
+  return;
+}
+
+document.getElementById("btnAlertas").style.display="block";
+document.getElementById("btnAuditoria").style.display="block";
+document.getElementById("btnIncidencia").style.display="block";
+
+}
+function logout(){
+
+localStorage.removeItem("usuarioPortal");
+localStorage.removeItem("uxmalSessionToken");
+localStorage.removeItem("uxmalUserProfile");
+
+location.reload();
+
+}
+
+window.onload=()=>{
+
+cargarUsuarios();
+const fecha = new Date();
+
+const meses = [
+"ENE","FEB","MAR","ABR","MAY","JUN",
+"JUL","AGO","SEP","OCT","NOV","DIC"
+];
+
+const fechaFormateada =
+fecha.getDate().toString().padStart(2,"0") +
+" " +
+meses[fecha.getMonth()] +
+" " +
+fecha.getFullYear().toString().slice(-2);
+
+document.getElementById("fecha").value =
+fechaFormateada;
+
+const usuario=
+localStorage.getItem("usuarioPortal");
+
+if(usuario){
+
+mostrarHome(usuario);
+
+}
+
+}
+
+const supabaseClient = uxmalCreateClient(
+"https://gfjvrtimzymsdnrcrlmu.supabase.co",
+"sb_publishable_rm15A8CIEQfkhWeeQlLOBQ_R1YOA9Cm"
+);
+
+async function obtenerTodosLosRegistros(tabla){
+ const todos = [];
+ const bloque = 1000;
+ let desde = 0;
+ while(true){
+  const {data,error} = await supabaseClient
+   .from(tabla)
+   .select("*")
+   .range(desde,desde+bloque-1);
+  if(error) throw error;
+  const lote = Array.isArray(data) ? data : [];
+  todos.push(...lote);
+  if(lote.length < bloque) break;
+  desde += bloque;
+ }
+ return todos;
+}
+
+async function exportarConcentrado(tabla,nombreArchivo,titulo){
+ try{
+  const todos = await obtenerTodosLosRegistros(tabla);
+  if(!todos.length){
+   Swal.fire({icon:'info',title:'Sin registros',text:`No se encontraron datos para exportar en ${titulo}.`,confirmButtonText:'Aceptar',confirmButtonColor:'#CF002E'});
+   return;
+  }
+  const columnas = [...new Set(todos.flatMap(registro=>Object.keys(registro)))];
+  const csv = [columnas.map(limpiar).join(','),...todos.map(registro=>columnas.map(columna=>limpiar(registro[columna])).join(','))].join('\r\n');
+  descargarCSV(csv,nombreArchivo);
+ }catch(error){
+  console.error(`Error exportando ${titulo}:`,error);
+  Swal.fire({icon:'error',title:'No se pudo descargar',text:`No fue posible obtener el concentrado de ${titulo}. Verifica la conexión y los permisos de Supabase.`,confirmButtonColor:'#CF002E'});
+ }
+}
+
+async function descargarExcelAlertas(){
+ return exportarConcentrado('Reportes','Alertas_Completo.csv','Alertas');
+}
+
+async function descargarExcelAuditorias(){
+ return exportarConcentrado('Auditoria_Recibo','Auditorias_Completo.csv','Auditorías');
+}
+
+async function descargarExcelIncidencias(){
+ return exportarConcentrado('incidencias_recibo','Incidencias_Completo.csv','Incidencias');
+}
+
+function limpiar(valor){
+
+ const texto =
+   valor === null ||
+   valor === undefined ||
+   String(valor).trim() === ""
+     ? "n/a"
+     : String(valor);
+
+ return `"${texto
+   .replace(/"/g,'""')
+   .replace(/\n/g,' ')
+   .replace(/\r/g,' ')}"`;
+
+}
+
+function descargarCSV(csv,nombre){
+
+ const blob = new Blob(
+  ["\uFEFF" + csv],
+  {
+   type:"text/csv;charset=utf-8;"
+  }
+ );
+
+ const url =
+ URL.createObjectURL(blob);
+
+ const enlace =
+ document.createElement("a");
+
+ enlace.href = url;
+ enlace.download = nombre;
+
+ document.body.appendChild(enlace);
+
+ enlace.click();
+
+ document.body.removeChild(enlace);
+
+ URL.revokeObjectURL(url);
+
+}
+
+</script>
+
+<footer class="qa-creditos-unificados">⚙️ Sistema QA | Desarrollado por <strong>Felix Montoya</strong></footer>
+<style id="qa-creditos-unificados-style">.qa-creditos-unificados{box-sizing:border-box;width:100%;margin:28px auto 0;padding:14px 18px;text-align:center;color:#667085;font:500 11px/1.5 Inter,Arial,sans-serif;letter-spacing:.2px;border-top:1px solid #e7eaf0;background:transparent}.qa-creditos-unificados strong{color:#344054;font-weight:800}@media(max-width:600px){.qa-creditos-unificados{margin-top:20px;padding:12px 10px;font-size:10px}}</style>
+</body>
+</html>
+<style id="qa-index-title-finish">.appbar .tituloSistema{display:flex;flex-direction:column;justify-content:center;line-height:1.12!important}.appbar .titulo1{display:none!important}.appbar .titulo2{color:#fff!important;font-size:clamp(21px,2.3vw,29px)!important;font-weight:900!important;letter-spacing:.025em!important;line-height:1.15!important;text-shadow:0 2px 10px rgba(0,0,0,.2)}@media(max-width:600px){.appbar .titulo2{font-size:clamp(18px,5vw,24px)!important}}
+</style>
