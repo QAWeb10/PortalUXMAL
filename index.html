@@ -1,0 +1,2899 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script id="UXMAL-session-first-paint">
+(function(){
+  try {
+    var storedUser = localStorage.getItem("usuarioPortal");
+    if (storedUser && storedUser.trim()) {
+      document.documentElement.classList.add("UXMAL-session-pending");
+    }
+  } catch (e) { /* If storage is unavailable, leave the normal login visible. */ }
+})();
+</script>
+
+
+<title>PORTAL DE CALIDAD: Site UXMAL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+background:
+
+radial-gradient(
+circle at top right,
+rgba(253,208,0,.20),
+transparent 30%
+),
+
+linear-gradient(
+180deg,
+#ffffff 0%,
+#fff7d6 100%
+);
+
+min-height:100vh;
+
+display:block;
+
+}
+
+.appbar{
+
+height:76px;
+
+background:
+linear-gradient(
+90deg,
+#48090B,
+#A10A04
+);
+
+display:flex;
+align-items:center;
+
+padding:0 14px;
+
+color:white;
+}
+
+.logoQA{
+
+width:40px;
+height:40px;
+
+background:#F26306;
+
+border-radius:8px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-weight:bold;
+color:black;
+
+margin-right:14px;
+}
+
+.tituloSistema{
+line-height:1.2;
+}
+
+.titulo1{
+font-size:12px;
+font-weight:500;
+letter-spacing:.5px;
+opacity:.9;
+}
+
+.titulo2{
+font-size:16px;
+font-weight:700;
+}
+
+.fy{
+
+margin-left:auto;
+
+padding:6px 12px;
+
+border-radius:20px;
+
+background:
+rgba(255,255,255,.15);
+
+font-size:14px;
+}
+
+.btn-home{
+width:38px !important;
+height:38px !important;
+min-height:38px !important;
+padding:0 !important;
+margin:0 !important;
+border-radius:50% !important;
+background:#374151 !important;
+color:white !important;
+display:flex !important;
+align-items:center !important;
+justify-content:center !important;
+font-size:18px !important;
+cursor:pointer;
+flex-shrink:0;
+}
+
+.hidden{
+display:none;
+}
+
+.card{
+
+background:#ffffff;
+
+width:92%;
+max-width:420px;
+
+margin:25px auto;
+
+padding:30px 24px;
+
+border-radius:24px;
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.08);
+
+text-align:center;
+
+}
+
+.logo{
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:#003366;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+font-size:40px;
+font-weight:bold;
+margin-bottom:20px;
+}
+
+h1{
+margin-bottom:25px;
+color:#1f2937;
+font-size:32px;
+}
+
+input,
+select{
+
+background:#fff;
+font-weight:500;
+width:100%;
+padding:12px;
+margin-bottom:15px;
+border:1px solid #ddd;
+border-radius:10px;
+font-size:16px;
+
+}
+
+button{
+width:100%;
+padding:12px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
+margin-top:10px;
+}
+
+.btn-login{
+background:#A10A04;
+color:white;
+font-weight:bold;
+}
+
+.menu button{
+margin-bottom:12px;
+}
+
+.btn-dashboard,
+.btn-alerta,
+.btn-auditoria,
+.btn-incidencia{
+display:flex;
+flex-direction:column;
+align-items:flex-start;
+justify-content:center;
+width:100%;
+min-height:92px;
+padding:18px 22px;
+margin-bottom:14px;
+background:#fff;
+border:none;
+border-left:6px solid #A10A04;
+border-radius:20px;
+font-size:18px;
+font-weight:700;
+color:#1f2937;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.25s;
+position:relative;
+overflow:hidden;
+text-align:left;
+}
+.btn-dashboard:hover,
+.btn-alerta:hover,
+.btn-auditoria:hover,
+.btn-incidencia:hover{
+transform:translateY(-3px);
+box-shadow:0 18px 35px rgba(0,0,0,.15);
+}
+.btn-dashboard::after,
+.btn-alerta::after,
+.btn-auditoria::after,
+.btn-incidencia::after{
+content:"›";
+position:absolute;
+right:22px;
+top:50%;
+transform:translateY(-50%);
+font-size:30px;
+color:#A10A04;
+}
+.btn-alerta{border-left-color:#f4b400;}
+.btn-auditoria{border-left-color:#1976d2;}
+.btn-incidencia{border-left-color:#e53935;}
+.btn-dashboard{border-left-color:#00a884;}
+.tituloBoton{font-size:18px;font-weight:800;margin-bottom:5px;}
+.subtituloBoton{font-size:13px;color:#6b7280;font-weight:500;}
+.usuario{
+margin-bottom:20px;
+font-weight:bold;
+color:#555;
+}
+
+.card-title{
+font-size:16px;
+font-weight:800;
+letter-spacing:.3px;
+text-align:left;
+color:#1f2937;
+margin-bottom:20px;
+}
+
+.separador{
+border:none;
+border-top:1px solid #ddd;
+margin-bottom:25px;
+}
+
+.fila{
+display:flex;
+gap:10px;
+margin-bottom:12px;
+}
+
+.datoAuto{
+flex:1;
+}
+
+.etiqueta{
+font-size:12px;
+font-weight:700;
+color:#555;
+margin-bottom:5px;
+text-align:left;
+}
+
+#cuadrilla,
+#area,
+#fecha{
+background:#f3f4f6;
+font-weight:600;
+}
+
+@media(max-width:600px){
+
+.card{
+width:95%;
+padding:25px;
+}
+
+h1{
+font-size:24px;
+}
+
+}
+
+
+.mensaje-error{
+display:none;
+background:#FEE2E2;
+color:#B91C1C;
+border:1px solid #FCA5A5;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+font-size:14px;
+font-weight:600;
+text-align:left;
+}
+
+.mensaje-ok{
+display:none;
+background:#DCFCE7;
+color:#166534;
+border:1px solid #86EFAC;
+padding:12px;
+border-radius:10px;
+margin-bottom:15px;
+font-size:14px;
+font-weight:600;
+text-align:left;
+}
+
+.swal2-popup{
+    border-radius:18px !important;
+    padding:28px !important;
+    font-family:'Inter',sans-serif !important;
+}
+
+.swal2-title{
+    font-size:22px !important;
+    font-weight:800 !important;
+    color:#1f2937 !important;
+}
+
+.swal2-html-container{
+    font-size:15px !important;
+    color:#6b7280 !important;
+}
+
+.swal2-confirm{
+    border-radius:10px !important;
+    padding:11px 24px !important;
+    font-weight:700 !important;
+}
+
+.swal2-icon{
+    margin-bottom:10px !important;
+}
+
+.creditos{
+text-align:center;
+font-size:11px;
+color:#6b7280;
+margin:20px 0 30px 0;
+font-weight:500;
+}
+
+.creditos b{
+color:#A10A04;
+}
+
+.card-login{
+
+padding-top:85px !important;
+
+}
+
+.logo-login{
+
+width:120px;
+height:120px;
+
+margin:auto;
+
+margin-top:-90px;
+margin-bottom:20px;
+
+border-radius:50%;
+
+background:#F26306;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:54px;
+font-weight:800;
+
+color:#48090B;
+
+border:8px solid #fff;
+
+box-shadow:
+0 10px 25px rgba(0,0,0,.12);
+
+}
+
+.login-subtitle{
+
+font-size:15px;
+color:#6b7280;
+
+margin-bottom:6px;
+
+}
+
+.login-title{
+
+font-size:20px;
+font-weight:800;
+
+color:#1f2937;
+
+margin-bottom:6px;
+
+}
+
+.login-system{
+
+font-size:16px;
+font-weight:700;
+
+color:#A10A04;
+
+margin-bottom:20px;
+
+}
+
+.encabezado-visitante{
+
+position:relative;
+
+margin-bottom:10px;
+
+}
+
+.encabezado-visitante .logo-login{
+
+margin-top:0;
+
+margin-bottom:18px;
+
+}
+
+.encabezado-visitante .btn-home{
+
+position:absolute;
+
+top:0;
+
+right:0;
+
+}
+
+.card-visitante{
+
+display:flex;
+
+align-items:center;
+
+gap:14px;
+
+background:#ffffff;
+
+padding:20px;
+
+margin-top:16px;
+
+border-radius:22px;
+
+box-shadow:
+0 12px 28px rgba(0,0,0,.08);
+
+border-left:8px solid #F26306;
+
+cursor:pointer;
+
+transition:.25s;
+
+}
+
+.card-visitante:hover{
+
+transform:translateY(-3px);
+
+box-shadow:
+0 18px 35px rgba(0,0,0,.12);
+
+}
+
+.card-visitante:hover{
+
+transform:translateY(-2px);
+
+}
+
+.visitante-icono{
+
+width:55px;
+height:55px;
+
+background:#FFF4CC;
+
+border-radius:50%;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+font-size:24px;
+
+}
+
+.visitante-texto{
+
+flex:1;
+
+text-align:left;
+
+}
+
+.visitante-titulo{
+
+font-size:17px;
+font-weight:800;
+
+color:#1f2937;
+
+}
+
+.visitante-sub{
+
+font-size:13px;
+
+color:#6b7280;
+
+margin-top:3px;
+
+}
+
+.visitante-flecha{
+
+font-size:30px;
+font-weight:700;
+
+color:#A10A04;
+
+}
+
+.btn-login{
+
+width:100%;
+
+height:62px;
+
+background:#A10A04;
+
+border:none;
+
+border-radius:18px;
+
+color:white;
+
+font-size:20px;
+
+font-weight:800;
+
+letter-spacing:.4px;
+
+cursor:pointer;
+
+transition:all .25s ease;
+
+box-shadow:
+0 8px 20px rgba(207,0,46,.18);
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+}
+
+.btn-login:hover{
+
+background:#B00028;
+
+transform:translateY(-2px);
+
+box-shadow:
+0 14px 28px rgba(207,0,46,.25);
+
+}
+
+.btn-login:active{
+
+transform:translateY(0);
+
+box-shadow:
+0 6px 14px rgba(207,0,46,.18);
+
+}
+
+.home-shell{
+  width:calc(100% - 32px);
+  max-width:1180px;
+  margin:26px auto 34px;
+  padding:0;
+  overflow:hidden;
+  border-radius:26px;
+  background:#fff;
+  text-align:left;
+  box-shadow:0 18px 50px rgba(0,0,0,.09);
+}
+
+.home-header{
+  min-height:145px;
+  padding:28px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  color:#fff;
+  background:
+    radial-gradient(circle at 88% 18%,rgba(253,208,0,.18),transparent 28%),
+    linear-gradient(110deg,#48090B 0%,#48090B 48%,#A10A04 100%);
+}
+
+.home-brand{
+  display:flex;
+  align-items:center;
+  gap:17px;
+  min-width:0;
+}
+
+.home-logo{
+  width:62px;
+  height:62px;
+  flex:0 0 62px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:17px;
+  background:#F26306;
+  color:#48090B;
+  font-size:22px;
+  font-weight:900;
+  box-shadow:0 8px 20px rgba(0,0,0,.16);
+}
+
+.home-kicker{
+  margin-bottom:5px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.3px;
+  opacity:.82;
+}
+
+.home-title{
+  margin:0 !important;
+  color:#fff !important;
+  font-size:29px !important;
+  line-height:1.1;
+  font-weight:800;
+}
+
+.home-user-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.home-logout{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:36px;padding:8px 12px;border:1px solid rgba(255,255,255,.35);border-radius:10px;background:rgba(255,255,255,.12);color:#fff;font:700 12px/1 Arial,sans-serif;cursor:pointer;transition:.18s ease;box-shadow:0 4px 12px rgba(0,0,0,.10)}
+.home-logout:hover{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.55);transform:translateY(-1px)}
+.home-logout:active{transform:translateY(0)}
+.home-logout-icon{font-size:17px;line-height:1}
+@media(max-width:600px){.home-user-row{gap:8px}.home-logout{min-height:34px;padding:7px 10px;font-size:11px}}
+.home-user{
+  margin-top:7px;
+  color:rgba(255,255,255,.88);
+  font-size:13px;
+  font-weight:600;
+}
+
+.home-fy{
+  flex:0 0 auto;
+  padding:8px 14px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  font-size:12px;
+  font-weight:800;
+}
+
+.home-body{
+  padding:28px 34px 22px;
+}
+
+.home-section{
+  margin-bottom:28px;
+}
+
+.home-section-head{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  margin-bottom:12px;
+}
+
+.home-section-kicker{
+  margin-bottom:4px;
+  color:#A10A04;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.5px;
+}
+
+.home-section-head h2{
+  margin:0 !important;
+  color:#1f2937;
+  font-size:17px;
+  font-weight:850;
+  text-transform:uppercase;
+}
+
+.home-number{
+  min-width:31px;
+  height:24px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 8px;
+  border-radius:999px;
+  background:#FFF4CC;
+  color:#48090B;
+  font-size:10px;
+  font-weight:900;
+}
+
+.home-grid{
+  display:grid;
+  gap:12px;
+}
+
+.home-grid-templates{grid-template-columns:repeat(3,minmax(0,1fr));}
+.home-grid-dashboards{grid-template-columns:repeat(4,minmax(0,1fr));}
+.home-grid-data{grid-template-columns:repeat(3,minmax(0,1fr));}
+
+.home-card{
+  position:relative;
+  width:100%;
+  min-height:100px;
+  margin:0 !important;
+  padding:15px;
+  display:grid;
+  grid-template-columns:40px minmax(0,1fr) 16px;
+  align-items:center;
+  gap:11px;
+  border:1px solid #e7e9ed;
+  border-left:5px solid #A10A04;
+  border-radius:16px;
+  background:#fff;
+  color:#1f2937;
+  text-align:left;
+  box-shadow:0 5px 16px rgba(15,23,42,.055);
+  cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+
+.home-card:hover{
+  transform:translateY(-3px);
+  border-color:#d7dae0;
+  box-shadow:0 13px 27px rgba(15,23,42,.11);
+}
+
+.home-card-icon{
+  width:40px;
+  height:40px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:12px;
+  background:#FFF4CC;
+  color:#48090B;
+  font-size:15px;
+  font-weight:900;
+}
+
+.home-alerta{border-left-color:#F26306;}
+.home-auditoria{border-left-color:#1976d2;}
+.home-incidencia{border-left-color:#e53935;}
+.home-dashboard{border-left-color:#00a884;}
+.home-data{border-left-color:#A10A04;}
+
+.home-auditoria .home-card-icon{background:#e8f1ff;color:#1976d2;}
+.home-incidencia .home-card-icon{background:#fee8e8;color:#c62828;}
+.home-dashboard .home-card-icon{background:#e3f7f1;color:#08785f;}
+.home-data .home-card-icon{background:#fde9ee;color:#48090B;}
+
+.home-card-text{min-width:0;}
+
+.home-card .tituloBoton{
+  display:block;
+  margin:0 0 5px;
+  color:#1f2937;
+  font-size:13.5px;
+  line-height:1.2;
+  font-weight:850;
+}
+
+.home-card .subtituloBoton{
+  display:block;
+  color:#6b7280;
+  font-size:11px;
+  line-height:1.35;
+  font-weight:500;
+}
+
+.home-arrow{
+  color:#A10A04;
+  font-size:25px;
+  line-height:1;
+  font-weight:500;
+}
+
+.home-footer{
+  padding-top:18px;
+  border-top:1px solid #eef0f3;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.home-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#6b7280;
+  font-size:11px;
+  font-weight:700;
+}
+
+.home-status span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#1B8A3A;
+  box-shadow:0 0 0 4px rgba(27,138,58,.10);
+}
+
+.home-footer .btn-salir{
+  width:auto;
+  min-width:150px;
+  margin:0 !important;
+  padding:10px 16px;
+  border:1px solid #eadde1;
+  border-radius:11px;
+  background:#fff;
+  color:#48090B;
+  font-size:12px;
+  font-weight:800;
+}
+
+.home-footer .btn-salir:hover{
+  background:#fff5f7;
+  border-color:#A10A04;
+}
+
+.home-shell.home-admin{
+  max-width:1280px;
+}
+
+.home-shell.home-admin .home-grid-templates{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+.home-shell.home-admin .home-grid-dashboards{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+}
+
+.home-shell.home-admin .home-grid-data{
+  grid-template-columns:repeat(3,minmax(0,1fr));
+}
+
+@media(max-width:900px){
+  .home-shell,
+  .home-shell.home-admin{
+    width:calc(100% - 24px);
+    max-width:720px;
+  }
+
+  .home-grid-templates,
+  .home-grid-dashboards,
+  .home-grid-data,
+  .home-shell.home-admin .home-grid-templates,
+  .home-shell.home-admin .home-grid-dashboards,
+  .home-shell.home-admin .home-grid-data{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px){
+  .home-shell,
+  .home-shell.home-admin{
+    width:95%;
+    margin:15px auto 24px;
+    border-radius:21px;
+  }
+
+  .home-header{
+    min-height:0;
+    padding:20px 16px;
+  }
+
+  .home-logo{
+    width:47px;
+    height:47px;
+    flex-basis:47px;
+    border-radius:13px;
+    font-size:17px;
+  }
+
+  .home-brand{gap:11px;}
+
+  .home-kicker{
+    font-size:8px;
+    letter-spacing:1px;
+  }
+
+  .home-title{
+    font-size:21px !important;
+  }
+
+  .home-user{
+    font-size:11px;
+  }
+
+  .home-fy{
+    padding:6px 9px;
+    font-size:9px;
+  }
+
+  .home-body{
+    padding:21px 14px 18px;
+  }
+
+  .home-section{
+    margin-bottom:23px;
+  }
+
+  .home-section-head h2{
+    font-size:14px;
+  }
+
+  .home-grid-templates,
+  .home-grid-dashboards,
+  .home-grid-data,
+  .home-shell.home-admin .home-grid-templates,
+  .home-shell.home-admin .home-grid-dashboards,
+  .home-shell.home-admin .home-grid-data{
+    grid-template-columns:1fr;
+    gap:9px;
+  }
+
+  .home-card{
+    min-height:73px;
+    padding:12px;
+    grid-template-columns:37px minmax(0,1fr) 14px;
+    gap:9px;
+    border-radius:14px;
+  }
+
+  .home-card-icon{
+    width:37px;
+    height:37px;
+    border-radius:10px;
+  }
+
+  .home-card .tituloBoton{font-size:12.5px;}
+  .home-card .subtituloBoton{font-size:10.5px;}
+  .home-arrow{font-size:23px;}
+
+  .home-footer{
+    flex-direction:column;
+    align-items:stretch;
+  }
+
+  .home-footer .btn-salir{
+    width:100%;
+  }
+}
+
+</style>
+<style id="qa-global-aesthetic">
+:root{--qa-red:#A10A04;--qa-red-dark:#8b001f;--qa-yellow:#F26306;--qa-ink:#111827;--qa-muted:#667085}
+body{background:radial-gradient(ellipse at 8% 0%,rgba(253,208,0,.16),transparent 30%),linear-gradient(180deg,#f3f5f9,#e9eef5)!important;color:var(--qa-ink)}
+header,.header,.encabezado,.encabezado-principal{background:linear-gradient(115deg,#0b1220,#17263d 72%,#241526)!important;box-shadow:0 10px 30px rgba(11,18,32,.22)!important;position:relative;overflow:hidden}
+header::after,.header::after,.encabezado::after,.encabezado-principal::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A10A04,#ff4d6d,#F26306,transparent)}
+.card,.login-card,.module-card,.dashboard-card,.menu-card{border:1px solid #e1e7f0!important;border-radius:16px!important;box-shadow:0 12px 34px rgba(16,24,40,.08)!important;transition:transform .18s,box-shadow .18s}
+.module-card:hover,.dashboard-card:hover,.menu-card:hover{transform:translateY(-3px);box-shadow:0 18px 36px rgba(16,24,40,.13)!important}
+button,.btn{transition:filter .15s,box-shadow .15s,transform .15s}input,select,textarea{border-radius:9px!important}button:focus-visible,a:focus-visible{outline:3px solid rgba(253,208,0,.8)!important;outline-offset:2px}
+</style>
+
+<style id="qa-redesign-v3-index">
+:root{--qa-red:#A10A04;--qa-yellow:#F26306;--qa-ink:#172235}
+body{
+ background:radial-gradient(ellipse at 92% 0%,rgba(207,0,46,.09),transparent 31%),
+ radial-gradient(ellipse at 5% 100%,rgba(253,208,0,.14),transparent 32%),
+ linear-gradient(135deg,#edf1f7 0%,#f8fafc 55%,#f4f0f1 100%)!important;
+ color:var(--qa-ink)!important;font-family:Inter,"Segoe UI",Arial,sans-serif!important;
+}
+.appbar{background:linear-gradient(112deg,#101b2d,#1b2b43 72%,#2b1a2b)!important;box-shadow:0 10px 28px rgba(16,27,45,.2)!important;position:relative}
+.appbar::after{content:"";position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#A10A04,#ff4d6d,#F26306,transparent)}
+.card{border:1px solid #dce4ee!important;border-radius:22px!important;box-shadow:0 20px 48px rgba(24,39,62,.11)!important;background:rgba(255,255,255,.94)!important;backdrop-filter:blur(12px)}
+button,.btn,input[type=submit],input[type=button]{border-radius:11px!important;transition:transform .16s ease,box-shadow .16s ease,filter .16s ease}
+button:hover,.btn:hover,input[type=submit]:hover,input[type=button]:hover{filter:brightness(1.04);box-shadow:0 7px 18px rgba(16,27,45,.14)}
+input,select{border-radius:10px!important;border-color:#d7e0ec!important}
+input:focus,select:focus{outline:3px solid rgba(207,0,46,.12)!important;border-color:#A10A04!important}
+.logoQA{box-shadow:0 6px 16px rgba(253,208,0,.25);border-radius:12px!important}
+</style>
+
+<style id="qa-index-premium-polish">
+:root{--portal-red:#A10A04;--portal-deep:#48090B;--portal-gold:#F26306;--portal-ink:#202938;--portal-muted:#667085;--portal-line:#e5e9f0}
+body{background:#f3f5f8!important;color:var(--portal-ink)!important;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important}
+body:before{content:"";position:fixed;inset:0 0 auto;height:5px;background:linear-gradient(90deg,#A10A04 0 68%,#F26306 68% 100%);z-index:9999;pointer-events:none}
+.appbar{background:#151d2b!important;background-image:none!important;min-height:74px!important;padding:12px clamp(16px,3vw,42px)!important;box-shadow:0 4px 18px #10182814!important;border-bottom:1px solid #293345!important;gap:12px!important}
+.logoQA{background:var(--portal-red)!important;color:#fff!important;border-radius:11px!important;box-shadow:0 5px 14px #A10A0435!important}.titulo1{letter-spacing:.14em!important;font-size:10px!important}.titulo2{font-size:18px!important;letter-spacing:-.02em!important}.fy{background:#273244!important;border:1px solid #3b4658!important;color:#f4f6fa!important}
+.card{background:#fff!important;border:1px solid var(--portal-line)!important;border-radius:18px!important;box-shadow:0 12px 34px #18263b0d!important;padding:clamp(22px,3vw,32px)!important}.logo{background:#151d2b!important;border:4px solid #f1f3f6!important;box-shadow:0 0 0 1px #e3e8ef!important;color:#fff!important}.card h1,h1{color:#1d2736!important;letter-spacing:-.035em!important}
+input,select,textarea{border:1px solid #d6dce5!important;border-radius:9px!important;background:#fff!important;color:#202938!important;min-height:42px!important;box-shadow:none!important}input:focus,select:focus,textarea:focus{border-color:#A10A04!important;box-shadow:0 0 0 3px #A10A0412!important;outline:0!important}
+button,.btn{border-radius:9px!important;font-weight:700!important;letter-spacing:0!important;box-shadow:none!important}button:hover,.btn:hover{filter:brightness(.98)}.btn-login{background:#A10A04!important;color:#fff!important;min-height:44px!important;box-shadow:0 5px 12px #A10A0420!important}.btn-home{background:#263244!important;color:#fff!important}
+.btn-dashboard,.btn-alerta,.btn-auditoria,.btn-incidencia{min-height:88px!important;padding:17px 52px 17px 19px!important;border:1px solid #e3e8ef!important;border-left:4px solid #A10A04!important;border-radius:13px!important;background:#fff!important;box-shadow:0 5px 16px #1018280a!important;color:#202938!important;font-size:15px!important;line-height:1.35!important}.btn-alerta{border-left-color:#e0a800!important}.btn-auditoria{border-left-color:#263d5b!important}.btn-incidencia{border-left-color:#A10A04!important}.btn-dashboard:hover,.btn-alerta:hover,.btn-auditoria:hover,.btn-incidencia:hover{transform:translateY(-2px)!important;box-shadow:0 10px 24px #10182812!important;border-color:#d5dbe5!important}.btn-dashboard:after,.btn-alerta:after,.btn-auditoria:after,.btn-incidencia:after{right:18px!important;font-size:25px!important;color:#A10A04!important}
+.menu{gap:12px!important}.home-grid-templates,.home-grid-dashboards,.home-grid-data{gap:13px!important}.home-shell{max-width:1240px!important}.home-footer{border-top:1px solid #e6eaf0!important;color:#667085!important}
+@media(max-width:760px){.appbar{padding:12px 14px!important}.titulo2{font-size:15px!important}.fy{font-size:11px!important;padding:5px 8px!important}.card{width:calc(100% - 24px)!important;margin:18px auto!important;padding:22px 17px!important}.btn-dashboard,.btn-alerta,.btn-auditoria,.btn-incidencia{min-height:76px!important;font-size:14px!important;padding-left:15px!important}.home-shell.home-admin .home-grid-templates,.home-shell.home-admin .home-grid-dashboards,.home-shell.home-admin .home-grid-data{grid-template-columns:repeat(1,minmax(0,1fr))!important}}
+</style>
+
+<style id="qa-final-brand-uppercase-home">
+.qtn-rail,.qtn-rail *{text-transform:uppercase!important}.qtn-brand{padding:24px 18px 22px!important}.qtn-brand-name{color:#fff!important;font-size:clamp(17px,1.25vw,21px)!important;font-weight:900!important;letter-spacing:.065em!important;line-height:1.25!important;white-space:normal!important;text-wrap:balance;text-shadow:0 2px 16px rgba(0,0,0,.28)}.qtn-brand-meta{display:none!important}.qtn-home-link{color:#fff!important}.qa-creditos-unificados{font-size:12px!important;font-weight:700!important;color:#596579!important;letter-spacing:.15px!important}.qa-creditos-unificados strong{color:#263244!important;font-weight:900!important}
+.qtn-home-float.qa-no-panel-home{position:fixed!important;z-index:100000!important;left:16px!important;bottom:18px!important;top:auto!important;right:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:46px!important;padding:12px 17px!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:14px!important;background:linear-gradient(135deg,#A10A04,#8B001F)!important;color:#fff!important;box-shadow:0 8px 26px rgba(20,28,43,.25)!important;font-size:12px!important;font-weight:900!important;letter-spacing:.04em!important;text-decoration:none!important;text-transform:uppercase!important;line-height:1.1!important}
+@media(max-width:640px){.qtn-home-float.qa-no-panel-home{left:12px!important;bottom:12px!important;min-height:44px!important;padding:11px 14px!important;font-size:12px!important;max-width:calc(100vw - 24px)!important}.qa-creditos-unificados{font-size:11px!important}}
+</style>
+
+
+<style id="UXMAL-ejecutivo-claro-v1">
+/* Rediseño ejecutivo claro UXMAL — capa visual, sin modificar lógica */
+:root{
+  --brand:#A10A04 !important;
+  --brand-dark:#48090B !important;
+  --brand-deep:#87364B !important;
+  --accent:#E9C879 !important;
+  --accent-dark:#D7B45E !important;
+  --ink:#26364A !important;
+  --ink-soft:#526579 !important;
+  --ink-muted:#78899A !important;
+  --line:#DCE5ED !important;
+  --line-soft:#EAF0F5 !important;
+  --bg:#F3F7FB !important;
+  --surface:#FFFFFF !important;
+  --white:#FFFFFF !important;
+  --text:#26364A !important;
+  --muted:#718397 !important;
+  --dark:#87364B !important;
+  --dhl-yellow:#E9C879 !important;
+  --dhl-red:#A10A04 !important;
+  --shadow:0 5px 18px rgba(38,54,74,.065) !important;
+  --shadow-1:0 4px 14px rgba(38,54,74,.055) !important;
+  --shadow-2:0 8px 24px rgba(38,54,74,.085) !important;
+}
+html{background:#F3F7FB!important}
+body{background:#F3F7FB!important;color:#26364A!important;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif!important;-webkit-font-smoothing:antialiased}
+/* Encabezados y navegación */
+.appbar,.header,.qa-unified-header,body>header,header.appbar,header.header{
+  background:linear-gradient(110deg,#FFFFFF 0%,#F7FAFD 72%,#FCEFF1 100%)!important;
+  color:#26364A!important;border-bottom:1px solid #DCE5ED!important;
+  box-shadow:0 4px 18px rgba(38,54,74,.065)!important;
+}
+.qa-unified-header{border-top:3px solid #A10A04!important;flex-wrap:wrap!important}
+.qa-unified-header .titles,.qa-unified-header .titles *,.qa-unified-header .t1,.qa-unified-header .t2,
+.appbar .titles,.appbar .titles *,.header .brand-text,.header .brand-text *{color:#26364A!important}
+.qa-unified-header .t1,.appbar .t1{color:#78899A!important;opacity:1!important}
+.qa-unified-nav a,.qa-unified-header .qa-unified-nav a{
+  background:#EDF3F8!important;color:#3C536B!important;border:1px solid #D8E3ED!important;
+  border-radius:9px!important;box-shadow:none!important;transition:background .16s,border-color .16s,transform .16s!important
+}
+.qa-unified-nav a:hover,.qa-unified-header .qa-unified-nav a:hover{background:#F9E8EB!important;border-color:#E5B7C0!important;color:#87364B!important}
+.logo,.home-logo,.logoQA,.mark{background:#F9E8EB!important;color:#48090B!important;border:1px solid #EBC9D0!important;box-shadow:none!important}
+/* Fondo y estructura */
+main,.page,.container,.wrap,.content,.dashboard,.main-content{color:#26364A}
+.card,.panel,.chart-card,.filters-card,.filter-card,.filters,.upload-card,.kpi,.kpi-card,.home-card,.card-login,.scorecard,.heatmap-card{
+  background:#FFFFFF!important;border-color:#DCE5ED!important;border-radius:15px!important;
+  box-shadow:0 5px 18px rgba(38,54,74,.055)!important
+}
+.card-head,.panel-header,.panel-head,.panel-title,.chart-title,.card-title,.section-row,.section-head{
+  color:#30475F!important;border-color:#E5ECF2!important
+}
+.card-head,.panel-header,.panel-head{background:#F7FAFD!important}
+.card-head h1,.card-head h2,.card-head h3,.panel-title,.chart-title,.section-title{color:#30475F!important}
+/* Botones coherentes y legibles */
+button,.btn,.btn-primary,.btn-red,.btn-danger,.btn-login,.btn-home,.btn-copy-vencimientos{
+  border-radius:9px!important;font-weight:700!important;transition:background .16s,border-color .16s,box-shadow .16s,transform .16s!important
+}
+.btn-primary,.btn-red,.btn-login,.btn-copy-vencimientos{background:#A10A04!important;border-color:#A10A04!important;color:#FFFFFF!important;box-shadow:0 3px 8px rgba(198,83,104,.16)!important}
+.btn-primary:hover,.btn-red:hover,.btn-login:hover,.btn-copy-vencimientos:hover{background:#48090B!important;border-color:#48090B!important}
+.btn-secondary,.btn-light,.btn-outline,.btn-ghost,.btn-home,.btn-small,.btn-mini,.btn-yellow,.btn-accent{
+  background:#EDF3F8!important;color:#3C536B!important;border:1px solid #D7E2EC!important;box-shadow:none!important
+}
+.btn-secondary:hover,.btn-light:hover,.btn-outline:hover,.btn-ghost:hover,.btn-home:hover,.btn-yellow:hover,.btn-accent:hover{background:#F9E8EB!important;color:#87364B!important;border-color:#E5B7C0!important}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid rgba(198,83,104,.25)!important;outline-offset:2px!important}
+/* Formularios y filtros */
+input,select,textarea,.filter-value,.filter-search{
+  color:#26364A!important;background:#FFFFFF!important;border:1px solid #D5E0E9!important;border-radius:9px!important;box-shadow:none!important
+}
+input::placeholder,textarea::placeholder{color:#91A0AF!important}
+input:focus,select:focus,textarea:focus{border-color:#C98291!important;box-shadow:0 0 0 3px rgba(198,83,104,.09)!important;outline:none!important}
+.filters,.filters-card,.filter-card{background:#FFFFFF!important}
+/* Tablas */
+table{border-color:#E1E9F0!important;color:#34495E!important}
+thead th,table thead th,.table-header,.list-head{background:#EAF1F7!important;color:#40566D!important;border-color:#DCE5ED!important}
+tbody tr:nth-child(even),table tbody tr:nth-child(even){background:#F8FAFC!important}
+tbody tr:hover,table tbody tr:hover{background:#FBEFF1!important}
+th,td{border-color:#E4EBF1!important}
+/* Métricas */
+.kpi-value,.kpi-label,.kpi-sub,.kpi-detail,.kpi-note{color:#30475F!important}
+.kpi-label,.kpi-sub,.kpi-detail,.kpi-note{color:#78899A!important}
+/* Alertas suaves, sin alterar estados */
+.badge,.pill,.status,.tag{box-shadow:none}
+.modal-card,.modal-content,.modal{border-color:#DCE5ED!important}
+/* Portada y acceso */
+.home-header{background:linear-gradient(110deg,#FFFFFF 0%,#F6F9FC 72%,#F9E9EC 100%)!important;color:#26364A!important;border-bottom:1px solid #DCE5ED!important;box-shadow:0 4px 18px rgba(38,54,74,.06)!important}
+.home-header *,.home-title,.home-brand,.home-section-kicker{color:#26364A!important}
+.home-section{background:transparent!important}
+.home-section-head{color:#526579!important}
+.home-card{transition:transform .18s,box-shadow .18s!important}
+.home-card:hover{transform:translateY(-2px);box-shadow:0 9px 24px rgba(38,54,74,.10)!important}
+/* Ajustes responsivos conservadores */
+@media(max-width:760px){
+ .qa-unified-header,.appbar,.header{padding:10px 12px!important;gap:9px!important}
+ .qa-unified-nav,.qa-unified-header .qa-unified-nav{gap:5px!important;flex-wrap:wrap!important}
+ .qa-unified-nav a,.qa-unified-header .qa-unified-nav a{min-height:34px!important;padding:0 9px!important;font-size:10px!important}
+ .card,.panel,.chart-card,.filters-card,.filter-card{border-radius:12px!important}
+}
+
+</style>
+
+<style id="UXMAL-login-layout-fix-v2">
+/* Login visible completo, incluso en ventanas de poca altura */
+html,body{min-height:100%;}
+body:has(#loginBox){overflow-x:hidden!important;overflow-y:auto!important;}
+#loginBox.card-login{position:relative!important;margin:clamp(92px,13vh,150px) auto 42px!important;padding-top:58px!important;overflow:visible!important;transform:none!important;max-height:none!important;}
+#loginBox .logo-login{width:104px!important;height:104px!important;margin-top:-78px!important;margin-bottom:16px!important;border-width:6px!important;font-size:46px!important;flex-shrink:0!important;}
+@media(max-height:700px){#loginBox.card-login{margin-top:88px!important;padding-top:52px!important;margin-bottom:28px!important}#loginBox .logo-login{width:88px!important;height:88px!important;margin-top:-68px!important;margin-bottom:12px!important;font-size:39px!important}}
+@media(max-width:600px){#loginBox.card-login{width:calc(100% - 28px)!important;margin:94px auto 28px!important;padding:54px 20px 24px!important}#loginBox .logo-login{width:88px!important;height:88px!important;margin-top:-70px!important;margin-bottom:13px!important;font-size:39px!important}}
+</style>
+
+
+<style id="qa-glassmorphism-login">
+:root{--qa-glass-border:rgba(255,255,255,.28);--qa-glass-text:#f7faff;--qa-glass-muted:#d8e3ef;--qa-blue-glow:rgba(79,166,255,.68);--qa-magenta-a:#ff4fa0;--qa-magenta-b:#d41470}
+body{background:#e9eef5}
+body:has(#loginBox:not(.hidden)){min-height:100svh;display:flex;align-items:center;justify-content:center;padding:34px 18px 24px;position:relative;isolation:isolate;overflow-x:hidden;background:#18283a!important}
+body:has(#loginBox:not(.hidden))::before{content:"";position:fixed;inset:-12px;z-index:-2;background-image:url('assets/almacen-uxmal.jpeg');background-size:cover;background-position:center 52%;filter:blur(3px) saturate(.82);transform:scale(1.035)}
+body:has(#loginBox:not(.hidden))::after{content:"";position:fixed;inset:0;z-index:-1;background:linear-gradient(135deg,rgba(7,17,31,.54),rgba(9,24,43,.46) 55%,rgba(35,12,34,.50))}
+.qa-floating-logo{display:none}
+body:has(#loginBox:not(.hidden)) .qa-floating-logo{display:flex;position:fixed;z-index:5;top:24px;left:26px;width:66px;height:66px;align-items:center;justify-content:center;border-radius:17px;background:linear-gradient(145deg,#ffe66c,#f6c900 68%,#e7b700);color:#48090B;font-size:25px;font-weight:950;letter-spacing:-1px;border:1px solid rgba(255,255,255,.7);box-shadow:0 12px 32px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.65)}
+#loginBox.qa-glass-login{width:min(100%,500px)!important;max-width:500px!important;margin:0 auto!important;padding:34px 34px 28px!important;position:relative!important;overflow:visible!important;border:1px solid var(--qa-glass-border)!important;border-radius:24px!important;background:rgba(255,255,255,.08)!important;backdrop-filter:blur(20px) saturate(135%);-webkit-backdrop-filter:blur(20px) saturate(135%);box-shadow:0 28px 80px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.14)!important;text-align:left!important;color:var(--qa-glass-text)!important}
+.qa-login-heading{text-align:center;margin:0 0 22px}
+#loginBox .login-subtitle{font-size:15px;color:#dce8f4!important;font-weight:600;letter-spacing:.06em;margin-bottom:9px}
+#loginBox .login-title{font-size:clamp(20px,3vw,26px);line-height:1.2;color:#fff!important;font-weight:850;letter-spacing:-.035em;margin-bottom:8px}
+#loginBox .login-system{font-size:12px;color:#dce8f4!important;letter-spacing:.18em;text-transform:uppercase;font-weight:750;margin:0}
+#loginBox .separador{border-top-color:rgba(255,255,255,.18);margin:0 0 18px}
+#loginBox .qa-field{display:flex;align-items:center;gap:11px;width:100%;min-width:0;min-height:51px;padding:0 14px;margin:0 0 14px;border:1px solid rgba(255,255,255,.24);border-radius:13px;background:rgba(255,255,255,.095);box-shadow:inset 0 1px 0 rgba(255,255,255,.045);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .2s,box-shadow .2s,background .2s}
+#loginBox .qa-field:focus-within{border-color:rgba(94,177,255,.95);background:rgba(255,255,255,.14);box-shadow:0 0 0 3px rgba(65,155,255,.16),0 0 24px rgba(57,145,255,.18)}
+#loginBox .qa-field-icon{width:18px;flex:0 0 18px;text-align:center;font-size:19px;line-height:1;color:#b8d8fa}
+#loginBox .qa-field input,#loginBox .qa-field select{width:100%;min-width:0;margin:0!important;padding:12px 0!important;border:0!important;outline:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#fff!important;font-size:14px;font-weight:550}
+#loginBox .qa-field input::placeholder{color:rgba(239,246,255,.72)!important}
+#loginBox .qa-field input[readonly]{color:#e0eaf5!important}
+#loginBox .qa-field select{appearance:auto;color:#fff!important}
+#loginBox .qa-field select option{color:#243447;background:#fff}
+#loginBox .fila{display:flex;gap:12px;margin:0 0 2px}
+#loginBox .datoAuto{min-width:0;flex:1}
+#loginBox .etiqueta{margin:0 0 6px 2px;color:#d7e4f2!important;font-size:10px;letter-spacing:.1em;font-weight:800}
+#loginBox .qa-login-row .qa-field{margin-bottom:12px}
+#loginBox .btn-login.qa-login-submit{display:flex;align-items:center;justify-content:center;gap:12px;width:100%;min-height:60px;margin:10px 0 0!important;padding:14px 22px!important;border:1px solid rgba(255,255,255,.28)!important;border-radius:15px!important;background:linear-gradient(115deg,#ff5ca8 0%,#f12d91 48%,#c90f70 100%)!important;color:#fff!important;font-size:15px!important;font-weight:900!important;letter-spacing:.13em;box-shadow:0 10px 28px rgba(226,20,123,.36),inset 0 1px 0 rgba(255,255,255,.28)!important;transition:transform .2s,filter .2s,box-shadow .2s!important}
+#loginBox .btn-login.qa-login-submit span{font-size:23px;line-height:1;transition:transform .2s}
+#loginBox .btn-login.qa-login-submit:hover{filter:brightness(1.12);transform:translateY(-2px);box-shadow:0 15px 36px rgba(226,20,123,.48),0 0 25px rgba(255,79,160,.22)!important}
+#loginBox .btn-login.qa-login-submit:hover span{transform:translateX(4px)}
+#loginBox .btn-login.qa-login-submit:active{transform:translateY(0)}
+#loginBox .card-visitante.qa-glass-visitor{display:flex;align-items:center;gap:13px;margin:15px 0 0!important;padding:14px 15px!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:15px!important;background:rgba(255,255,255,.075)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.06)!important;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
+#loginBox .card-visitante.qa-glass-visitor:hover,#loginBox .card-visitante.qa-glass-visitor:focus-visible{transform:translateY(-2px);border-color:rgba(116,190,255,.65)!important;background:rgba(255,255,255,.12)!important;outline:none}
+#loginBox .visitante-icono{width:43px;height:43px;flex:0 0 43px;border:1px solid rgba(255,255,255,.16);border-radius:12px;background:rgba(255,255,255,.12)!important;color:#fff;font-size:22px}
+#loginBox .visitante-titulo{color:#fff!important;font-size:14px;font-weight:800}
+#loginBox .visitante-sub{color:#d1dfed!important;font-size:12px}
+#loginBox .visitante-flecha{margin-left:auto;color:#ff78b7!important}
+#loginBox .mensaje-error{color:#fff1f2;background:rgba(190,25,55,.25);border-color:rgba(255,135,154,.55)}
+#loginBox .mensaje-ok{color:#e8fff2;background:rgba(20,145,88,.2);border-color:rgba(116,238,177,.45)}
+#clienteBox:not(.hidden){align-self:center;background:rgba(255,255,255,.10)!important;color:#fff!important;border:1px solid rgba(255,255,255,.25)!important;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+@media(max-width:600px){body:has(#loginBox:not(.hidden)){padding:102px 14px 22px;align-items:flex-start}body:has(#loginBox:not(.hidden)) .qa-floating-logo{top:17px;left:18px;width:54px;height:54px;border-radius:14px;font-size:21px}#loginBox.qa-glass-login{width:100%!important;padding:26px 20px 21px!important;border-radius:21px!important}#loginBox .login-title{font-size:21px}#loginBox .fila{gap:9px}#loginBox .qa-field{padding:0 10px;min-height:48px}#loginBox .qa-field-icon{font-size:16px;width:15px;flex-basis:15px}#loginBox .qa-field input,#loginBox .qa-field select{font-size:13px}}
+@media(max-height:720px) and (min-width:601px){body:has(#loginBox:not(.hidden)){align-items:flex-start;padding-top:24px;padding-bottom:24px}#loginBox.qa-glass-login{padding-top:23px!important;padding-bottom:20px!important}#loginBox .qa-login-heading{margin-bottom:14px}#loginBox .qa-field{min-height:44px;margin-bottom:10px}#loginBox .qa-login-row .qa-field{margin-bottom:8px}#loginBox .btn-login.qa-login-submit{min-height:53px}}
+@media(prefers-reduced-motion:reduce){#loginBox *{transition:none!important}}
+</style>
+
+
+<style id="qa-login-photo-layout-final">
+/* Login QA: foto real del Site UXMAL, cristal visible y composición adaptable */
+:root{--qa-glass-border:rgba(255,255,255,.48);--qa-glass-text:#fff;--qa-glass-muted:#e9f1fa}
+html:has(#loginBox:not(.hidden)){min-height:100%;background:#142333!important}
+body:has(#loginBox:not(.hidden)){
+  position:relative!important;isolation:isolate!important;display:flex!important;flex-direction:column!important;
+  align-items:center!important;justify-content:center!important;min-height:100vh!important;min-height:100svh!important;
+  width:100%!important;margin:0!important;padding:34px 18px 28px!important;overflow-x:hidden!important;overflow-y:auto!important;
+  background:#142333!important
+}
+body:has(#loginBox:not(.hidden))::before{
+  content:""!important;position:fixed!important;inset:-7px!important;z-index:-2!important;
+  background-image:url('assets/almacen-uxmal.jpeg')!important;background-size:cover!important;background-position:center 52%!important;
+  background-repeat:no-repeat!important;filter:blur(1.5px) saturate(.88)!important;transform:scale(1.018)!important
+}
+body:has(#loginBox:not(.hidden))::after{
+  content:""!important;position:fixed!important;inset:0!important;z-index:-1!important;
+  background:linear-gradient(135deg,rgba(5,14,25,.43) 0%,rgba(8,22,38,.30) 48%,rgba(11,20,35,.42) 100%)!important
+}
+body:has(#loginBox:not(.hidden)) .qa-floating-logo{
+  display:flex!important;position:fixed!important;z-index:20!important;top:clamp(14px,2.5vh,26px)!important;left:clamp(14px,2.5vw,28px)!important;
+  width:clamp(52px,5.2vw,66px)!important;height:clamp(52px,5.2vw,66px)!important;align-items:center!important;justify-content:center!important;
+  border-radius:16px!important;background:linear-gradient(145deg,#ffe879 0%,#ffd000 65%,#e8b900 100%)!important;color:#48090B!important;
+  font-size:clamp(21px,2vw,26px)!important;font-weight:950!important;letter-spacing:-1px!important;border:1px solid rgba(255,255,255,.82)!important;
+  box-shadow:0 12px 32px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.78)!important
+}
+#loginBox.qa-glass-login{
+  flex:0 0 auto!important;width:min(100%,470px)!important;max-width:470px!important;margin:18px auto 12px!important;padding:29px 30px 25px!important;
+  position:relative!important;overflow:visible!important;border:1px solid rgba(255,255,255,.48)!important;border-radius:24px!important;
+  background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.045))!important;
+  -webkit-backdrop-filter:blur(24px) saturate(145%)!important;backdrop-filter:blur(24px) saturate(145%)!important;
+  box-shadow:0 26px 72px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.10)!important;
+  text-align:left!important;color:#fff!important
+}
+#loginBox .qa-login-heading{text-align:center!important;margin:0 0 20px!important;padding:0 2px!important}
+#loginBox .login-subtitle{font-size:14px!important;color:#f0f5fb!important;font-weight:650!important;letter-spacing:.08em!important;margin-bottom:8px!important}
+#loginBox .login-title{font-size:clamp(21px,2.5vw,27px)!important;line-height:1.2!important;color:#fff!important;font-weight:850!important;letter-spacing:-.035em!important;margin-bottom:7px!important;text-shadow:0 2px 12px rgba(0,0,0,.18)!important}
+#loginBox .login-system{font-size:11px!important;color:#e5edf7!important;letter-spacing:.2em!important;text-transform:uppercase!important;font-weight:800!important;margin:0!important}
+#loginBox .separador{border-top-color:rgba(255,255,255,.25)!important;margin:0 0 16px!important}
+#loginBox .qa-field{display:flex!important;align-items:center!important;gap:11px!important;width:100%!important;min-width:0!important;min-height:49px!important;padding:0 13px!important;margin:0 0 12px!important;border:1px solid rgba(255,255,255,.36)!important;border-radius:12px!important;
+  background:rgba(10,24,39,.14)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.09)!important;-webkit-backdrop-filter:blur(12px)!important;backdrop-filter:blur(12px)!important;transition:border-color .18s,box-shadow .18s,background .18s!important}
+#loginBox .qa-field:focus-within{border-color:#83c7ff!important;background:rgba(18,48,76,.30)!important;box-shadow:0 0 0 3px rgba(77,169,255,.2),0 0 22px rgba(77,169,255,.22)!important}
+#loginBox .qa-field-icon{width:18px!important;flex:0 0 18px!important;text-align:center!important;font-size:18px!important;line-height:1!important;color:#d1e8ff!important}
+#loginBox .qa-field input,#loginBox .qa-field select{width:100%!important;min-width:0!important;margin:0!important;padding:11px 0!important;border:0!important;outline:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#fff!important;font-size:14px!important;font-weight:550!important}
+#loginBox .qa-field input::placeholder{color:rgba(245,249,255,.82)!important;opacity:1!important}
+#loginBox .qa-field input[readonly]{color:#f0f5fa!important}
+#loginBox .qa-field select{color:#fff!important}
+#loginBox .qa-field select option{color:#203247!important;background:#fff!important}
+#loginBox .fila{display:flex!important;gap:12px!important;margin:0 0 3px!important}
+#loginBox .datoAuto{min-width:0!important;flex:1 1 0!important}
+#loginBox .etiqueta{margin:0 0 6px 2px!important;color:#f0f5fb!important;font-size:10px!important;letter-spacing:.09em!important;font-weight:850!important}
+#loginBox .qa-login-row .qa-field{margin-bottom:10px!important}
+#loginBox .btn-login.qa-login-submit{display:flex!important;align-items:center!important;justify-content:center!important;gap:12px!important;width:100%!important;min-height:58px!important;margin:9px 0 0!important;padding:14px 20px!important;
+  border:1px solid rgba(255,255,255,.42)!important;border-radius:14px!important;background:linear-gradient(110deg,#ff62ad 0%,#f32b91 48%,#c90d70 100%)!important;color:#fff!important;
+  font-size:15px!important;font-weight:900!important;letter-spacing:.15em!important;box-shadow:0 10px 28px rgba(226,20,123,.4),inset 0 1px 0 rgba(255,255,255,.38)!important;transition:transform .18s,filter .18s,box-shadow .18s!important}
+#loginBox .btn-login.qa-login-submit:hover{filter:brightness(1.12)!important;transform:translateY(-2px)!important;box-shadow:0 15px 36px rgba(226,20,123,.52),0 0 25px rgba(255,79,160,.24)!important}
+#loginBox .btn-login.qa-login-submit:active{transform:translateY(0)!important}
+#loginBox .btn-login.qa-login-submit span{font-size:22px!important;line-height:1!important}
+#loginBox .card-visitante.qa-glass-visitor{display:flex!important;align-items:center!important;gap:12px!important;margin:14px 0 0!important;padding:13px 14px!important;border:1px solid rgba(255,255,255,.34)!important;border-radius:14px!important;
+  background:rgba(255,255,255,.075)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.12)!important;-webkit-backdrop-filter:blur(16px)!important;backdrop-filter:blur(16px)!important;cursor:pointer!important;transition:transform .18s,border-color .18s,background .18s!important}
+#loginBox .card-visitante.qa-glass-visitor:hover,#loginBox .card-visitante.qa-glass-visitor:focus-visible{transform:translateY(-2px)!important;border-color:rgba(157,210,255,.78)!important;background:rgba(255,255,255,.13)!important;outline:none!important}
+#loginBox .visitante-icono{width:42px!important;height:42px!important;flex:0 0 42px!important;border:1px solid rgba(255,255,255,.25)!important;border-radius:12px!important;background:rgba(255,255,255,.16)!important;color:#fff!important;font-size:21px!important}
+#loginBox .visitante-titulo{color:#fff!important;font-size:14px!important;font-weight:850!important}
+#loginBox .visitante-sub{color:#edf4fb!important;font-size:12px!important}
+#loginBox .visitante-flecha{margin-left:auto!important;color:#ff8bc4!important}
+#loginBox .mensaje-error{color:#fff1f2!important;background:rgba(190,25,55,.4)!important;border-color:rgba(255,160,175,.7)!important}
+#loginBox .mensaje-ok{color:#e8fff2!important;background:rgba(20,145,88,.35)!important;border-color:rgba(145,255,197,.6)!important}
+body:has(#loginBox:not(.hidden)) .qa-creditos-unificados{position:relative!important;z-index:1!important;flex:0 0 auto!important;margin:4px auto 0!important;padding:8px 10px!important;color:rgba(255,255,255,.86)!important;border-top:1px solid rgba(255,255,255,.2)!important;background:transparent!important}
+body:has(#loginBox:not(.hidden)) .qa-creditos-unificados strong{color:#fff!important}
+#clienteBox:not(.hidden){align-self:center!important;max-width:470px!important;background:rgba(255,255,255,.17)!important;color:#fff!important;border:1px solid rgba(255,255,255,.4)!important;-webkit-backdrop-filter:blur(24px)!important;backdrop-filter:blur(24px)!important}
+@media(max-width:600px){
+ body:has(#loginBox:not(.hidden)){justify-content:flex-start!important;padding:88px 13px 18px!important}
+ body:has(#loginBox:not(.hidden)) .qa-floating-logo{top:14px!important;left:14px!important;width:52px!important;height:52px!important;border-radius:13px!important;font-size:21px!important}
+ #loginBox.qa-glass-login{width:100%!important;max-width:430px!important;margin:8px auto 10px!important;padding:23px 18px 19px!important;border-radius:20px!important}
+ #loginBox .qa-login-heading{margin-bottom:16px!important}
+ #loginBox .login-title{font-size:21px!important}
+ #loginBox .fila{gap:8px!important}
+ #loginBox .qa-field{gap:8px!important;padding:0 9px!important;min-height:46px!important}
+ #loginBox .qa-field-icon{font-size:16px!important;width:15px!important;flex-basis:15px!important}
+ #loginBox .qa-field input,#loginBox .qa-field select{font-size:13px!important}
+ #loginBox .etiqueta{font-size:9px!important}
+ #loginBox .btn-login.qa-login-submit{min-height:54px!important}
+}
+@media(max-width:360px){#loginBox.qa-glass-login{padding:20px 13px 16px!important}#loginBox .fila{flex-direction:column!important;gap:0!important}#loginBox .qa-login-row .qa-field{margin-bottom:9px!important}}
+@media(max-height:760px) and (min-width:601px){body:has(#loginBox:not(.hidden)){justify-content:flex-start!important;padding-top:22px!important;padding-bottom:16px!important}#loginBox.qa-glass-login{padding-top:22px!important;padding-bottom:19px!important;margin-top:8px!important;margin-bottom:7px!important}#loginBox .qa-login-heading{margin-bottom:13px!important}#loginBox .qa-field{min-height:43px!important;margin-bottom:9px!important}#loginBox .qa-login-row .qa-field{margin-bottom:7px!important}#loginBox .btn-login.qa-login-submit{min-height:51px!important}body:has(#loginBox:not(.hidden)) .qa-floating-logo{top:14px!important;left:16px!important}}
+@media(prefers-reduced-motion:reduce){#loginBox *{transition:none!important}}
+</style>
+
+<style id="qa-login-referencia-final">
+/* Login basado en la referencia visual proporcionada: cristal visible y distribución adaptable */
+body:has(#loginBox:not(.hidden)){
+  box-sizing:border-box!important;min-height:100vh!important;min-height:100svh!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;
+  padding:clamp(28px,5vh,58px) 18px 24px!important;gap:0!important;overflow-x:hidden!important;overflow-y:auto!important;
+}
+body:has(#loginBox:not(.hidden))::before{
+  background-image:url('assets/almacen-uxmal.jpeg')!important;background-size:cover!important;
+  background-position:center center!important;filter:blur(1.1px) saturate(.92)!important;transform:scale(1.025)!important;
+}
+body:has(#loginBox:not(.hidden))::after{
+  background:linear-gradient(135deg,rgba(10,13,19,.48),rgba(10,15,23,.39) 48%,rgba(10,13,19,.49))!important;
+}
+body:has(#loginBox:not(.hidden)) .qa-floating-logo{
+  top:24px!important;left:24px!important;width:82px!important;height:82px!important;border-radius:10px!important;
+  background:linear-gradient(145deg,#ffe94f 0%,#ffdc00 72%,#f2c900 100%)!important;color:#48090B!important;
+  font-size:35px!important;letter-spacing:-2px!important;border:1px solid rgba(255,255,255,.65)!important;
+  box-shadow:0 10px 30px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.6)!important;
+}
+#loginBox.qa-glass-login{
+  box-sizing:border-box!important;flex:0 0 auto!important;width:min(720px,calc(100vw - 36px))!important;max-width:720px!important;
+  margin:64px auto 12px!important;padding:42px 42px 34px!important;border-radius:25px!important;
+  border:1px solid rgba(255,255,255,.52)!important;
+  background:linear-gradient(135deg,rgba(236,241,248,.27),rgba(220,228,239,.19) 52%,rgba(240,244,249,.24))!important;
+  -webkit-backdrop-filter:blur(25px) saturate(125%)!important;backdrop-filter:blur(25px) saturate(125%)!important;
+  box-shadow:0 26px 72px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.48),inset 0 -1px 0 rgba(255,255,255,.15)!important;
+}
+#loginBox .qa-login-heading{margin:0 0 25px!important;padding:0 0 23px!important;border-bottom:1px solid rgba(255,255,255,.42)!important;text-align:center!important}
+#loginBox .login-subtitle{font-size:clamp(20px,2.3vw,28px)!important;letter-spacing:0!important;font-weight:450!important;margin-bottom:9px!important;color:#f5f7fb!important}
+#loginBox .login-title{font-size:clamp(23px,3vw,35px)!important;line-height:1.18!important;letter-spacing:-.025em!important;font-weight:850!important;margin-bottom:8px!important;text-shadow:0 2px 10px rgba(0,0,0,.2)!important}
+#loginBox .login-system{font-size:clamp(17px,2.2vw,25px)!important;letter-spacing:0!important;text-transform:none!important;font-weight:750!important;color:#ff6b91!important}
+#loginBox .qa-field{min-height:66px!important;gap:14px!important;padding:0 20px!important;margin-bottom:17px!important;border-radius:16px!important;
+  border:1px solid rgba(255,255,255,.58)!important;background:rgba(235,240,247,.19)!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 3px 12px rgba(0,0,0,.06)!important;
+  -webkit-backdrop-filter:blur(14px)!important;backdrop-filter:blur(14px)!important;
+}
+#loginBox .qa-field:focus-within{border-color:rgba(126,197,255,.98)!important;background:rgba(224,239,255,.25)!important;box-shadow:0 0 0 3px rgba(91,177,255,.22),0 0 22px rgba(91,177,255,.22)!important}
+#loginBox .qa-field-icon{width:24px!important;flex-basis:24px!important;font-size:24px!important;color:#edf5ff!important}
+#loginBox .qa-field input,#loginBox .qa-field select{font-size:clamp(15px,1.7vw,20px)!important;font-weight:500!important;padding:15px 0!important;color:#fff!important}
+#loginBox .qa-field input::placeholder{color:rgba(250,252,255,.88)!important}
+#loginBox .fila{gap:24px!important;margin-bottom:1px!important}
+#loginBox .etiqueta{font-size:13px!important;letter-spacing:.035em!important;margin:0 0 8px 1px!important;color:#fff!important}
+#loginBox .qa-login-row .qa-field{min-height:65px!important;margin-bottom:18px!important}
+#loginBox .btn-login.qa-login-submit{min-height:78px!important;margin:12px 0 0!important;border-radius:19px!important;font-size:clamp(19px,2.2vw,27px)!important;letter-spacing:.055em!important;
+  background:linear-gradient(105deg,#ff287f 0%,#f30e67 48%,#df0755 100%)!important;
+  box-shadow:0 12px 30px rgba(235,16,100,.42),0 0 18px rgba(255,35,123,.22),inset 0 1px 0 rgba(255,255,255,.42)!important;
+}
+#loginBox .btn-login.qa-login-submit:hover{filter:brightness(1.1)!important;transform:translateY(-2px)!important;box-shadow:0 17px 38px rgba(235,16,100,.52),0 0 27px rgba(255,35,123,.32)!important}
+#loginBox .btn-login.qa-login-submit span{font-size:clamp(24px,2.8vw,34px)!important}
+#loginBox .card-visitante.qa-glass-visitor{min-height:84px!important;gap:16px!important;margin:19px 0 0!important;padding:15px 20px!important;border-radius:16px!important;
+  border-left:8px solid #ffdf00!important;background:rgba(233,239,247,.18)!important;border-color:rgba(255,255,255,.44)!important;border-left-color:#ffdf00!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25)!important;
+}
+#loginBox .visitante-icono{width:56px!important;height:56px!important;flex-basis:56px!important;border-radius:50%!important;background:#ffe98a!important;color:#15263b!important;font-size:28px!important;border:0!important}
+#loginBox .visitante-titulo{font-size:clamp(16px,1.8vw,22px)!important}
+#loginBox .visitante-sub{font-size:clamp(13px,1.5vw,18px)!important;color:#e8edf5!important;margin-top:4px!important}
+#loginBox .visitante-flecha{font-size:34px!important;color:#fff!important}
+body:has(#loginBox:not(.hidden)) .qa-creditos-unificados{margin-top:5px!important;padding:7px 10px!important;font-size:11px!important}
+@media(max-width:700px){
+ body:has(#loginBox:not(.hidden)){justify-content:flex-start!important;padding:92px 14px 20px!important}
+ body:has(#loginBox:not(.hidden)) .qa-floating-logo{top:17px!important;left:16px!important;width:60px!important;height:60px!important;border-radius:9px!important;font-size:27px!important}
+ #loginBox.qa-glass-login{width:100%!important;max-width:520px!important;margin:4px auto 10px!important;padding:27px 22px 23px!important;border-radius:22px!important}
+ #loginBox .qa-login-heading{margin-bottom:19px!important;padding-bottom:18px!important}
+ #loginBox .login-title{font-size:clamp(21px,5vw,29px)!important}
+ #loginBox .login-subtitle{font-size:21px!important}
+ #loginBox .login-system{font-size:18px!important}
+ #loginBox .qa-field{min-height:56px!important;padding:0 13px!important;gap:10px!important;border-radius:13px!important;margin-bottom:12px!important}
+ #loginBox .qa-field-icon{width:20px!important;flex-basis:20px!important;font-size:20px!important}
+ #loginBox .qa-field input,#loginBox .qa-field select{font-size:15px!important}
+ #loginBox .fila{gap:10px!important}
+ #loginBox .etiqueta{font-size:11px!important;margin-bottom:6px!important}
+ #loginBox .qa-login-row .qa-field{min-height:55px!important;margin-bottom:12px!important}
+ #loginBox .btn-login.qa-login-submit{min-height:63px!important;border-radius:15px!important;font-size:20px!important;margin-top:8px!important}
+ #loginBox .card-visitante.qa-glass-visitor{min-height:70px!important;padding:11px 12px!important;gap:11px!important;margin-top:14px!important;border-left-width:6px!important}
+ #loginBox .visitante-icono{width:44px!important;height:44px!important;flex-basis:44px!important;font-size:23px!important}
+ #loginBox .visitante-titulo{font-size:15px!important}
+ #loginBox .visitante-sub{font-size:12px!important}
+}
+@media(max-width:390px){
+ #loginBox.qa-glass-login{padding:23px 15px 19px!important}
+ #loginBox .fila{flex-direction:column!important;gap:0!important}
+ #loginBox .qa-login-row .qa-field{margin-bottom:10px!important}
+ #loginBox .login-title{font-size:21px!important}
+}
+@media(max-height:760px) and (min-width:701px){
+ body:has(#loginBox:not(.hidden)){justify-content:flex-start!important;padding-top:18px!important;padding-bottom:14px!important}
+ body:has(#loginBox:not(.hidden)) .qa-floating-logo{top:16px!important;left:18px!important;width:62px!important;height:62px!important;font-size:27px!important}
+ #loginBox.qa-glass-login{margin-top:58px!important;padding-top:25px!important;padding-bottom:23px!important}
+ #loginBox .qa-login-heading{margin-bottom:16px!important;padding-bottom:14px!important}
+ #loginBox .qa-field{min-height:53px!important;margin-bottom:11px!important}
+ #loginBox .qa-login-row .qa-field{min-height:51px!important;margin-bottom:10px!important}
+ #loginBox .btn-login.qa-login-submit{min-height:62px!important}
+ #loginBox .card-visitante.qa-glass-visitor{min-height:67px!important;margin-top:12px!important}
+}
+</style>
+
+
+<style id="UXMAL-requested-visual-corrections">
+:root{--UXMAL-burgundy:#48090B;--UXMAL-red:#A10A04;--UXMAL-orange:#F26306;--UXMAL-sky:#51B4F5;--UXMAL-blue:#2276C0;--UXMAL-navy:#17365E;--UXMAL-deep:#041734}
+/* Home header: no logo tile, just the QA | UXMAL wordmark and a soft, diffused background. */
+#homeBox .home-header{
+ position:relative!important;isolation:isolate!important;overflow:hidden!important;
+ background:radial-gradient(ellipse at 82% 22%,rgba(34,118,192,.45) 0%,rgba(34,118,192,.16) 24%,transparent 49%),radial-gradient(ellipse at 95% 5%,rgba(242,99,6,.24) 0%,transparent 34%),radial-gradient(ellipse at 8% 92%,rgba(161,10,4,.24) 0%,transparent 38%),linear-gradient(120deg,#041734 0%,#0a2448 50%,#17365E 100%)!important;
+ border-radius:0!important;box-shadow:none!important
+}
+#homeBox .home-header:before{content:"";position:absolute;z-index:-1;inset:-25%;background:radial-gradient(ellipse at 55% 55%,rgba(81,180,245,.12),transparent 56%);filter:blur(28px);pointer-events:none}
+#homeBox .home-logo{display:flex!important;align-items:baseline!important;justify-content:flex-start!important;gap:7px!important;width:auto!important;height:auto!important;flex:0 0 auto!important;min-width:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#fff!important;white-space:nowrap!important}
+#homeBox .home-logo-qa{font-size:clamp(38px,4vw,54px)!important;line-height:.9!important;font-weight:950!important;letter-spacing:-.07em!important;color:#fff!important}
+#homeBox .home-logo-separator{font-size:clamp(23px,2.2vw,31px)!important;font-weight:400!important;color:var(--UXMAL-sky)!important}
+#homeBox .home-logo-UXMAL{font-size:clamp(19px,2vw,27px)!important;font-weight:800!important;letter-spacing:.035em!important;color:#fff!important}
+#homeBox .home-brand{align-items:center!important;gap:22px!important}
+#homeBox .home-kicker{margin:0 0 10px!important;color:#BDE5FF!important}
+#homeBox .home-header-actions{position:absolute!important;top:22px!important;right:clamp(20px,3vw,52px)!important;display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;z-index:3!important}
+#homeBox .home-fy{position:static!important;margin:0!important;background:transparent!important;border:0!important;border-radius:0!important;padding:7px 0!important;color:#fff!important;font-size:13px!important;font-weight:800!important;white-space:nowrap!important}
+#homeBox .home-header-actions .home-logout{min-height:0!important;padding:7px 0 7px 12px!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#fff!important;font:600 13px/1.2 Inter,Arial,sans-serif!important;text-decoration:none!important;white-space:nowrap!important}
+#homeBox .home-header-actions .home-logout:hover{background:transparent!important;color:var(--UXMAL-sky)!important;text-decoration:underline!important;transform:none!important}
+#homeBox .home-user{display:flex!important;align-items:center!important;gap:9px!important;margin-top:14px!important;color:rgba(255,255,255,.92)!important;font-size:13px!important;font-weight:600!important}
+#homeBox .home-user:before{content:attr(data-initials);display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;flex:0 0 30px;border-radius:50%;background:rgba(81,180,245,.18);border:1px solid rgba(189,229,255,.7);color:#fff;font-size:11px;font-weight:900;letter-spacing:.02em}
+/* Templates heading stays white without an opaque blue label tile. */
+#homeBox .home-section-head:has(#tituloTemplates){padding:0!important;background:transparent!important;border-radius:0!important}
+#homeBox #tituloTemplates{color:#fff!important}
+#homeBox .home-section-head:has(#tituloTemplates) .home-section-kicker{color:#BDE5FF!important}
+/* Concentrados: remove any legacy pseudo-element arrows; keep only the download icon. */
+#homeBox .home-grid-data .home-card:before,#homeBox .home-grid-data .home-card:after,
+#homeBox .home-grid-data .home-card .home-arrow{content:none!important;display:none!important}
+/* Restore login photograph and glass transparency. Limit palette changes to text, fields and buttons. */
+body:has(#loginBox:not(.hidden)){background-color:#172433!important;background-image:linear-gradient(135deg,rgba(8,14,23,.48),rgba(8,15,25,.40) 48%,rgba(8,14,23,.48)),url("assets/almacen-uxmal.jpeg")!important;background-position:center center!important;background-size:cover!important;background-repeat:no-repeat!important;background-attachment:fixed!important}
+#loginBox.qa-glass-login{background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.045))!important;border-color:rgba(255,255,255,.42)!important;backdrop-filter:blur(20px) saturate(135%)!important;-webkit-backdrop-filter:blur(20px) saturate(135%)!important;box-shadow:0 24px 64px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.28)!important;color:#fff!important}
+#loginBox .login-title,#loginBox .login-system{color:#fff!important}
+#loginBox .login-subtitle,#loginBox .visitante-sub{color:#BDE5FF!important}
+#loginBox .qa-field{background:rgba(10,24,39,.14)!important;border-color:rgba(255,255,255,.48)!important;color:#fff!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important}
+#loginBox .qa-field input,#loginBox input{color:#fff!important;background:transparent!important}
+#loginBox .btn-login.qa-login-submit{background:linear-gradient(110deg,var(--UXMAL-orange),var(--UXMAL-red))!important;color:#fff!important}
+@media(max-width:760px){
+ #homeBox .home-header{padding:20px 16px 24px!important;min-height:0!important;align-items:flex-start!important}
+ #homeBox .home-brand{align-items:flex-start!important;gap:12px!important;padding-top:42px!important}
+ #homeBox .home-logo{gap:4px!important}
+ #homeBox .home-logo-qa{font-size:34px!important}
+ #homeBox .home-logo-separator{font-size:20px!important}
+ #homeBox .home-logo-UXMAL{font-size:17px!important}
+ #homeBox .home-header-actions{top:12px!important;right:14px!important;gap:9px!important}
+ #homeBox .home-fy{font-size:11px!important}
+ #homeBox .home-header-actions .home-logout{font-size:11px!important;padding-left:8px!important}
+ #homeBox .home-kicker{font-size:8px!important;line-height:1.4!important}
+ #homeBox .home-title:before,#homeBox .home-title:after{font-size:clamp(29px,8vw,40px)!important}
+ #homeBox .home-user{margin-top:12px!important;font-size:12px!important}
+ #homeBox .home-user:before{width:27px;height:27px;flex-basis:27px}
+}
+@media(max-width:380px){#homeBox .home-header-actions{gap:6px!important}#homeBox .home-fy{font-size:10px!important}#homeBox .home-header-actions .home-logout{font-size:10px!important;padding-left:6px!important}}
+</style>
+
+
+
+
+
+<style id="UXMAL-session-pending-critical">
+html.UXMAL-session-pending #loginBox{display:none!important;visibility:hidden!important}
+html.UXMAL-session-pending body,html.UXMAL-session-pending body:has(#loginBox:not(.hidden)){display:block!important;padding:0!important;background:#f2f5fb!important}
+html.UXMAL-session-pending body:has(#loginBox:not(.hidden))::before,html.UXMAL-session-pending body:has(#loginBox:not(.hidden))::after{display:none!important;content:none!important}
+</style>
+</head>
+<body>
+
+<div id="qaFloatingLogo" class="qa-floating-logo" aria-label="QA">QA</div>
+
+<div id="loginBox" class="card card-login qa-glass-login">
+  <div class="qa-login-heading">
+    <div class="login-subtitle">Bienvenido</div>
+    <div class="login-title">PORTAL DE CALIDAD: Site UXMAL</div>
+    <div class="login-system">Sistema QA</div>
+  </div>
+
+  <div id="mensajeError" class="mensaje-error" role="alert" aria-live="polite"></div>
+
+  <label class="qa-field qa-field-user" for="usuario"><span class="qa-field-icon" aria-hidden="true">👤</span><input type="text" id="usuario" placeholder="Nombre" aria-label="Nombre" list="listaUsuarios" oninput="actualizarDatos()"></label>
+  <datalist id="listaUsuarios"></datalist>
+
+  <label class="qa-field qa-field-password" for="password"><span class="qa-field-icon" aria-hidden="true">🔒</span><input type="password" id="password" placeholder="Contraseña" aria-label="Contraseña"></label>
+
+  <div class="fila qa-login-row">
+    <div class="datoAuto"><div class="etiqueta">CUADRILLA</div><label class="qa-field" for="cuadrilla"><span class="qa-field-icon" aria-hidden="true">👥</span><input type="text" id="cuadrilla" readonly aria-label="Cuadrilla"></label></div>
+    <div class="datoAuto"><div class="etiqueta">ÁREA</div><label class="qa-field" for="area"><span class="qa-field-icon" aria-hidden="true">🏭</span><input type="text" id="area" readonly aria-label="Área"></label></div>
+  </div>
+
+  <div class="fila qa-login-row">
+    <div class="datoAuto"><div class="etiqueta">TURNO</div><label class="qa-field" for="turno"><span class="qa-field-icon" aria-hidden="true">🕒</span><select id="turno"><option value="">Seleccionar</option><option value="1">1RO</option><option value="2">2DO</option><option value="3">3RO</option><option value="MIXTO">MIXTO</option></select></label></div>
+    <div class="datoAuto"><div class="etiqueta">FECHA</div><label class="qa-field" for="fecha"><span class="qa-field-icon" aria-hidden="true">📅</span><input type="text" id="fecha" readonly aria-label="Fecha"></label></div>
+  </div>
+
+  <button class="btn-login qa-login-submit" onclick="login()">INGRESAR <span aria-hidden="true">→</span></button>
+
+  <div class="card-visitante qa-glass-visitor" role="button" tabindex="0" onclick="mostrarCliente()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();mostrarCliente();}">
+    <div class="visitante-icono" aria-hidden="true">👤</div>
+    <div class="visitante-texto"><div class="visitante-titulo">Acceso para visitantes</div><div class="visitante-sub">Registrar alerta sin cuenta</div></div>
+    <div class="visitante-flecha" aria-hidden="true">›</div>
+  </div>
+</div>
+
+<div id="clienteBox" class="card hidden">
+
+<div class="encabezado-visitante">
+
+<div class="btn-home"
+onclick="volverInicio()">
+🏠
+</div>
+
+<div class="logo-login">
+QA
+</div>
+
+<div class="login-subtitle">
+Bienvenido
+</div>
+
+<div class="login-title">
+Acceso para Visitantes
+</div>
+
+<div class="login-system">
+PORTAL DE CALIDAD: Site UXMAL
+</div>
+
+</div>
+
+<hr class="separador">
+
+<input
+type="text"
+id="clienteNombre"
+placeholder="Nombre completo">
+
+<select id="clienteEmpresa" onchange="validarDHL()">
+<option value="">Selecciona compañía</option>
+<option value="DHL">DHL</option>
+<option value="COORSA">COORSA</option>
+<option value="P&G">P&G</option>
+<option value="NIMU">NIMU</option>
+</select>
+
+<div id="bloqueUXMAL" class="hidden">
+
+<select id="esUXMAL">
+<option value="">¿Eres de UXMAL?</option>
+<option value="SI">SI</option>
+<option value="NO">NO</option>
+</select>
+
+<select id="uxmalArea" class="hidden">
+<option value="">Selecciona área</option>
+
+<option value="HS&E">HS&E</option>
+<option value="RH">RH</option>
+<option value="CALIDAD">CALIDAD</option>
+<option value="ENTRENAMIENTOS">ENTRENAMIENTOS</option>
+<option value="OMS">OMS</option>
+<option value="INVENTARIOS">INVENTARIOS</option>
+<option value="CRYD">CRYD</option>
+<option value="PFCT">PFCT</option>
+<option value="CUSTOMIZADO">CUSTOMIZADO</option>
+<option value="CONTROLES INTERNOS">CONTROLES INTERNOS</option>
+<option value="SISTEMAS">SISTEMAS</option>
+<option value="PROYECTOS">PROYECTOS</option>
+<option value="TRANSPORTE">TRANSPORTE</option>
+<option value="OPERACIONES">OPERACIONES</option>
+</select>
+
+<select id="uxmalCuadrilla" class="hidden">
+<option value="">Selecciona cuadrilla</option>
+<option value="A">A</option>
+<option value="B">B</option>
+<option value="C">C</option>
+<option value="D">D</option>
+<option value="STAFF">STAFF</option>
+</select>
+
+</div>
+
+<button
+class="btn-login"
+onclick="ingresarCliente()">
+INGRESAR
+</button>
+
+</div>
+
+<div id="homeBox" class="card hidden home-shell">
+
+  <div class="home-header">
+    <div class="home-topbar">
+      <div class="home-logo" aria-label="QA | UXMAL"><span class="home-logo-qa">QA</span><span class="home-logo-separator">|</span><span class="home-logo-UXMAL">UXMAL</span></div>
+      <nav class="home-nav" aria-label="Navegación de inicio">
+        <a href="#homeTemplatesSection">Templates</a>
+        <a href="#homeDashboardsSection">Dashboards</a>
+        <a href="#homeConcentradosSection">Concentrados</a>
+      </nav>
+      <div class="home-header-actions">
+        <div class="home-user-row"><div id="usuarioActual" class="home-user"></div></div>
+        <button class="btn-salir home-logout" type="button" onclick="logout()" aria-label="Cerrar sesión"><span class="home-logout-icon" aria-hidden="true">↪</span><span class="home-logout-label">Cerrar sesión</span></button>
+      </div>
+    </div>
+    <div class="home-hero-copy">
+      <div class="home-kicker-row"><div class="home-kicker">SISTEMA DE GESTIÓN DE CALIDAD</div><div class="home-fy">FY2627</div></div>
+      <h1 class="home-title"><span class="home-title-main">Portal de Calidad</span><span class="home-title-accent">Site UXMAL</span></h1>
+    </div>
+  </div>
+
+  <div class="home-body">
+
+    <section class="home-section home-section-templates" id="homeTemplatesSection">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">OPERACIÓN</div>
+          <h2 id="tituloTemplates">Templates</h2>
+        </div>
+      </div>
+
+      <div class="home-grid home-grid-templates">
+        <button id="btnAlertas" class="home-card home-alerta" onclick="location.href='Alertas de calidad.html'">
+          <span class="home-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/>
+  <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+</svg></span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Sistema Alertas</span>
+            <span class="subtituloBoton">Registrar hallazgos de calidad</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnAuditoria" class="home-card home-auditoria" onclick="location.href='Auditoría recibo.html'">
+          <span class="home-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M9 11l2 2 4-4"/></svg></span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Sistema Auditorías</span>
+            <span class="subtituloBoton">Captura de auditorías de recibo</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnIncidencia" class="home-card home-incidencia" onclick="location.href='Incidencia en Recibo.html'">
+          <span class="home-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 4.5 2.8 18a1.7 1.7 0 0 0 1.5 2.5h15.4a1.7 1.7 0 0 0 1.5-2.5L13.7 4.5a2 2 0 0 0-3.4 0Z"/><path d="M12 9v5m0 3h.01"/></svg></span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Sistema Incidencias</span>
+            <span class="subtituloBoton">Registro de incidencias operativas</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="home-section home-section-dashboards" id="homeDashboardsSection">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">MONITOREO</div>
+          <h2 id="tituloDashboards">Dashboards</h2>
+        </div>
+      </div>
+
+      <div class="home-grid home-grid-dashboards">
+        <button id="btnDashboardAlertas" class="home-card home-dashboard" onclick="location.href='dashboard.html'">
+          <span class="home-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19V5m0 14h17"/><path d="M8 16v-4m5 4V8m5 8v-6"/></svg></span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Dashboard Alertas</span>
+            <span class="subtituloBoton">Indicadores y tendencias</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnDashboardAuditorias" class="home-card home-dashboard" onclick="location.href='dashboard-auditorias.html'">
+          <span class="home-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M9 11l2 2 4-4"/></svg></span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Dashboard Auditorías</span>
+            <span class="subtituloBoton">Resultados de auditorías</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button id="btnDashboardIncidencias" class="home-card home-dashboard" onclick="location.href='dashboard-incidencias.html'">
+          <span class="home-card-icon" aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 4.5 2.8 18a1.7 1.7 0 0 0 1.5 2.5h15.4a1.7 1.7 0 0 0 1.5-2.5L13.7 4.5a2 2 0 0 0-3.4 0Z"/><path d="M12 9v5m0 3h.01"/></svg></span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Dashboard Incidencias</span>
+            <span class="subtituloBoton">Seguimiento de incidencias</span>
+          </span>
+          <span class="home-arrow">›</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="home-section home-section-data" id="homeConcentradosSection">
+      <div class="home-section-head">
+        <div>
+          <div class="home-section-kicker">DATOS</div>
+          <h2 id="tituloConcentrados">Concentrados</h2>
+        </div>
+      </div>
+
+      <div class="home-grid home-grid-data">
+        <button id="btnExcelAlertas" class="home-card home-data" onclick="descargarExcelAlertas()">
+          <span class="home-card-icon">↓</span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Excel Alertas</span>
+            <span class="subtituloBoton">Descargar base completa</span>
+          </span>
+        </button>
+
+        <button id="btnExcelAuditorias" class="home-card home-data" onclick="descargarExcelAuditorias()">
+          <span class="home-card-icon">↓</span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Excel Auditorías</span>
+            <span class="subtituloBoton">Descargar base completa</span>
+          </span>
+        </button>
+
+        <button id="btnExcelIncidencias" class="home-card home-data" onclick="descargarExcelIncidencias()">
+          <span class="home-card-icon">↓</span>
+          <span class="home-card-text">
+            <span class="tituloBoton">Excel Incidencias</span>
+            <span class="subtituloBoton">Descargar base completa</span>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <div class="home-footer">Portal de Calidad · Site UXMAL</div>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<script>
+
+/*USUARIOS*/
+
+const personal = {
+
+"ANGEL MORENO": {cuadrilla:"CALIDAD", area:"CALIDAD", pass:"AMG765"},
+"ARIADNA ROSAS": {cuadrilla:"CALIDAD", area:"CALIDAD", pass:"AAR239"},
+"EDUARDO NAVA": {cuadrilla:"CALIDAD", area:"CALIDAD", pass:"JNL789"},
+"MANUEL CHAGALA": {cuadrilla:"CALIDAD", area:"CALIDAD", pass:"MCD607"},
+"COORDINADOR A": {cuadrilla:"A", area:"OPERACIONES", pass:"OPS123"},
+"COORDINADOR B": {cuadrilla:"B", area:"OPERACIONES", pass:"OPS123"},
+"COORDINADOR C": {cuadrilla:"C", area:"OPERACIONES", pass:"OPS123"},
+"COORDINADOR D": {cuadrilla:"D", area:"OPERACIONES", pass:"OPS123"},
+"Felix Montoya": {cuadrilla:"ADMIN", area:"CALIDAD", pass:"Itzel1710", admin:true},
+
+"PABLO BECERRA": {
+    cuadrilla:"P&G",
+    area:"CALIDAD",
+    pass:"PB123",
+    rol:"VISUALIZADOR"
+},
+
+"HAZAEL GUZMAN": {
+    cuadrilla:"P&G",
+    area:"CALIDAD",
+    pass:"HG123",
+    rol:"VISUALIZADOR"
+},
+
+"VICTOR ORTIZ": {
+    cuadrilla:"MASTER DATA",
+    area:"CALIDAD",
+    pass:"VHO587",
+    rol:"VISUALIZADOR"
+},
+
+"OMAR MENDOZA": {
+    cuadrilla:"SUPERVISOR",
+    area:"CALIDAD",
+    pass:"IloveDHL2X30",
+    rol:"VISUALIZADOR"
+}
+
+};
+
+function cargarUsuarios(){
+
+const lista =
+document.getElementById("listaUsuarios");
+
+lista.innerHTML = "";
+
+for(const nombre in personal){
+
+const opcion =
+document.createElement("option");
+
+opcion.value = nombre;
+
+lista.appendChild(opcion);
+
+}
+
+}
+
+function actualizarDatos(){
+
+const usuario =
+document.getElementById("usuario").value.trim();
+
+const info = personal[usuario];
+
+if(info){
+
+document.getElementById("cuadrilla").value =
+info.cuadrilla;
+
+document.getElementById("area").value =
+info.area;
+
+}else{
+
+document.getElementById("cuadrilla").value="";
+document.getElementById("area").value="";
+
+}
+
+}
+
+function mostrarCliente(){
+
+document.getElementById("loginBox")
+.classList.add("hidden");
+
+document.getElementById("clienteBox")
+.classList.remove("hidden");
+
+}
+
+function volverInicio(){
+
+document.getElementById("clienteBox")
+.classList.add("hidden");
+
+document.getElementById("loginBox")
+.classList.remove("hidden");
+
+}
+
+function validarDHL(){
+
+const empresa =
+document.getElementById("clienteEmpresa").value;
+
+if(empresa === "DHL"){
+
+document.getElementById("bloqueUXMAL")
+.classList.remove("hidden");
+
+}else{
+
+document.getElementById("bloqueUXMAL")
+.classList.add("hidden");
+
+}
+
+}
+
+document.addEventListener("change",(e)=>{
+
+if(e.target.id==="esUXMAL"){
+
+if(e.target.value==="SI"){
+
+document.getElementById("uxmalArea")
+.classList.remove("hidden");
+
+document.getElementById("uxmalCuadrilla")
+.classList.remove("hidden");
+
+}else{
+
+document.getElementById("uxmalArea")
+.classList.add("hidden");
+
+document.getElementById("uxmalCuadrilla")
+.classList.add("hidden");
+
+}
+
+}
+
+});
+
+function ingresarCliente(){
+
+const nombre =
+document.getElementById("clienteNombre")
+.value.trim();
+
+const empresa =
+document.getElementById("clienteEmpresa")
+.value;
+
+const esUXMAL =
+document.getElementById("esUXMAL").value;
+
+const uxmalArea =
+document.getElementById("uxmalArea").value;
+
+const uxmalCuadrilla =
+document.getElementById("uxmalCuadrilla").value;
+
+if(!nombre || !empresa){
+
+Swal.fire({
+icon:'warning',
+title:'Información requerida',
+text:'Captura nombre y compañía',
+confirmButtonColor:'#A10A04'
+});
+
+return;
+
+}
+
+if(
+empresa === "DHL" &&
+esUXMAL === "SI" &&
+(!uxmalArea || !uxmalCuadrilla)
+){
+
+Swal.fire({
+icon:'warning',
+title:'Información requerida',
+text:'Selecciona área y cuadrilla',
+confirmButtonColor:'#A10A04'
+});
+
+return;
+
+}
+
+const sesionActiva = {
+datos:{
+nombre:nombre,
+
+cuadrilla:
+empresa === "DHL" && esUXMAL === "SI"
+? uxmalCuadrilla
+: "VISITA",
+
+area:
+empresa === "DHL" && esUXMAL === "SI"
+? uxmalArea
+: empresa,
+
+turno:"VISITA",
+
+fecha:document.getElementById("fecha").value,
+
+empresa:empresa,
+
+tipo:"INVITADO"
+},
+inicio:Date.now()
+};
+
+localStorage.setItem(
+"sesionActiva",
+JSON.stringify(sesionActiva)
+);
+
+localStorage.setItem(
+"usuarioPortal",
+nombre
+);
+
+localStorage.setItem(
+"tipoUsuario",
+"INVITADO"
+);
+
+location.href="Alertas de calidad.html";
+
+}
+
+function login(){
+
+const usuario =
+document.getElementById("usuario").value.trim();
+
+const password =
+document.getElementById("password").value.trim();
+
+const turno =
+document.getElementById("turno").value;
+
+const user = personal[usuario];
+
+if(user && user.pass === password){
+
+if(!turno){
+
+Swal.fire({
+  icon: 'warning',
+  title: 'Turno requerido',
+  text: 'Selecciona un turno para continuar',
+  confirmButtonText: 'Aceptar',
+  confirmButtonColor: '#A10A04'
+});
+return;
+
+}
+
+localStorage.setItem(
+"usuarioPortal",
+usuario
+);
+
+localStorage.setItem(
+"adminPortal",
+user.admin ? "true" : "false"
+);
+
+localStorage.setItem(
+"permisoDashboards",
+(user.admin || user.rol === "VISUALIZADOR") ? "true" : "false"
+);
+localStorage.removeItem("tipoUsuario");
+
+const sesionActiva = {
+datos:{
+nombre: usuario,
+cuadrilla: user.cuadrilla,
+area: user.area,
+turno: turno,
+fecha: document.getElementById("fecha").value
+},
+inicio: Date.now()
+};
+
+localStorage.setItem(
+"sesionActiva",
+JSON.stringify(sesionActiva)
+);
+
+mostrarHome(usuario);
+
+}else{
+
+    Swal.fire({
+        icon: 'error',
+        title: 'Acceso denegado',
+        text: 'Usuario o contraseña incorrectos',
+        confirmButtonText: 'Aceptar',
+        confirmButtonColor: '#A10A04',
+        background: '#ffffff',
+        color: '#1f2937'
+    });
+
+}
+
+}
+
+function mostrarHome(usuario){
+
+const info = personal[usuario];
+if(!info){
+  document.getElementById("homeBox").classList.add("hidden");
+  document.getElementById("loginBox").classList.remove("hidden");
+  document.documentElement.classList.remove("UXMAL-session-pending");
+  return;
+}
+
+document.getElementById("homeBox").classList.toggle("home-admin", !!(info && info.admin));
+
+document.getElementById("loginBox").classList.add("hidden");
+document.getElementById("homeBox").classList.remove("hidden");
+document.documentElement.classList.remove("UXMAL-session-pending");
+const usuarioEl = document.getElementById("usuarioActual");
+usuarioEl.textContent = usuario;
+const nombrePartes = String(usuario || "").trim().split(/\s+/).filter(Boolean);
+const iniciales = nombrePartes.length > 1
+  ? (nombrePartes[0][0] + nombrePartes[nombrePartes.length - 1][0])
+  : (nombrePartes[0] || "U").slice(0, 2);
+usuarioEl.setAttribute("data-initials", iniciales.toUpperCase());
+
+const botones = [
+"btnAlertas","btnAuditoria","btnIncidencia",
+"btnDashboardAlertas","btnDashboardAuditorias","btnDashboardIncidencias",
+"btnExcelAlertas","btnExcelAuditorias","btnExcelIncidencias",
+"tituloTemplates","tituloDashboards","tituloConcentrados"
+];
+
+botones.forEach(id=>{
+  const elemento = document.getElementById(id);
+  if(elemento) elemento.style.display="none";
+});
+
+const seccionDashboards = document.getElementById("tituloDashboards").closest(".home-section");
+const seccionConcentrados = document.getElementById("tituloConcentrados").closest(".home-section");
+if(seccionDashboards) seccionDashboards.style.display="none";
+if(seccionConcentrados) seccionConcentrados.style.display="none";
+
+const tituloTemplates = document.getElementById("tituloTemplates");
+if(tituloTemplates) tituloTemplates.style.display="block";
+
+if(info.admin){
+  document.getElementById("tituloDashboards").style.display="block";
+  document.getElementById("tituloConcentrados").style.display="block";
+  if(seccionDashboards) seccionDashboards.style.display="block";
+  if(seccionConcentrados) seccionConcentrados.style.display="block";
+
+  document.getElementById("btnAlertas").style.display="block";
+  document.getElementById("btnAuditoria").style.display="block";
+  document.getElementById("btnIncidencia").style.display="block";
+
+  document.getElementById("btnDashboardAlertas").style.display="block";
+  document.getElementById("btnDashboardAuditorias").style.display="block";
+  document.getElementById("btnDashboardIncidencias").style.display="block";
+  document.getElementById("btnExcelAlertas").style.display="block";
+  document.getElementById("btnExcelAuditorias").style.display="block";
+  document.getElementById("btnExcelIncidencias").style.display="block";
+  return;
+}
+
+if(info.rol === "VISUALIZADOR"){
+  document.getElementById("tituloDashboards").style.display="block";
+  if(seccionDashboards) seccionDashboards.style.display="block";
+
+  document.getElementById("btnAlertas").style.display="block";
+  document.getElementById("btnDashboardAlertas").style.display="block";
+  document.getElementById("btnDashboardAuditorias").style.display="block";
+  document.getElementById("btnDashboardIncidencias").style.display="block";
+  return;
+}
+
+if(usuario.startsWith("COORDINADOR") || usuario.startsWith("HS&E")){
+  document.getElementById("btnAlertas").style.display="block";
+  return;
+}
+
+document.getElementById("btnAlertas").style.display="block";
+document.getElementById("btnAuditoria").style.display="block";
+document.getElementById("btnIncidencia").style.display="block";
+
+}
+function logout(){
+
+localStorage.removeItem("usuarioPortal");
+
+location.reload();
+
+}
+
+function inicializarPortal(){
+  cargarUsuarios();
+  const fecha = new Date();
+  const meses = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
+  const fechaFormateada = fecha.getDate().toString().padStart(2,"0") + " " + meses[fecha.getMonth()] + " " + fecha.getFullYear().toString().slice(-2);
+  const fechaEl = document.getElementById("fecha");
+  if(fechaEl) fechaEl.value = fechaFormateada;
+
+  let usuario = null;
+  try { usuario = localStorage.getItem("usuarioPortal"); } catch (e) { usuario = null; }
+  if(usuario && personal[usuario]){
+    mostrarHome(usuario);
+  }else{
+    document.getElementById("homeBox").classList.add("hidden");
+    document.getElementById("loginBox").classList.remove("hidden");
+    document.documentElement.classList.remove("UXMAL-session-pending");
+  }
+}
+
+inicializarPortal();
+
+const supabaseClient = supabase.createClient(
+"https://gfjvrtimzymsdnrcrlmu.supabase.co",
+"sb_publishable_rm15A8CIEQfkhWeeQlLOBQ_R1YOA9Cm"
+);
+
+async function descargarExcelAlertas(){
+
+ let todos = [];
+ let desde = 0;
+ let hasta = 999;
+
+ while(true){
+
+   const { data, error } =
+   await supabaseClient
+   .from("Reportes")
+   .select("*")
+   .range(desde,hasta);
+
+   if(error){
+      console.error(error);
+      return;
+   }
+
+   todos = todos.concat(data);
+
+   if(data.length < 1000){
+      break;
+   }
+
+   desde += 1000;
+   hasta += 1000;
+ }
+
+ console.log("Total:",todos.length);
+
+if(todos.length === 0){
+   Swal.fire({
+  icon: 'info',
+  title: 'Sin registros',
+  text: 'No se encontraron datos para exportar',
+  confirmButtonText: 'Aceptar',
+  confirmButtonColor: '#A10A04'
+});
+   return;
+}
+
+const columnas = [...new Set(
+   todos.flatMap(r => Object.keys(r))
+)];
+
+let csv = columnas.join(",") + "\n";
+
+todos.forEach(r => {
+
+   csv += columnas
+      .map(col => limpiar(r[col]))
+      .join(",");
+
+   csv += "\n";
+
+});
+
+ descargarCSV(csv,"Alertas_Completo.csv");
+}
+
+async function descargarExcelAuditorias(){
+
+ const { data,error } =
+ await supabaseClient
+ .from("Auditoria_Recibo")
+ .select("*");
+
+ if(error){
+  Swal.fire({
+  icon: 'error',
+  title: 'Error',
+  text: 'No se pudieron cargar las auditorías',
+  confirmButtonColor: '#A10A04'
+});
+   return;
+ }
+
+ let csv =
+ "Folio,Nombre,Area,Turno,Cortina,STO,Origen,Etiqueta,Desviacion\n";
+
+ data.forEach(r=>{
+
+   csv +=
+`${limpiar(r.folio)},${limpiar(r.nombre)},${limpiar(r.area)},${limpiar(r.turno)},${limpiar(r.cortina)},${limpiar(r.sto)},${limpiar(r.origen)},${limpiar(r.etiqueta)},${limpiar(r.desviacion)}\n`;
+ });
+
+ descargarCSV(csv,"Auditorias_Completo.csv");
+
+}
+
+async function descargarExcelIncidencias(){
+
+ const { data,error } =
+ await supabaseClient
+ .from("incidencias_recibo")
+ .select("*");
+
+ if(error){
+   Swal.fire({
+  icon: 'error',
+  title: 'Error',
+  text: 'No se pudieron cargar las incidencias',
+  confirmButtonColor: '#A10A04'
+});
+   return;
+ }
+
+ let csv =
+ "Folio,Nombre,Cortina,STO,Origen,Motivo\n";
+
+ data.forEach(r=>{
+
+   const motivo =
+   r.desviaciones?.[0]?.motivo || "";
+
+   csv +=
+`${limpiar(r.folio)},${limpiar(r.nombre)},${limpiar(r.cortina)},${limpiar(r.sto)},${limpiar(r.origen)},${limpiar(motivo)}\n`;
+
+ });
+
+ descargarCSV(csv,"Incidencias_Completo.csv");
+
+}
+
+function limpiar(valor){
+
+ const texto =
+   valor === null ||
+   valor === undefined ||
+   String(valor).trim() === ""
+     ? "n/a"
+     : String(valor);
+
+ return `"${texto
+   .replace(/"/g,'""')
+   .replace(/\n/g,' ')
+   .replace(/\r/g,' ')}"`;
+
+}
+
+function descargarCSV(csv,nombre){
+
+ const blob = new Blob(
+  ["\uFEFF" + csv],
+  {
+   type:"text/csv;charset=utf-8;"
+  }
+ );
+
+ const url =
+ URL.createObjectURL(blob);
+
+ const enlace =
+ document.createElement("a");
+
+ enlace.href = url;
+ enlace.download = nombre;
+
+ document.body.appendChild(enlace);
+
+ enlace.click();
+
+ document.body.removeChild(enlace);
+
+ URL.revokeObjectURL(url);
+
+}
+
+</script>
+
+<footer class="qa-creditos-unificados">⚙️ Sistema QA | Desarrollado por <strong>Felix Montoya</strong></footer>
+<style id="qa-creditos-unificados-style">.qa-creditos-unificados{box-sizing:border-box;width:100%;margin:28px auto 0;padding:14px 18px;text-align:center;color:#667085;font:500 11px/1.5 Inter,Arial,sans-serif;letter-spacing:.2px;border-top:1px solid #e7eaf0;background:transparent}.qa-creditos-unificados strong{color:#344054;font-weight:800}@media(max-width:600px){.qa-creditos-unificados{margin-top:20px;padding:12px 10px;font-size:10px}}</style>
+
+<style id="qa-login-fondo-fix-definitivo">
+/* FIX: imagen aplicada directamente al fondo del body para evitar problemas de capas z-index */
+body:has(#loginBox:not(.hidden)){
+  background-color:#172433!important;
+  background-image:linear-gradient(135deg,rgba(8,14,23,.48),rgba(8,15,25,.40) 48%,rgba(8,14,23,.48)),url("assets/almacen-uxmal.jpeg")!important;
+  background-position:center center!important;
+  background-size:cover!important;
+  background-repeat:no-repeat!important;
+  background-attachment:fixed!important;
+}
+body:has(#loginBox:not(.hidden))::before,
+body:has(#loginBox:not(.hidden))::after{content:none!important;display:none!important}
+@media(max-width:600px){body:has(#loginBox:not(.hidden)){background-position:center center!important;background-attachment:scroll!important}}
+</style>
+
+
+<style id="qa-login-transparencia-ajustada">
+/* Ajuste fino: más fotografía visible a través del cristal y de los campos */
+body:has(#loginBox:not(.hidden))::after{background:linear-gradient(135deg,rgba(5,14,25,.43) 0%,rgba(8,22,38,.30) 48%,rgba(11,20,35,.42) 100%)!important}
+#loginBox.qa-glass-login{background:linear-gradient(145deg,rgba(255,255,255,.105),rgba(255,255,255,.045))!important;border-color:rgba(255,255,255,.42)!important;backdrop-filter:blur(20px) saturate(135%)!important;-webkit-backdrop-filter:blur(20px) saturate(135%)!important;box-shadow:0 24px 64px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.28)!important}
+#loginBox .qa-field{background:rgba(10,24,39,.14)!important;border-color:rgba(255,255,255,.48)!important;backdrop-filter:blur(8px)!important;-webkit-backdrop-filter:blur(8px)!important}
+#loginBox .qa-field:focus-within{background:rgba(18,48,76,.30)!important;border-color:#83c7ff!important;box-shadow:0 0 0 3px rgba(77,169,255,.23),0 0 22px rgba(77,169,255,.24)!important}
+#loginBox .card-visitante.qa-glass-visitor{background:rgba(255,255,255,.075)!important;border-color:rgba(255,255,255,.42)!important;backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important}
+#loginBox .card-visitante.qa-glass-visitor:hover,#loginBox .card-visitante.qa-glass-visitor:focus-visible{background:rgba(255,255,255,.13)!important}
+</style>
+
+
+<style id="UXMAL-palette-unified">
+/* UXMAL QA unified visual system — presentation only */
+:root{
+ --UXMAL-burgundy:#48090B; --UXMAL-red:#A10A04; --UXMAL-orange:#F26306;
+ --UXMAL-sky:#51B4F5; --UXMAL-blue:#2276C0; --UXMAL-navy:#17365E; --UXMAL-deep:#041734;
+ --UXMAL-paper:#F2F6FC; --UXMAL-white:#FFFFFF; --UXMAL-ink:#102344; --UXMAL-muted:#62738D;
+ --qa-red:var(--UXMAL-red); --qa-red-dark:var(--UXMAL-burgundy); --qa-yellow:var(--UXMAL-orange);
+ --primary:var(--UXMAL-blue); --primary-color:var(--UXMAL-blue); --accent:var(--UXMAL-orange);
+ --bs-primary:var(--UXMAL-blue); --bs-danger:var(--UXMAL-red); --bs-warning:var(--UXMAL-orange);
+}
+html{background:var(--UXMAL-paper)}
+body{color:var(--UXMAL-ink);background:var(--UXMAL-paper)}
+/* Shared app surfaces */
+header, .header, .app-header, .topbar, .top-bar, .navbar, .appbar, .page-header, .dashboard-header, .header-container, .main-header, .barra-superior{
+ background:linear-gradient(112deg,var(--UXMAL-deep) 0%,var(--UXMAL-navy) 68%,var(--UXMAL-blue) 100%)!important;
+ color:var(--UXMAL-white)!important; border-color:rgba(81,180,245,.28)!important;
+}
+nav, .nav-tabs, .tabs, .sidebar, .side-nav, .menu-lateral{border-color:rgba(34,118,192,.22)!important}
+.card, .panel, .chart-card, .filters-card, .filter-card, .filters, .upload-card, .kpi, .kpi-card, .scorecard, .heatmap-card, .modal-content, .form-card, .content-card, .table-container, .section-card{
+ border-color:#DCE6F2!important; border-radius:14px!important;
+}
+button, .btn, input[type=button], input[type=submit], .button, .btn-primary, .btn-red, .btn-danger, .btn-login, .btn-copy-vencimientos{
+ transition:background-color .16s ease,border-color .16s ease,box-shadow .16s ease,transform .16s ease;
+}
+.btn-primary, .btn-red, .btn-danger, .btn-login, .btn-copy-vencimientos, button.primary, input[type=submit]{background:var(--UXMAL-orange)!important;border-color:var(--UXMAL-orange)!important;color:#fff!important}
+.btn-primary:hover, .btn-red:hover, .btn-danger:hover, .btn-login:hover, .btn-copy-vencimientos:hover, button.primary:hover, input[type=submit]:hover{background:var(--UXMAL-red)!important;border-color:var(--UXMAL-red)!important}
+.btn-secondary, .btn-home, .btn-outline-primary, .btn-outline-danger{border-color:var(--UXMAL-blue)!important;color:var(--UXMAL-blue)!important}
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{outline:3px solid rgba(81,180,245,.55)!important;outline-offset:2px}
+input, select, textarea{accent-color:var(--UXMAL-blue)}
+input:focus,select:focus,textarea:focus{border-color:var(--UXMAL-sky)!important;box-shadow:0 0 0 3px rgba(81,180,245,.16)!important}
+thead, .table thead, table thead, .table-header, .table th{background:var(--UXMAL-navy)!important;color:#fff!important}
+th{border-color:rgba(255,255,255,.14)!important}
+.badge-danger, .status-danger, .tag-danger, .pill-danger{background:var(--UXMAL-red)!important;color:#fff!important}
+.badge-warning, .status-warning, .tag-warning, .pill-warning{background:var(--UXMAL-orange)!important;color:#fff!important}
+.badge-info, .status-info, .tag-info, .pill-info{background:var(--UXMAL-sky)!important;color:var(--UXMAL-deep)!important}
+a{color:var(--UXMAL-blue)}
+hr{border-color:#DCE6F2!important}
+/* Login: consistent with the portal brand, no pink/yellow legacy styling */
+body:has(#loginBox:not(.hidden)){background:var(--UXMAL-deep)!important;color:#fff!important}
+body:has(#loginBox:not(.hidden))::after{background:linear-gradient(125deg,rgba(4,23,52,.86),rgba(23,54,94,.78) 58%,rgba(72,9,11,.58))!important}
+body:has(#loginBox:not(.hidden)) .qa-floating-logo{background:linear-gradient(145deg,var(--UXMAL-sky),var(--UXMAL-blue))!important;color:#fff!important;border-color:rgba(255,255,255,.45)!important}
+#loginBox.qa-glass-login{border-color:rgba(81,180,245,.4)!important;background:rgba(4,23,52,.66)!important;color:#fff!important;box-shadow:0 28px 80px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.12)!important}
+#loginBox .login-subtitle,#loginBox .login-system{color:var(--UXMAL-sky)!important}
+#loginBox .qa-field{border-color:rgba(81,180,245,.32)!important;background:rgba(255,255,255,.075)!important}
+#loginBox .qa-field:focus-within{border-color:var(--UXMAL-sky)!important;box-shadow:0 0 0 3px rgba(81,180,245,.18)!important}
+#loginBox .qa-field-icon{color:var(--UXMAL-sky)!important}
+#loginBox .btn-login.qa-login-submit{background:linear-gradient(110deg,var(--UXMAL-orange),var(--UXMAL-red))!important;border-color:rgba(255,255,255,.2)!important;box-shadow:0 10px 28px rgba(162,10,4,.25)!important;letter-spacing:.06em!important}
+#loginBox .btn-login.qa-login-submit:hover{background:var(--UXMAL-red)!important;box-shadow:0 14px 32px rgba(162,10,4,.32)!important}
+#loginBox .visitante-icono{background:rgba(81,180,245,.16)!important;color:var(--UXMAL-sky)!important}
+#loginBox .visitante-flecha{color:var(--UXMAL-orange)!important}
+#loginBox .card-visitante.qa-glass-visitor:hover{border-color:rgba(81,180,245,.65)!important}
+/* HOME — composition aligned to the supplied desktop/mobile portal references */
+#homeBox.home-shell{width:100%!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;overflow:visible!important;background:var(--UXMAL-paper)!important;box-shadow:none!important;color:var(--UXMAL-ink)!important}
+#homeBox .home-header{position:relative!important;isolation:isolate!important;display:flex!important;align-items:flex-start!important;justify-content:space-between!important;gap:28px!important;min-height:360px!important;padding:28px max(32px,calc((100vw - 1120px)/2)) 108px!important;background:radial-gradient(ellipse at 82% 25%,rgba(34,118,192,.78),transparent 26%),radial-gradient(ellipse at 96% 0%,rgba(242,99,6,.58),transparent 25%),radial-gradient(ellipse at 0% 83%,rgba(161,10,4,.38),transparent 28%),var(--UXMAL-deep)!important;color:#fff!important;border-radius:0!important}
+#homeBox .home-header:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(4,23,52,.05),transparent 60%,rgba(23,54,94,.12));pointer-events:none}
+#homeBox .home-brand{display:flex!important;align-items:flex-start!important;gap:22px!important;max-width:800px!important}
+#homeBox .home-logo{width:48px!important;height:48px!important;flex:0 0 48px!important;display:flex!important;align-items:center!important;justify-content:center!important;border-radius:50%!important;background:transparent!important;border:0!important;color:var(--UXMAL-sky)!important;font-size:28px!important;font-weight:900!important;box-shadow:none!important}
+#homeBox .home-kicker{color:var(--UXMAL-sky)!important;font-size:11px!important;letter-spacing:.16em!important;font-weight:800!important;margin:28px 0 12px!important}
+#homeBox .home-title{max-width:640px!important;margin:0!important;color:#fff!important;font-size:0!important;line-height:.99!important;letter-spacing:-.045em!important;font-weight:850!important;text-transform:none!important}
+#homeBox .home-title:before{content:"Portal de Calidad";display:block;color:#fff!important;font-size:clamp(34px,5vw,60px)!important;line-height:.99!important;letter-spacing:-.045em!important;font-weight:850!important}
+#homeBox .home-title:after{content:"Site UXMAL";display:block;color:var(--UXMAL-orange)!important;font-size:clamp(34px,5vw,60px)!important;line-height:.99!important;letter-spacing:-.045em!important;font-weight:850!important}
+#homeBox .home-user-row{margin-top:18px!important}
+#homeBox .home-user{color:#e7f1fc!important;font-size:13px!important}
+#homeBox .home-fy{align-self:flex-start!important;margin-top:2px!important;padding:7px 13px!important;border:1px solid rgba(255,255,255,.26)!important;border-radius:999px!important;background:rgba(255,255,255,.10)!important;color:#fff!important;font-weight:800!important}
+#homeBox .home-body{position:relative!important;max-width:1120px!important;width:calc(100% - 48px)!important;margin:-72px auto 0!important;padding:0 0 32px!important;background:transparent!important}
+#homeBox .home-section{margin:0 0 42px!important}
+#homeBox .home-section-head{margin:0 0 14px!important}
+#homeBox .home-section-kicker{color:var(--UXMAL-red)!important;font-size:10px!important;letter-spacing:.16em!important;font-weight:900!important}
+#homeBox .home-section h2{margin:3px 0 0!important;color:var(--UXMAL-ink)!important;font-size:25px!important;font-weight:850!important;letter-spacing:-.025em!important;text-transform:none!important}
+#homeBox .home-grid-templates{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+#homeBox .home-grid-dashboards{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:12px!important}
+#homeBox .home-grid-data{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important}
+#homeBox .home-card{min-width:0!important;min-height:112px!important;padding:18px!important;display:grid!important;grid-template-columns:42px minmax(0,1fr) 16px!important;gap:12px!important;align-items:center!important;border:1px solid #DCE6F2!important;border-left:1px solid #DCE6F2!important;border-radius:17px!important;background:#fff!important;color:var(--UXMAL-ink)!important;box-shadow:0 8px 24px rgba(4,23,52,.08)!important}
+#homeBox .home-card:before{content:"";width:42px;height:42px;grid-column:1;grid-row:1;border-radius:12px;background:#E1F1FD;display:block}
+#homeBox .home-card-text{grid-column:2;grid-row:1}
+#homeBox .home-card:after{grid-column:1;grid-row:1;z-index:1;align-self:center;justify-self:center;color:var(--UXMAL-navy);font-size:20px;font-weight:800}
+#homeBox .home-alerta:after{content:"♧"} #homeBox .home-auditoria:after{content:"✓"} #homeBox .home-incidencia:after{content:"△"} #homeBox .home-dashboard:after{content:"↗"} #homeBox .home-data:after{content:"↓"}
+#homeBox .home-card .tituloBoton{color:var(--UXMAL-ink)!important;font-size:14px!important;font-weight:850!important;line-height:1.25!important}
+#homeBox .home-card .subtituloBoton{color:var(--UXMAL-muted)!important;font-size:12px!important;line-height:1.4!important}
+#homeBox .home-arrow{color:var(--UXMAL-blue)!important;font-size:23px!important}
+#homeBox .home-card:hover{transform:translateY(-2px)!important;border-color:#B7D8F2!important;box-shadow:0 13px 28px rgba(4,23,52,.12)!important}
+#homeBox .home-alerta:before,#homeBox .home-auditoria:before,#homeBox .home-incidencia:before,#homeBox .home-dashboard:before{background:#E1F1FD!important}
+#homeBox .home-data:before{background:var(--UXMAL-orange)!important}
+#homeBox .home-data:after{color:var(--UXMAL-deep)!important}
+#homeBox #btnDashboardDDSQAUXMAL{background:var(--UXMAL-red)!important;border-color:var(--UXMAL-red)!important}
+#homeBox #btnDashboardDDSQAUXMAL .tituloBoton,#homeBox #btnDashboardDDSQAUXMAL .subtituloBoton,#homeBox #btnDashboardDDSQAUXMAL .home-arrow{color:#fff!important}
+#homeBox #btnDashboardDDSQAUXMAL:before{background:rgba(255,255,255,.16)!important}
+#homeBox #btnDashboardDDSQAUXMAL:after{color:#fff!important}
+#homeBox .home-section:last-of-type{position:relative!important;margin:0 calc((1120px - 100vw)/2) 0!important;padding:42px max(24px,calc((100vw - 1120px)/2)) 44px!important;background:linear-gradient(110deg,var(--UXMAL-blue),var(--UXMAL-navy) 55%,var(--UXMAL-burgundy))!important}
+#homeBox .home-section:last-of-type .home-section-kicker{color:var(--UXMAL-sky)!important}
+#homeBox .home-section:last-of-type h2{color:#fff!important}
+#homeBox .home-section:last-of-type .home-card{background:rgba(255,255,255,.08)!important;border-color:rgba(255,255,255,.2)!important;box-shadow:none!important}
+#homeBox .home-section:last-of-type .home-card .tituloBoton,#homeBox .home-section:last-of-type .home-card .subtituloBoton{color:#fff!important}
+#homeBox .home-section:last-of-type .home-card:before{background:var(--UXMAL-orange)!important;border-radius:50%!important}
+#homeBox .home-section:last-of-type .home-card:after{color:var(--UXMAL-deep)!important}
+#homeBox .home-footer{padding:20px max(24px,calc((100vw - 1120px)/2))!important;margin:0 calc((1120px - 100vw)/2)!important;background:var(--UXMAL-deep)!important;border-top:1px solid rgba(255,255,255,.12)!important}
+#homeBox .home-footer .btn-salir{background:transparent!important;border-color:rgba(255,255,255,.3)!important;color:#fff!important}
+#homeBox .home-footer .btn-salir:hover{background:rgba(255,255,255,.1)!important;border-color:var(--UXMAL-sky)!important}
+@media(max-width:760px){
+ #homeBox .home-header{min-height:390px!important;padding:24px 16px 112px!important;gap:10px!important}
+ #homeBox .home-brand{gap:12px!important}
+ #homeBox .home-logo{width:38px!important;height:38px!important;flex-basis:38px!important;font-size:23px!important}
+ #homeBox .home-kicker{margin:18px 0 10px!important;font-size:9px!important;letter-spacing:.12em!important}
+ #homeBox .home-title:before,#homeBox .home-title:after{font-size:clamp(30px,8vw,42px)!important;line-height:.98!important}
+ #homeBox .home-fy{position:absolute!important;left:16px!important;top:246px!important;margin:0!important}
+ #homeBox .home-body{width:calc(100% - 30px)!important;margin:-65px auto 0!important;padding-bottom:0!important}
+ #homeBox .home-section{margin-bottom:30px!important}
+ #homeBox .home-section h2{font-size:22px!important}
+ #homeBox .home-grid-templates,#homeBox .home-grid-dashboards,#homeBox .home-grid-data{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+ #homeBox .home-card{min-height:88px!important;padding:14px!important;grid-template-columns:42px minmax(0,1fr) 16px!important;border-radius:17px!important}
+ #homeBox .home-card .tituloBoton{font-size:13px!important}
+ #homeBox .home-card .subtituloBoton{font-size:11px!important}
+ #homeBox .home-section:last-of-type{margin:0 -15px!important;padding:32px 15px 36px!important}
+ #homeBox .home-footer{margin:0 -15px!important;padding:20px 15px!important}
+}
+
+</style>
+
+<style id="UXMAL-home-feedback-adjustments">
+:root{--UXMAL-burgundy:#48090B;--UXMAL-red:#A10A04;--UXMAL-orange:#F26306;--UXMAL-sky:#51B4F5;--UXMAL-blue:#2276C0;--UXMAL-navy:#17365E;--UXMAL-deep:#041734}
+/* Use the available desktop viewport instead of constraining the portal to a narrow card. */
+#homeBox.home-shell,#homeBox.home-shell.home-admin{width:calc(100% - 40px)!important;max-width:1680px!important;margin:20px auto 28px!important;border-radius:24px!important}
+#homeBox .home-header{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:24px!important;padding:28px clamp(24px,3vw,52px)!important;background:linear-gradient(112deg,var(--UXMAL-deep) 0%,var(--UXMAL-navy) 62%,var(--UXMAL-blue) 100%)!important;color:#fff!important}
+#homeBox .home-header *{color:#fff}
+#homeBox .home-logo{width:78px!important;height:78px!important;flex-basis:78px!important;font-size:29px!important;border-radius:20px!important;background:var(--UXMAL-orange)!important;color:var(--UXMAL-deep)!important}
+#homeBox .home-brand{gap:20px!important}
+#homeBox .home-header-actions{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:12px!important;flex:0 0 auto!important}
+#homeBox .home-fy{position:static!important;align-self:center!important;margin:0!important;padding:10px 16px!important;border:1px solid rgba(255,255,255,.34)!important;border-radius:999px!important;background:rgba(255,255,255,.12)!important;color:#fff!important;font-size:14px!important;font-weight:900!important;white-space:nowrap!important}
+#homeBox .home-header-actions .home-logout{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;width:auto!important;min-width:0!important;min-height:40px!important;margin:0!important;padding:10px 14px!important;border:1px solid rgba(255,255,255,.35)!important;border-radius:12px!important;background:rgba(255,255,255,.12)!important;color:#fff!important;font-size:12px!important;font-weight:800!important;white-space:nowrap!important;cursor:pointer!important}
+#homeBox .home-header-actions .home-logout:hover{background:rgba(255,255,255,.22)!important}
+#homeBox .home-body{width:100%!important;max-width:none!important;margin:0!important;padding:clamp(24px,2.5vw,42px) clamp(22px,3vw,52px)!important}
+#homeBox .home-section{margin-bottom:34px!important}
+#homeBox .home-section-head h2{font-size:clamp(20px,1.7vw,27px)!important;color:var(--UXMAL-deep)!important}
+#homeBox #tituloTemplates{color:#fff!important}
+#homeBox .home-section-head:has(#tituloTemplates){padding:13px 17px!important;border-radius:12px!important;background:linear-gradient(90deg,var(--UXMAL-navy),var(--UXMAL-blue))!important}
+#homeBox .home-section-head:has(#tituloTemplates) .home-section-kicker{color:#BDE5FF!important}
+#homeBox .home-grid-templates{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:18px!important}
+#homeBox .home-grid-templates .home-card{min-height:150px!important;padding:24px!important;grid-template-columns:48px minmax(0,1fr) 16px!important;gap:16px!important;border-radius:18px!important}
+#homeBox .home-grid-templates .tituloBoton{font-size:clamp(16px,1.2vw,20px)!important}
+#homeBox .home-grid-templates .subtituloBoton{font-size:14px!important;line-height:1.5!important}
+#homeBox .home-grid-dashboards{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:16px!important}
+#homeBox .home-grid-data{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:16px!important}
+#homeBox .home-card{min-height:116px!important}
+/* DDS QA UXMAL is not red by default; red treatment appears only on interaction/focus. */
+#homeBox #btnDashboardDDSQAUXMAL{background:#fff!important;border-color:#DCE6F2!important;border-left:5px solid var(--UXMAL-blue)!important;color:var(--UXMAL-deep)!important}
+#homeBox #btnDashboardDDSQAUXMAL .tituloBoton{color:var(--UXMAL-deep)!important}
+#homeBox #btnDashboardDDSQAUXMAL .subtituloBoton{color:#526579!important}
+#homeBox #btnDashboardDDSQAUXMAL .home-arrow{color:var(--UXMAL-blue)!important}
+#homeBox #btnDashboardDDSQAUXMAL:before{background:#E1F1FD!important}
+#homeBox #btnDashboardDDSQAUXMAL:after{color:var(--UXMAL-blue)!important}
+#homeBox #btnDashboardDDSQAUXMAL:focus,#homeBox #btnDashboardDDSQAUXMAL:focus-visible,#homeBox #btnDashboardDDSQAUXMAL:active{background:var(--UXMAL-red)!important;border-color:var(--UXMAL-red)!important;outline:3px solid rgba(161,10,4,.18)!important;outline-offset:2px!important}
+#homeBox #btnDashboardDDSQAUXMAL:focus .tituloBoton,#homeBox #btnDashboardDDSQAUXMAL:focus .subtituloBoton,#homeBox #btnDashboardDDSQAUXMAL:focus .home-arrow,#homeBox #btnDashboardDDSQAUXMAL:focus-visible .tituloBoton,#homeBox #btnDashboardDDSQAUXMAL:focus-visible .subtituloBoton,#homeBox #btnDashboardDDSQAUXMAL:focus-visible .home-arrow,#homeBox #btnDashboardDDSQAUXMAL:active .tituloBoton,#homeBox #btnDashboardDDSQAUXMAL:active .subtituloBoton,#homeBox #btnDashboardDDSQAUXMAL:active .home-arrow{color:#fff!important}
+#homeBox #btnDashboardDDSQAUXMAL:focus:before,#homeBox #btnDashboardDDSQAUXMAL:focus-visible:before,#homeBox #btnDashboardDDSQAUXMAL:active:before{background:rgba(255,255,255,.16)!important}
+#homeBox .home-grid-data .home-arrow{display:none!important}
+#homeBox .home-grid-data .home-card{grid-template-columns:42px minmax(0,1fr)!important;padding-right:22px!important}
+#homeBox .home-footer:empty{display:none!important}
+@media(max-width:1100px){#homeBox .home-grid-dashboards{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:760px){
+ #homeBox.home-shell,#homeBox.home-shell.home-admin{width:calc(100% - 20px)!important;margin:10px auto 18px!important;border-radius:18px!important}
+ #homeBox .home-header{padding:20px 16px!important;align-items:flex-start!important;gap:12px!important}
+ #homeBox .home-logo{width:52px!important;height:52px!important;flex-basis:52px!important;font-size:21px!important;border-radius:14px!important}
+ #homeBox .home-brand{gap:11px!important;align-items:center!important}
+ #homeBox .home-title{font-size:clamp(17px,4.7vw,23px)!important;line-height:1.18!important}
+ #homeBox .home-kicker{font-size:8px!important;letter-spacing:.8px!important}
+ #homeBox .home-header-actions{flex-direction:column!important;align-items:flex-end!important;gap:7px!important}
+ #homeBox .home-fy{font-size:11px!important;padding:7px 10px!important}
+ #homeBox .home-header-actions .home-logout{font-size:10px!important;padding:7px 9px!important;min-height:32px!important}
+ #homeBox .home-body{padding:20px 14px 22px!important}
+ #homeBox .home-section{margin-bottom:25px!important}
+ #homeBox .home-section-head h2{font-size:20px!important}
+ #homeBox .home-grid-templates,#homeBox .home-grid-dashboards,#homeBox .home-grid-data{grid-template-columns:minmax(0,1fr)!important;gap:12px!important}
+ #homeBox .home-grid-templates .home-card{min-height:118px!important;padding:18px!important;grid-template-columns:42px minmax(0,1fr) 14px!important;gap:12px!important}
+ #homeBox .home-grid-templates .tituloBoton{font-size:16px!important}
+ #homeBox .home-grid-templates .subtituloBoton{font-size:12px!important}
+ #homeBox .home-card{min-height:92px!important;padding:14px!important;grid-template-columns:38px minmax(0,1fr) 14px!important;gap:10px!important}
+ #homeBox .home-grid-data .home-card{grid-template-columns:38px minmax(0,1fr)!important}
+}
+</style>
+
+
+<style id="UXMAL-final-layout-fix-2026">
+/* Corrección final: títulos reales (sin pseudo-elementos que los oculten) y rejillas consistentes. */
+#homeBox .home-brand>div:last-child{min-width:0!important;text-align:left!important}
+#homeBox .home-kicker{display:block!important;text-align:left!important;margin-left:0!important}
+#homeBox .home-title{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:0!important;max-width:680px!important;margin:0!important;padding:0!important;font-size:clamp(38px,5.2vw,62px)!important;line-height:1.02!important;letter-spacing:-.045em!important;text-align:left!important;color:#fff!important}
+#homeBox .home-title:before,#homeBox .home-title:after{content:none!important;display:none!important}
+#homeBox .home-title-main{display:block!important;color:#fff!important;font-size:inherit!important;line-height:inherit!important;font-weight:900!important}
+#homeBox .home-title-accent{display:block!important;color:#F26306!important;font-size:inherit!important;line-height:inherit!important;font-weight:900!important}
+#homeBox .home-body{width:min(80%,1120px)!important;max-width:1120px!important;margin-left:auto!important;margin-right:auto!important;padding-left:0!important;padding-right:0!important}
+#homeBox .home-section,#homeBox .home-section-head,#homeBox .home-section-head>div{ text-align:left!important;justify-content:flex-start!important}
+#homeBox .home-section-head{align-items:flex-start!important}
+#homeBox .home-section-kicker,#homeBox .home-section h2{ text-align:left!important;margin-left:0!important}
+#homeBox .home-grid-templates,#homeBox .home-grid-dashboards,#homeBox .home-grid-data{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;align-items:stretch!important;justify-items:stretch!important;gap:14px!important;width:100%!important}
+#homeBox .home-card{box-sizing:border-box!important;width:100%!important;min-width:0!important;max-width:none!important;height:100%!important;min-height:112px!important;margin:0!important;justify-self:stretch!important;align-self:stretch!important}
+#homeBox .home-card .home-card-text{min-width:0!important;text-align:left!important}
+#homeBox .home-card .tituloBoton,#homeBox .home-card .subtituloBoton{text-align:left!important;overflow-wrap:anywhere!important}
+@media(max-width:900px){
+ #homeBox .home-body{width:calc(100% - 48px)!important}
+ #homeBox .home-grid-templates,#homeBox .home-grid-dashboards,#homeBox .home-grid-data{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:12px!important}
+ #homeBox .home-title{font-size:clamp(34px,5.5vw,48px)!important}
+}
+@media(max-width:600px){
+ #homeBox .home-body{width:calc(100% - 30px)!important;margin-left:auto!important;margin-right:auto!important}
+ #homeBox .home-grid-templates,#homeBox .home-grid-dashboards,#homeBox .home-grid-data{grid-template-columns:minmax(0,1fr)!important;gap:10px!important}
+ #homeBox .home-card{min-height:84px!important;height:auto!important;padding:14px!important}
+ #homeBox .home-title{font-size:clamp(30px,8vw,42px)!important;line-height:1.02!important}
+ #homeBox .home-section{margin-bottom:28px!important}
+ #homeBox .home-section-head{margin-bottom:12px!important}
+}
+</style>
+<style id="qa-index-title-finish">.appbar .tituloSistema{display:flex;flex-direction:column;justify-content:center;line-height:1.12!important}.appbar .titulo1{display:none!important}.appbar .titulo2{color:#fff!important;font-size:clamp(21px,2.3vw,29px)!important;font-weight:900!important;letter-spacing:.025em!important;line-height:1.15!important;text-shadow:0 2px 10px rgba(0,0,0,.2)}@media(max-width:600px){.appbar .titulo2{font-size:clamp(18px,5vw,24px)!important}}
+</style>
+
+
+<style id="UXMAL-final-reference-layout">
+:root{
+ --UXMAL-burgundy:#48090B;--UXMAL-red:#A10A04;--UXMAL-orange:#F26306;
+ --UXMAL-sky:#51B4F5;--UXMAL-blue:#2276C0;--UXMAL-navy:#17365E;--UXMAL-deep:#041734;
+}
+/* HOME: una sola superficie continua, como la referencia de escritorio. */
+#homeBox.home-shell,#homeBox.home-shell.home-admin{
+ width:100%!important;max-width:none!important;margin:0!important;border:0!important;
+ border-radius:0!important;box-shadow:none!important;overflow:visible!important;
+ background:#F2F5FA!important;
+}
+#homeBox .home-header{
+ box-sizing:border-box!important;position:relative!important;isolation:isolate!important;
+ width:100%!important;min-height:460px!important;margin:0!important;
+ padding:24px max(32px,calc((100vw - 910px)/2)) 112px!important;
+ display:flex!important;align-items:flex-start!important;justify-content:space-between!important;
+ gap:30px!important;border:0!important;border-radius:0!important;box-shadow:none!important;
+ background:
+  radial-gradient(ellipse 32% 55% at 91% 1%,rgba(242,99,6,.60),transparent 72%),
+  radial-gradient(ellipse 35% 62% at 76% 37%,rgba(34,118,192,.78),transparent 70%),
+  radial-gradient(ellipse 33% 48% at 0% 76%,rgba(161,10,4,.38),transparent 72%),
+  #041734!important;color:#fff!important;
+}
+#homeBox .home-header:before,#homeBox .home-header:after{content:none!important;display:none!important}
+#homeBox .home-brand{display:flex!important;align-items:flex-start!important;gap:18px!important;min-width:0!important}
+#homeBox .home-logo{
+ width:auto!important;height:auto!important;min-width:0!important;flex:0 0 auto!important;
+ padding:0!important;margin:0!important;display:flex!important;align-items:center!important;gap:7px!important;
+ border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;
+ color:#BDE5FF!important;font-size:inherit!important;
+}
+#homeBox .home-logo-qa{font-size:29px!important;line-height:1!important;font-weight:900!important;color:#BDE5FF!important}
+#homeBox .home-logo-separator{font-size:21px!important;font-weight:300!important;color:rgba(255,255,255,.45)!important}
+#homeBox .home-logo-UXMAL{font-size:12px!important;letter-spacing:.09em!important;font-weight:800!important;color:#fff!important}
+#homeBox .home-kicker{
+ margin:98px 0 18px!important;padding:0!important;background:transparent!important;border:0!important;
+ color:var(--UXMAL-sky)!important;font-size:11px!important;font-weight:800!important;letter-spacing:.13em!important;
+}
+#homeBox .home-title{
+ margin:0!important;padding:0!important;background:transparent!important;border:0!important;box-shadow:none!important;
+ color:#fff!important;font-size:clamp(38px,5.2vw,62px)!important;line-height:1.03!important;
+ font-weight:900!important;letter-spacing:-.045em!important;max-width:650px!important;
+}
+#homeBox .home-title:before,#homeBox .home-title:after{content:none!important;display:none!important}
+#homeBox .home-title{font-size:0!important;line-height:0!important}
+#homeBox .home-title:before{content:"Portal de Calidad";display:block!important;color:#fff!important;font-size:clamp(38px,5.2vw,62px)!important;line-height:1.03!important}
+#homeBox .home-title:after{content:"Site UXMAL";display:block!important;color:var(--UXMAL-orange)!important;font-size:clamp(38px,5.2vw,62px)!important;line-height:1.03!important}
+#homeBox .home-header-actions{
+ display:flex!important;flex-direction:row!important;align-items:center!important;justify-content:flex-end!important;
+ flex-wrap:nowrap!important;gap:14px!important;margin:0!important;padding:0!important;position:relative!important;
+}
+#homeBox .home-fy{
+ position:static!important;left:auto!important;top:auto!important;margin:0!important;padding:5px 11px!important;
+ border:1px solid rgba(255,255,255,.26)!important;border-radius:999px!important;
+ background:rgba(255,255,255,.12)!important;color:#fff!important;font-size:11px!important;
+ font-weight:800!important;white-space:nowrap!important;
+}
+#homeBox .home-user-row{display:flex!important;align-items:center!important;margin:0!important;padding:0!important}
+#homeBox .home-user{
+ display:flex!important;align-items:center!important;gap:9px!important;margin:0!important;padding:0!important;
+ color:#fff!important;font-size:12px!important;font-weight:700!important;white-space:nowrap!important;
+}
+#homeBox .home-user:before{
+ content:attr(data-initials)!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:32px!important;height:32px!important;flex:0 0 32px!important;border-radius:50%!important;
+ background:rgba(34,118,192,.55)!important;border:1px solid rgba(81,180,245,.6)!important;
+ color:#fff!important;font-size:11px!important;font-weight:800!important;
+}
+#homeBox .home-header-actions .home-logout{
+ display:inline-flex!important;align-items:center!important;justify-content:center!important;
+ width:auto!important;min-width:0!important;min-height:32px!important;margin:0!important;padding:7px 13px!important;
+ border:1px solid rgba(255,255,255,.38)!important;border-radius:999px!important;
+ background:transparent!important;color:#fff!important;font-size:11px!important;font-weight:700!important;
+ white-space:nowrap!important;box-shadow:none!important;
+}
+#homeBox .home-header-actions .home-logout:hover{background:rgba(255,255,255,.12)!important}
+/* El contenido empieza sobre fondo claro; sin paneles decorativos adicionales en el hero. */
+#homeBox .home-body{
+ width:100%!important;max-width:1120px!important;box-sizing:border-box!important;
+ margin:-88px auto 0!important;padding:0 0 42px!important;position:relative!important;
+}
+#homeBox .home-section-head:has(#tituloTemplates){padding:0!important;border:0!important;border-radius:0!important;background:transparent!important}
+#homeBox .home-section-head:has(#tituloTemplates) .home-section-kicker{color:var(--UXMAL-sky)!important}
+#homeBox .home-grid-templates .home-card{min-height:150px!important}
+#homeBox .home-section:last-of-type{
+ margin:0 calc((1120px - 100vw)/2)!important;padding:42px max(24px,calc((100vw - 910px)/2)) 44px!important;
+ background:linear-gradient(110deg,var(--UXMAL-blue),var(--UXMAL-navy) 55%,var(--UXMAL-burgundy))!important;
+}
+#homeBox .home-grid-data .home-arrow{display:none!important}
+#homeBox .home-grid-data .home-card{grid-template-columns:42px minmax(0,1fr)!important;padding-right:22px!important}
+#homeBox .home-footer{margin:0 calc((1120px - 100vw)/2)!important;background:var(--UXMAL-deep)!important}
+/* Login: fotografía original visible y tarjeta translúcida; se conservan inputs y acciones. */
+body:has(#loginBox:not(.hidden)){
+ background-color:var(--UXMAL-deep)!important;
+ background-image:linear-gradient(135deg,rgba(4,23,52,.24),rgba(4,23,52,.12) 48%,rgba(4,23,52,.25)),url("assets/almacen-uxmal.jpeg")!important;
+ background-size:cover!important;background-position:center center!important;background-repeat:no-repeat!important;background-attachment:fixed!important;
+}
+body:has(#loginBox:not(.hidden)):before{content:none!important;display:none!important}
+body:has(#loginBox:not(.hidden)):after{content:none!important;display:none!important}
+#loginBox.qa-glass-login,#loginBox.card-login{
+ background:rgba(4,23,52,.34)!important;color:#fff!important;
+ border:1px solid rgba(255,255,255,.42)!important;border-radius:22px!important;
+ box-shadow:0 22px 60px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.22)!important;
+ -webkit-backdrop-filter:blur(13px) saturate(115%)!important;backdrop-filter:blur(13px) saturate(115%)!important;
+}
+#loginBox .login-title,#loginBox .login-subtitle,#loginBox .login-system,#loginBox label{color:#fff!important}
+#loginBox .qa-field{background:rgba(255,255,255,.12)!important;border-color:rgba(255,255,255,.55)!important;color:#fff!important}
+#loginBox .qa-field input,#loginBox input{background:transparent!important;color:#fff!important}
+#loginBox .qa-field-icon{color:var(--UXMAL-sky)!important}
+#loginBox .btn-login,#loginBox .btn-login.qa-login-submit{background:linear-gradient(110deg,var(--UXMAL-orange),var(--UXMAL-red))!important;color:#fff!important;border-color:rgba(255,255,255,.24)!important}
+#loginBox .card-visitante.qa-glass-visitor{background:rgba(255,255,255,.10)!important;border-color:rgba(255,255,255,.45)!important;color:#fff!important;backdrop-filter:blur(9px)!important;-webkit-backdrop-filter:blur(9px)!important}
+@media(max-width:760px){
+ #homeBox .home-header{min-height:310px!important;padding:18px 18px 100px!important;gap:12px!important;flex-wrap:wrap!important}
+ #homeBox .home-brand{gap:12px!important}
+ #homeBox .home-kicker{margin:56px 0 12px!important;font-size:9px!important}
+ #homeBox .home-title{font-size:0!important}
+ #homeBox .home-title:before,#homeBox .home-title:after{font-size:clamp(30px,8vw,42px)!important}
+ #homeBox .home-header-actions{margin-left:auto!important;gap:8px!important;flex-wrap:wrap!important}
+ #homeBox .home-fy{font-size:10px!important;padding:5px 8px!important}
+ #homeBox .home-user{font-size:10px!important}
+ #homeBox .home-user:before{width:27px!important;height:27px!important;flex-basis:27px!important}
+ #homeBox .home-header-actions .home-logout{font-size:10px!important;padding:6px 9px!important}
+ #homeBox .home-body{width:calc(100% - 28px)!important;margin:-60px auto 0!important;padding:0 0 28px!important}
+ #homeBox .home-section:last-of-type{margin:0 -14px!important;padding:30px 14px!important}
+ #homeBox .home-footer{margin:0 -14px!important}
+ body:has(#loginBox:not(.hidden)){background-attachment:scroll!important;background-position:center center!important}
+}
+@media(max-width:420px){#homeBox .home-header-actions{width:100%!important;justify-content:flex-start!important;margin-top:4px!important}#homeBox .home-kicker{margin-top:32px!important}}
+</style>
+
+<style id="UXMAL-portal-reference-layout-2026">
+:root{--UXMAL-deep:#061a36;--UXMAL-navy:#09284b;--UXMAL-blue:#1769a8;--UXMAL-orange:#ff6500;--UXMAL-red:#aa0d08;--UXMAL-paper:#f2f5fb;--UXMAL-ink:#102442;--UXMAL-muted:#64748b;--UXMAL-line:#dce5f0}
+html{scroll-behavior:smooth;background:var(--UXMAL-paper)}
+body{min-height:100vh!important;margin:0!important;padding:0!important;display:block!important;overflow-x:hidden!important;background:var(--UXMAL-paper)!important;color:var(--UXMAL-ink)!important;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif!important}
+#homeBox.home-shell{display:block!important;position:relative!important;width:100%!important;max-width:none!important;min-height:100vh!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;overflow:visible!important;background:var(--UXMAL-paper)!important;box-shadow:none!important;color:var(--UXMAL-ink)!important}
+#homeBox.home-shell.hidden{display:none!important}
+#homeBox .home-header{position:relative!important;display:block!important;width:100%!important;height:460px!important;min-height:460px!important;margin:0!important;padding:0!important;overflow:visible!important;border:0!important;border-radius:0!important;background:radial-gradient(ellipse 390px 330px at 83% 35%,rgba(32,128,198,.78),transparent 72%),radial-gradient(ellipse 330px 230px at 100% 0%,rgba(185,91,48,.52),transparent 72%),radial-gradient(ellipse 440px 260px at 0% 100%,rgba(126,12,33,.46),transparent 70%),linear-gradient(112deg,#061a36 0%,#061a36 57%,#09264a 100%)!important;color:#fff!important;box-shadow:none!important}
+#homeBox .home-topbar{position:relative!important;z-index:2;display:flex!important;align-items:center!important;gap:28px!important;width:min(910px,calc(100% - 48px))!important;height:72px!important;margin:0 auto!important;padding:0!important}
+#homeBox .home-logo{display:flex!important;align-items:center!important;gap:9px!important;flex:0 0 auto!important;width:auto!important;height:auto!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#c4e6ff!important;box-shadow:none!important}
+#homeBox .home-logo-qa{font-size:28px!important;line-height:1!important;font-weight:850!important;letter-spacing:-1.8px!important;color:#c4e6ff!important}
+#homeBox .home-logo-separator{height:25px!important;width:1px!important;margin:0 2px!important;background:rgba(255,255,255,.38)!important;color:transparent!important;font-size:0!important}
+#homeBox .home-logo-UXMAL{font-size:11px!important;letter-spacing:1.5px!important;font-weight:800!important;color:#d8e5f4!important}
+#homeBox .home-nav{display:flex!important;align-items:center!important;justify-content:flex-end!important;gap:27px!important;margin-left:auto!important;white-space:nowrap!important}
+#homeBox .home-nav a{color:rgba(245,249,255,.92)!important;text-decoration:none!important;font-size:11px!important;font-weight:700!important;transition:color .18s ease}
+#homeBox .home-nav a:hover{color:#ff7a22!important}
+#homeBox .home-header-actions{position:static!important;display:flex!important;align-items:center!important;gap:14px!important;margin:0!important;padding:0!important}
+#homeBox .home-user-row{display:flex!important;align-items:center!important;gap:9px!important;padding-left:13px!important;border-left:1px solid rgba(255,255,255,.22)!important}
+#homeBox .home-user{display:flex!important;align-items:center!important;gap:8px!important;margin:0!important;color:#f4f8ff!important;font-size:11px!important;font-weight:700!important;white-space:nowrap!important}
+#homeBox .home-user:before{content:attr(data-initials)!important;display:flex!important;align-items:center!important;justify-content:center!important;width:32px!important;height:32px!important;flex:0 0 32px!important;border:1px solid rgba(104,190,255,.5)!important;border-radius:50%!important;background:linear-gradient(145deg,#1769a8,#0a3b70)!important;color:#fff!important;font-size:11px!important;font-weight:800!important}
+#homeBox .home-logout{display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;min-height:34px!important;margin:0!important;padding:0 13px!important;border:1px solid rgba(255,255,255,.34)!important;border-radius:999px!important;background:rgba(255,255,255,.055)!important;color:#f4f8ff!important;font-size:10px!important;font-weight:700!important;white-space:nowrap!important;box-shadow:none!important;cursor:pointer!important}
+#homeBox .home-logout:hover{background:rgba(255,255,255,.14)!important}
+#homeBox .home-logout-icon{font-size:17px!important;line-height:1!important}
+#homeBox .home-hero-copy{position:relative!important;width:min(910px,calc(100% - 48px))!important;margin:45px auto 0!important;padding:0!important}
+#homeBox .home-kicker-row{display:flex!important;align-items:center!important;gap:10px!important;margin:0 0 17px!important}
+#homeBox .home-kicker{margin:0!important;color:#45b9ff!important;font-size:10px!important;line-height:1.3!important;font-weight:850!important;letter-spacing:1.5px!important}
+#homeBox .home-fy{position:static!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;margin:0!important;padding:4px 11px!important;border:1px solid rgba(255,255,255,.2)!important;border-radius:999px!important;background:rgba(255,255,255,.11)!important;color:#fff!important;font-size:9px!important;font-weight:800!important;letter-spacing:.3px!important}
+#homeBox .home-title{display:flex!important;flex-direction:column!important;align-items:flex-start!important;gap:0!important;margin:0!important;padding:0!important;color:#fff!important;font-size:58px!important;line-height:.99!important;font-weight:850!important;letter-spacing:-3.3px!important;text-align:left!important}
+#homeBox .home-title:before,#homeBox .home-title:after{display:none!important;content:none!important}
+#homeBox .home-title-main{display:block!important;color:#f8fbff!important}
+#homeBox .home-title-accent{display:block!important;color:var(--UXMAL-orange)!important}
+#homeBox .home-body{position:relative!important;display:block!important;width:100%!important;max-width:none!important;margin:0!important;padding:0 0 0!important;background:var(--UXMAL-paper)!important}
+#homeBox .home-section{display:block!important;width:min(910px,calc(100% - 48px))!important;margin:0 auto 48px!important;padding:0!important}
+#homeBox .home-section-templates{position:relative!important;z-index:1!important;margin-top:-145px!important;margin-bottom:48px!important}
+#homeBox .home-section-head{display:flex!important;align-items:flex-end!important;justify-content:flex-start!important;margin:0 0 13px!important;padding:0!important;text-align:left!important}
+#homeBox .home-section-head>div{width:100%!important;text-align:left!important}
+#homeBox .home-section-kicker{margin:0 0 4px!important;color:#c51c18!important;font-size:9px!important;line-height:1.25!important;font-weight:850!important;letter-spacing:1.5px!important;text-align:left!important}
+#homeBox .home-section-templates .home-section-kicker{color:#45b9ff!important}
+#homeBox .home-section-head h2{margin:0!important;padding:0!important;color:var(--UXMAL-ink)!important;font-size:25px!important;line-height:1.15!important;font-weight:800!important;letter-spacing:-.8px!important;text-align:left!important}
+#homeBox .home-section-templates .home-section-head h2{color:#fff!important;font-size:22px!important}
+#homeBox .home-grid{display:grid!important;width:100%!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:14px!important;align-items:stretch!important}
+#homeBox .home-grid-templates{gap:16px!important}
+#homeBox .home-card{position:relative!important;display:grid!important;grid-template-columns:42px minmax(0,1fr) 14px!important;align-items:center!important;gap:12px!important;width:100%!important;min-width:0!important;min-height:89px!important;margin:0!important;padding:16px!important;border:1px solid var(--UXMAL-line)!important;border-radius:17px!important;background:#fff!important;color:var(--UXMAL-ink)!important;text-align:left!important;white-space:normal!important;box-shadow:none!important;overflow:hidden!important;cursor:pointer!important;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease!important}
+#homeBox .home-card:before,#homeBox .home-card:after{content:none!important;display:none!important}
+#homeBox .home-card-icon svg{display:block!important;width:23px!important;height:23px!important;stroke:currentColor!important;fill:none!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
+#homeBox .home-card:hover{transform:translateY(-2px)!important;border-color:#c6d7e9!important;box-shadow:0 12px 24px rgba(15,42,75,.10)!important}
+#homeBox .home-card-icon{display:flex!important;align-items:center!important;justify-content:center!important;width:42px!important;height:42px!important;flex:0 0 42px!important;border:0!important;border-radius:13px!important;background:#e2effb!important;color:#173e68!important;font-size:23px!important;font-weight:600!important;line-height:1!important}
+#homeBox .home-card-text{display:flex!important;flex-direction:column!important;min-width:0!important;gap:3px!important;margin:0!important;padding:0!important;text-align:left!important;white-space:normal!important}
+#homeBox .home-card .tituloBoton{display:block!important;margin:0!important;color:#102442!important;font-size:14px!important;line-height:1.25!important;font-weight:750!important;letter-spacing:-.2px!important;white-space:normal!important}
+#homeBox .home-card .subtituloBoton{display:block!important;margin:0!important;color:#687992!important;font-size:11px!important;line-height:1.35!important;font-weight:450!important;white-space:normal!important}
+#homeBox .home-arrow{display:block!important;margin:0!important;color:#1676ca!important;font-size:25px!important;line-height:1!important;font-weight:500!important;text-align:right!important}
+#homeBox .home-grid-templates .home-card{display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:flex-start!important;gap:13px!important;min-height:165px!important;padding:20px!important;border:0!important;border-radius:18px!important;background:#fff!important;box-shadow:0 13px 25px rgba(8,30,58,.17)!important}
+#homeBox .home-grid-templates .home-card .home-card-icon{width:42px!important;height:42px!important}
+#homeBox .home-grid-templates .home-card .home-card-text{gap:4px!important}
+#homeBox .home-grid-templates .home-card .tituloBoton{font-size:14px!important}
+#homeBox .home-grid-templates .home-card .subtituloBoton{font-size:11px!important}
+#homeBox .home-grid-templates .home-arrow{position:absolute!important;left:20px!important;bottom:17px!important;color:#102e54!important;font-size:0!important;font-weight:750!important}
+#homeBox .home-grid-templates .home-arrow:after{content:" Abrir  →";font-size:11px!important;color:var(--UXMAL-orange)!important}
+#homeBox .home-grid-dashboards{gap:14px!important}
+#homeBox .home-grid-dashboards .home-card{min-height:90px!important;padding:13px!important;border-radius:17px!important}
+#homeBox .home-grid-dashboards .home-card.home-dashboard:last-child{background:var(--UXMAL-red)!important;border-color:var(--UXMAL-red)!important;color:#fff!important}
+#homeBox .home-grid-dashboards .home-card.home-dashboard:last-child .home-card-icon{background:rgba(255,255,255,.18)!important;color:#fff!important}
+#homeBox .home-grid-dashboards .home-card.home-dashboard:last-child .tituloBoton,#homeBox .home-grid-dashboards .home-card.home-dashboard:last-child .subtituloBoton,#homeBox .home-grid-dashboards .home-card.home-dashboard:last-child .home-arrow{color:#fff!important}
+#homeBox .home-grid-dashboards .home-card.home-dashboard:last-child .home-arrow{font-size:22px!important}
+#homeBox .home-section-dashboards{margin-top:0!important;margin-bottom:62px!important}
+#homeBox .home-section.home-section-data{width:100%!important;max-width:none!important;margin:0!important;padding:58px max(24px,calc((100% - 910px)/2)) 62px!important;background:radial-gradient(ellipse 430px 250px at 0% 25%,rgba(42,137,207,.58),transparent 74%),radial-gradient(ellipse 440px 250px at 100% 100%,rgba(166,81,70,.30),transparent 76%),linear-gradient(110deg,#1c4b7c,#1c3b62 58%,#273d5a)!important}
+#homeBox .home-section.home-section-data .home-section-kicker{color:#5cbcf3!important}
+#homeBox .home-section.home-section-data .home-section-head h2{color:#fff!important}
+#homeBox .home-section.home-section-data .home-grid-data{gap:14px!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card{grid-template-columns:42px minmax(0,1fr)!important;min-height:80px!important;padding:14px 17px!important;border:1px solid rgba(255,255,255,.20)!important;border-radius:17px!important;background:rgba(255,255,255,.075)!important;color:#fff!important;box-shadow:none!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card-icon{width:42px!important;height:42px!important;border-radius:50%!important;background:var(--UXMAL-orange)!important;color:#101e31!important;font-size:24px!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card .tituloBoton,#homeBox .home-section.home-section-data .home-grid-data .home-card .subtituloBoton{color:#fff!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card .tituloBoton{font-size:14px!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card .subtituloBoton{font-size:11px!important;color:rgba(255,255,255,.82)!important}
+#homeBox .home-footer{display:flex!important;align-items:center!important;width:100%!important;min-height:60px!important;margin:0!important;padding:0 max(24px,calc((100% - 910px)/2))!important;background:#061a36!important;color:#dce7f5!important;font-size:11px!important}
+#homeBox .home-section[style*="display: none"]{display:none!important}
+/* Primera pintura: el login queda fuera del render mientras se valida la sesión guardada. */
+html.UXMAL-session-pending #loginBox{display:none!important;visibility:hidden!important}
+html.UXMAL-session-pending body,html.UXMAL-session-pending body:has(#loginBox:not(.hidden)){background:var(--UXMAL-paper)!important;display:block!important;padding:0!important}
+html.UXMAL-session-pending body:has(#loginBox:not(.hidden))::before,html.UXMAL-session-pending body:has(#loginBox:not(.hidden))::after{display:none!important;content:none!important}
+@media(max-width:980px){
+ #homeBox .home-topbar,#homeBox .home-hero-copy{width:calc(100% - 48px)!important}
+ #homeBox .home-topbar{gap:18px!important}
+ #homeBox .home-nav{gap:16px!important}
+ #homeBox .home-section{width:calc(100% - 48px)!important}
+ #homeBox .home-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #homeBox .home-grid-templates{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #homeBox .home-section.home-section-data{padding-left:24px!important;padding-right:24px!important}
+ #homeBox .home-section.home-section-data .home-grid-data{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #homeBox .home-title{font-size:52px!important}
+}
+@media(max-width:680px){
+ #homeBox .home-header{height:auto!important;min-height:556px!important;padding-bottom:0!important;background:radial-gradient(ellipse 270px 280px at 75% 18%,rgba(31,127,196,.68),transparent 74%),radial-gradient(ellipse 210px 200px at 100% 0%,rgba(185,91,48,.56),transparent 72%),radial-gradient(ellipse 300px 210px at 0% 72%,rgba(126,12,33,.44),transparent 74%),linear-gradient(112deg,#061a36 0%,#061a36 57%,#09264a 100%)!important}
+ #homeBox .home-topbar{width:calc(100% - 30px)!important;height:78px!important;gap:10px!important}
+ #homeBox .home-logo{gap:7px!important}
+ #homeBox .home-logo-qa{font-size:25px!important}
+ #homeBox .home-logo-separator{height:22px!important}
+ #homeBox .home-logo-UXMAL{font-size:9px!important}
+ #homeBox .home-nav{display:none!important}
+ #homeBox .home-header-actions{gap:8px!important;margin-left:auto!important}
+ #homeBox .home-user-row{gap:0!important;padding-left:0!important;border:0!important}
+ #homeBox .home-user{font-size:10px!important;gap:8px!important;flex-direction:row-reverse!important}
+ #homeBox .home-user:before{width:37px!important;height:37px!important;flex-basis:37px!important;font-size:11px!important}
+ #homeBox .home-logout{width:40px!important;height:40px!important;min-height:40px!important;padding:0!important;border-radius:50%!important;font-size:0!important}
+ #homeBox .home-logout-icon{font-size:19px!important}
+ #homeBox .home-logout-label{display:none!important}
+ #homeBox .home-hero-copy{position:relative!important;width:calc(100% - 30px)!important;margin:34px auto 0!important}
+ #homeBox .home-kicker-row{display:block!important;margin:0 0 17px!important}
+ #homeBox .home-kicker{font-size:9px!important;letter-spacing:1.1px!important}
+ #homeBox .home-fy{position:absolute!important;top:136px!important;left:0!important;display:flex!important;width:max-content!important;margin:0!important;padding:5px 12px!important;font-size:10px!important}
+ #homeBox .home-title{font-size:clamp(34px,10vw,43px)!important;line-height:1.01!important;letter-spacing:-2px!important}
+ #homeBox .home-body{padding:0!important}
+ #homeBox .home-section{width:calc(100% - 30px)!important;margin:0 auto 34px!important}
+ #homeBox .home-section-templates{width:calc(100% - 30px)!important;margin-top:-244px!important;margin-bottom:38px!important}
+ #homeBox .home-section-head{margin-bottom:13px!important}
+ #homeBox .home-section-head h2{font-size:23px!important}
+ #homeBox .home-section-templates .home-section-head h2{font-size:22px!important}
+ #homeBox .home-grid,#homeBox .home-grid-templates,#homeBox .home-grid-dashboards{grid-template-columns:minmax(0,1fr)!important;gap:11px!important}
+ #homeBox .home-grid-templates .home-card{display:grid!important;grid-template-columns:44px minmax(0,1fr) 18px!important;align-items:center!important;gap:13px!important;min-height:89px!important;padding:14px!important;border-radius:18px!important}
+ #homeBox .home-grid-templates .home-card .home-card-icon{width:44px!important;height:44px!important}
+ #homeBox .home-grid-templates .home-card .home-card-text{gap:3px!important}
+ #homeBox .home-grid-templates .home-card .tituloBoton{font-size:14px!important}
+ #homeBox .home-grid-templates .home-card .subtituloBoton{font-size:11px!important}
+ #homeBox .home-grid-templates .home-arrow{position:static!important;margin-left:auto!important;color:var(--UXMAL-orange)!important;font-size:24px!important}
+ #homeBox .home-grid-templates .home-arrow:after{content:none!important}
+ #homeBox .home-grid-dashboards .home-card{min-height:83px!important;padding:13px!important}
+ #homeBox .home-grid-dashboards .home-card .tituloBoton{font-size:13px!important}
+ #homeBox .home-grid-dashboards .home-card .subtituloBoton{font-size:10.5px!important}
+ #homeBox .home-section-dashboards{margin-bottom:42px!important}
+ #homeBox .home-section-data{width:100%!important;margin:0!important;padding:48px 15px 55px!important}
+ #homeBox .home-section.home-section-data .home-grid-data{grid-template-columns:minmax(0,1fr)!important;gap:11px!important}
+ #homeBox .home-section.home-section-data .home-grid-data .home-card{min-height:76px!important;border-radius:40px!important;padding:13px!important}
+ #homeBox .home-footer{justify-content:center!important;min-height:58px!important;padding:0 15px!important;text-align:center!important}
+}
+#homeBox .home-section.home-section-data .home-grid-data .home-card:before,#homeBox .home-section.home-section-data .home-grid-data .home-card:after{content:none!important;display:none!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card{background:rgba(255,255,255,.075)!important;border:1px solid rgba(255,255,255,.20)!important;box-shadow:none!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card .tituloBoton,#homeBox .home-section.home-section-data .home-grid-data .home-card .subtituloBoton{color:#fff!important}
+#homeBox .home-section.home-section-data .home-grid-data .home-card .home-card-icon{background:var(--UXMAL-orange)!important;color:#101e31!important;border-radius:50%!important}
+#homeBox #btnDashboardDDSQAUXMAL{background:var(--UXMAL-red)!important;border-color:var(--UXMAL-red)!important;color:#fff!important}
+#homeBox #btnDashboardDDSQAUXMAL .tituloBoton,#homeBox #btnDashboardDDSQAUXMAL .subtituloBoton,#homeBox #btnDashboardDDSQAUXMAL .home-arrow{color:#fff!important}
+#homeBox #btnDashboardDDSQAUXMAL .home-card-icon{background:rgba(255,255,255,.18)!important;color:#fff!important}
+#homeBox #btnDashboardDDSQAUXMAL:before,#homeBox #btnDashboardDDSQAUXMAL:after{content:none!important;display:none!important}
+@media(max-width:360px){
+ #homeBox .home-title{font-size:33px!important}
+ #homeBox .home-logo-qa{font-size:23px!important}
+ #homeBox .home-user:before{width:33px!important;height:33px!important;flex-basis:33px!important}
+ #homeBox .home-logout{width:36px!important;height:36px!important;min-height:36px!important}
+}
+</style>
+<style id="UXMAL-home-contrast-and-text-fix">
+/* Contraste de los rótulos del Home: Templates sobre fondo claro y Cerrar sesión sobre azul marino. */
+#homeBox .home-section-templates .home-section-head h2,
+#homeBox #tituloTemplates{color:#17365E!important;text-shadow:none!important}
+#homeBox .home-section-templates .home-section-head .home-section-kicker{color:#2276C0!important}
+#homeBox .home-section-templates .home-section-head{background:transparent!important}
+#homeBox .home-header-actions button.home-logout,
+#homeBox .home-header-actions .home-logout,
+#homeBox .home-header-actions .home-logout-label,
+#homeBox .home-header-actions .home-logout-icon{color:#FFFFFF!important}
+#homeBox .home-header-actions button.home-logout{background:rgba(255,255,255,.14)!important;border:1px solid rgba(255,255,255,.42)!important}
+#homeBox .home-header-actions button.home-logout:hover{background:rgba(255,255,255,.24)!important;color:#FFFFFF!important}
+</style>
+</body>
+</html>
