@@ -3350,7 +3350,7 @@ for(let i = 0; i < fotosSeleccionadas.length; i++){
   let name = `${folioRI}_${Date.now()}_${i}.jpg`;
 
   const { error: uploadError } = await supabaseClient.storage
-    .from("evidencias")
+    .from("uxmal-evidencias-incidencias")
     .upload(
   name,
   fotosSeleccionadas[i],
@@ -3367,7 +3367,7 @@ for(let i = 0; i < fotosSeleccionadas.length; i++){
   }
 
   const { data } = supabaseClient.storage
-    .from("evidencias")
+    .from("uxmal-evidencias-incidencias")
     .getPublicUrl(name);
 
   urls.push(data.publicUrl);
@@ -3954,7 +3954,9 @@ mobile.addEventListener('click',()=>panel.classList.contains('open')?close():ope
 if(canSeeDash){document.body.classList.add('qa-has-left-rail');homeLink.style.display='none';}else{panel.style.display='none';mobile.style.display='none';document.body.append(homeLink);}
 })();
 </script>
-<footer class="qa-creditos-unificados">⚙️ Sistema QA | Desarrollado por <strong>Felix Montoya</strong></footer>
+<footer class="qa-creditos-unificados">
+  ⚙️ Sistema QA | Desarrollado por <strong>Felix Montoya</strong> | Diseño y Asesoría por <strong>Itzel Pérez</strong>
+</footer>
 <style id="qa-creditos-unificados-style">.qa-creditos-unificados{box-sizing:border-box;width:100%;margin:28px auto 0;padding:14px 18px;text-align:center;color:#667085;font:500 11px/1.5 Inter,Arial,sans-serif;letter-spacing:.2px;border-top:1px solid #e7eaf0;background:transparent}.qa-creditos-unificados strong{color:#344054;font-weight:800}@media(max-width:600px){.qa-creditos-unificados{margin-top:20px;padding:12px 10px;font-size:10px}}</style>
 
 <style id="UXMAL-palette-unified">
