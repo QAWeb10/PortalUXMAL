@@ -8,8 +8,8 @@
 <title>QA · Dashboard de Auditorías</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
 
 <style>
 :root{
@@ -3726,7 +3726,7 @@ mobile.addEventListener('click',()=>panel.classList.contains('open')?close():ope
 if(canSeeDash){document.body.classList.add('qa-has-left-rail');homeLink.style.display='none';}else{panel.style.display='none';mobile.style.display='none';document.body.append(homeLink);}
 })();
 </script>
-<footer class="qa-creditos-unificados">⚙️ Sistema QA | Desarrollado por <strong>Felix Montoya</strong></footer>
+<footer class="qa-creditos-unificados"><strong>⚙️ Sistema QA | Desarrollado por Felix Montoya | Diseño y Asesoría por Itzel Pérez</strong></footer>
 <style id="qa-creditos-unificados-style">.qa-creditos-unificados{box-sizing:border-box;width:100%;margin:28px auto 0;padding:14px 18px;text-align:center;color:#667085;font:500 11px/1.5 Inter,Arial,sans-serif;letter-spacing:.2px;border-top:1px solid #e7eaf0;background:transparent}.qa-creditos-unificados strong{color:#344054;font-weight:800}@media(max-width:600px){.qa-creditos-unificados{margin-top:20px;padding:12px 10px;font-size:10px}}</style>
 
 <style id="UXMAL-universal-light-dashboard-banners-v1">
@@ -4069,7 +4069,6 @@ body.qa-UXMAL-homologated > header#mainHeader.qa-UXMAL-reference-header .qa-UXMA
 }
 </style>
 
-
 <script id="qa-UXMAL-reference-header-behavior">
 (function(){
   try{
@@ -4083,28 +4082,8 @@ body.qa-UXMAL-homologated > header#mainHeader.qa-UXMAL-reference-header .qa-UXMA
     }
   }catch(e){}
   window.qaSmoLogout=function(){try{localStorage.removeItem('usuarioPortal')}catch(e){} location.reload();};
-  if(window.Chart){
-    try{
-      Chart.defaults.color='#EAF2FC';
-      Chart.defaults.borderColor='rgba(226,237,250,.20)';
-      if(Chart.defaults.plugins&&Chart.defaults.plugins.legend&&Chart.defaults.plugins.legend.labels) Chart.defaults.plugins.legend.labels.color='#F7FAFF';
-      if(Chart.defaults.plugins&&Chart.defaults.plugins.tooltip){Chart.defaults.plugins.tooltip.titleColor='#FFFFFF';Chart.defaults.plugins.tooltip.bodyColor='#FFFFFF';}
-      Object.values(Chart.instances||{}).forEach(function(chart){
-        try{
-          var o=chart.options||{};
-          if(o.plugins&&o.plugins.legend){o.plugins.legend.labels=o.plugins.legend.labels||{};o.plugins.legend.labels.color='#F7FAFF';}
-          if(o.scales) Object.keys(o.scales).forEach(function(k){var sc=o.scales[k];sc.ticks=sc.ticks||{};sc.ticks.color='#EAF2FC';sc.grid=sc.grid||{};sc.grid.color='rgba(226,237,250,.20)';if(sc.title){sc.title.color='#EAF2FC';}});
-          chart.update('none');
-        }catch(e){}
-      });
-    }catch(e){}
-  }
 })();
 </script>
-
-
-
-
 
 <style id="qa-alert-contrast-only">
 /* Colores de alerta más sólidos con texto siempre legible */
@@ -4123,55 +4102,5 @@ body.qa-UXMAL-homologated > header#mainHeader.qa-UXMAL-reference-header .qa-UXMA
 }
 </style>
 
-
-<script id="qa-chart-labels-white-v7">
-(function(){
-  if(!window.Chart) return;
-  var WHITE='#FFFFFF';
-  function forceWhite(chart){
-    if(!chart || !chart.options) return;
-    var options=chart.options;
-    options.color=WHITE;
-    options.plugins=options.plugins||{};
-    options.plugins.legend=options.plugins.legend||{};
-    options.plugins.legend.labels=options.plugins.legend.labels||{};
-    options.plugins.legend.labels.color=WHITE;
-    options.plugins.datalabels=options.plugins.datalabels||{};
-    options.plugins.datalabels.color=WHITE;
-    if(options.scales){
-      Object.keys(options.scales).forEach(function(key){
-        var scale=options.scales[key];
-        if(!scale) return;
-        scale.ticks=scale.ticks||{};
-        scale.ticks.color=WHITE;
-        if(scale.title) scale.title.color=WHITE;
-      });
-    }
-    if(chart.data && Array.isArray(chart.data.datasets)){
-      chart.data.datasets.forEach(function(dataset){
-        dataset.datalabels=dataset.datalabels||{};
-        dataset.datalabels.color=WHITE;
-      });
-    }
-  }
-  var plugin={id:'qaForceWhiteChartLabelsV7',beforeUpdate:function(chart){forceWhite(chart);}};
-  try{
-    Chart.defaults.color=WHITE;
-    Chart.defaults.plugins=Chart.defaults.plugins||{};
-    Chart.defaults.plugins.legend=Chart.defaults.plugins.legend||{};
-    Chart.defaults.plugins.legend.labels=Chart.defaults.plugins.legend.labels||{};
-    Chart.defaults.plugins.legend.labels.color=WHITE;
-    Chart.defaults.plugins.datalabels=Chart.defaults.plugins.datalabels||{};
-    Chart.defaults.plugins.datalabels.color=WHITE;
-    Chart.register(plugin);
-    var instances=Chart.instances||{};
-    Object.keys(instances).forEach(function(key){
-      var chart=instances[key];
-      forceWhite(chart);
-      if(chart && typeof chart.update==='function') chart.update('none');
-    });
-  }catch(error){console.warn('No se pudo aplicar el contraste de etiquetas:',error);}
-})();
-</script>
 </body>
 </html>
