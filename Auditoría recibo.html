@@ -2720,7 +2720,7 @@ th,td{border-color:#E4EBF1!important}
               Selecciona...
             </option>
 
-            <option value="BRISSA MARTINEZ">BRISSA MARTINEZ</option>
+            <option value="BRISSA MARTINEZ">BRISSA MARTINE</option>
             <option value="MARCO ANTONIO">MARCO ANTONIO</option>
             <option value="JONATHAN RAMIREZ">JONATHAN RAMIREZ</option>
             <option value="BRANDON LOPEZ">BRANDON LOPEZ</option>
@@ -10296,10 +10296,41 @@ function obtenerDictamenMuestreoRegistro(r){
 }
 
 function obtenerImagenesRegistro(r){
-  let imgs=r?.imagenes ?? [];
-  if(typeof imgs==="string"){try{imgs=JSON.parse(imgs);}catch(e){imgs=[imgs];}}
-  if(!Array.isArray(imgs)) imgs=[];
-  return imgs.map(x=>typeof x==="string"?x:x?.url).filter(Boolean);
+  const urls=[];
+  const agregar=v=>{if(typeof v==="string"&&v.trim())urls.push(v.trim());else if(v?.url)urls.push(String(v.url).trim());};
+  const normalizar=v=>{if(typeof v==="string"){try{return JSON.parse(v);}catch(e){return [v];}}return v;};
+  [r?.imagenes,r?.evidencias_generales,r?.evidencia_positiva_urls,r?.evidencia_positiva].forEach(origen=>{
+    const datos=normalizar(origen);
+    if(Array.isArray(datos))datos.forEach(agregar);
+    else if(datos&&typeof datos==="object")Object.values(datos).forEach(v=>Array.isArray(v)?v.forEach(agregar):agregar(v));
+  });
+  const codigos=obtenerCodigosRegistro(r);
+  codigos.forEach(item=>{
+    [item?.evidencia_positiva_urls,item?.evidencia_positiva].forEach(origen=>{
+      const datos=normalizar(origen);if(Array.isArray(datos))datos.forEach(agregar);
+    });
+    [item?.evidencia_campos_urls,item?.evidencia_campos].forEach(origen=>{
+      const datos=normalizar(origen);if(datos&&typeof datos==="object")Object.values(datos).forEach(cat=>Object.values(cat||{}).forEach(arr=>(Array.isArray(arr)?arr:[arr]).forEach(agregar)));
+    });
+    const hallazgos=Array.isArray(item?.hallazgos_bloque)?item.hallazgos_bloque:[];
+    hallazgos.forEach(h=>{
+      const ev=item?.evidencia_campos_urls?.hallazgos_bloque?.[h?.id]||item?.evidencia_campos?.hallazgos_bloque?.[h?.id]||[];
+      (Array.isArray(ev)?ev:[ev]).forEach(agregar);
+    });
+  });
+  return [...new Set(urls)].filter(Boolean);
+}
+
+function obtenerEvidenciasGeneralesPositivas(r){
+  const urls=[];
+  const agregar=v=>{if(typeof v==="string"&&v.trim())urls.push(v.trim());else if(v?.url)urls.push(String(v.url).trim());};
+  const normalizar=v=>{if(typeof v==="string"){try{return JSON.parse(v);}catch(e){return [v];}}return v;};
+  [r?.evidencias_generales,r?.evidencia_positiva_urls,r?.evidencia_positiva].forEach(origen=>{
+    const datos=normalizar(origen);
+    if(Array.isArray(datos))datos.forEach(agregar);
+    else if(datos&&typeof datos==="object")Object.values(datos).forEach(v=>Array.isArray(v)?v.forEach(agregar):agregar(v));
+  });
+  return [...new Set(urls)].filter(Boolean);
 }
 
 async function cargarImagenDataURL(url){
@@ -10307,12 +10338,20 @@ async function cargarImagenDataURL(url){
     const response=await fetch(url);
     if(!response.ok) return null;
     const blob=await response.blob();
-    return await new Promise(resolve=>{
+    const dataUrl=await new Promise(resolve=>{
       const reader=new FileReader();
       reader.onload=()=>resolve(reader.result);
       reader.onerror=()=>resolve(null);
       reader.readAsDataURL(blob);
     });
+    if(!dataUrl)return null;
+    if(String(dataUrl).startsWith("data:image/webp")){
+      const img=new Image();
+      await new Promise((resolve,reject)=>{img.onload=resolve;img.onerror=()=>reject(new Error("No se pudo decodificar imagen WEBP"));img.src=dataUrl;});
+      const canvas=document.createElement("canvas");canvas.width=img.naturalWidth;canvas.height=img.naturalHeight;canvas.getContext("2d").drawImage(img,0,0);
+      return canvas.toDataURL("image/jpeg",0.92);
+    }
+    return dataUrl;
   }catch(e){return null;}
 }
 
@@ -10503,9 +10542,24 @@ async function generarPDFRegistro(r){
       const maxW=56,maxH=48,gapX=6,gapY=7,cols=3; let pos=0,rowY=y;
       const lista=[...new Set((urls||[]).filter(Boolean))].slice(0,6);
       if(!lista.length){doc.setFont("helvetica","normal");doc.setFontSize(7);doc.setTextColor(120);doc.text("Sin evidencia fotográfica",105,y+8,{align:"center"});return y+16;}
+      let fallidas=0;
       for(const u of lista){
-        if(rowY+maxH>M.bottom){doc.addPage();header();rowY=M.top;pos=0;}
-        try{const data=await cargarImagenDataURL(u);if(!data)continue;const col=pos%cols,row=Math.floor(pos/cols);const x=10+col*(maxW+gapX);const yy=rowY+row*(maxH+gapY);doc.setFillColor(245,245,245);doc.setDrawColor(220);doc.roundedRect(x,yy,maxW,maxH,2,2,"FD");try{doc.addImage(data,"JPEG",x+2,yy+2,maxW-4,maxH-4);}catch(e){try{doc.addImage(data,"PNG",x+2,yy+2,maxW-4,maxH-4);}catch(e2){}}pos++;}catch(e){}}
+        if(rowY+Math.floor(pos/cols)*(maxH+gapY)+maxH>M.bottom){doc.addPage();header();rowY=M.top;pos=0;}
+        try{
+          const data=await cargarImagenDataURL(u);
+          if(!data)throw new Error("La URL no devolvió una imagen accesible.");
+          const col=pos%cols,row=Math.floor(pos/cols);const x=10+col*(maxW+gapX);const yy=rowY+row*(maxH+gapY);
+          doc.setFillColor(245,245,245);doc.setDrawColor(220);doc.roundedRect(x,yy,maxW,maxH,2,2,"FD");
+          const mime=String(data).match(/^data:image\/([^;]+)/i)?.[1]?.toLowerCase()||"jpeg";
+          doc.addImage(data,mime==="png"?"PNG":"JPEG",x+2,yy+2,maxW-4,maxH-4);pos++;
+        }catch(e){
+          fallidas++;console.warn("No se pudo cargar evidencia de auditoría:",u,e);
+          const col=pos%cols,row=Math.floor(pos/cols);const x=10+col*(maxW+gapX);const yy=rowY+row*(maxH+gapY);
+          doc.setFillColor(250,245,245);doc.setDrawColor(220);doc.roundedRect(x,yy,maxW,maxH,2,2,"FD");
+          doc.setFont("helvetica","normal");doc.setFontSize(6);doc.setTextColor(150);doc.text("Evidencia no disponible",x+3,yy+24);pos++;
+        }
+      }
+      if(fallidas)console.warn(`${fallidas} evidencia(s) no pudieron recuperarse para el PDF.`);
       return rowY+Math.max(16,Math.ceil(Math.max(pos,1)/cols)*(maxH+gapY));
     }
     header(); let y=M.top;
@@ -10538,6 +10592,17 @@ async function generarPDFRegistro(r){
         y=bloque("EVIDENCIA DE DESVIACIÓN",y);
         y=await agregarFotos(fotoUrlsDesviacion(item),y);
       }
+      const positivas=[];
+      [item.evidencia_positiva_urls,item.evidencia_positiva].forEach(origen=>{
+        let datos=origen;
+        if(typeof datos==="string"){try{datos=JSON.parse(datos);}catch(e){datos=[datos];}}
+        if(Array.isArray(datos))datos.forEach(v=>{const u=typeof v==="string"?v:v?.url;if(u)positivas.push(u);});
+      });
+      if(positivas.length){
+        if(y+55>M.bottom){doc.addPage();header();y=M.top;}
+        y=bloque("EVIDENCIA POSITIVA",y);
+        y=await agregarFotos([...new Set(positivas)],y);
+      }
       const hallazgosBloque=Array.isArray(item.hallazgos_bloque)?item.hallazgos_bloque:[];
       for(let hi=0;hi<hallazgosBloque.length;hi++){
         const h=hallazgosBloque[hi]||{};
@@ -10554,7 +10619,15 @@ async function generarPDFRegistro(r){
         y=bloque("EVIDENCIA DEL HALLAZGO",y);y=await agregarFotos(urls,y);
       }
     }
-    if(!codigos.length){y=bloque("EVIDENCIA FOTOGRÁFICA",y);y=await agregarFotos(obtenerImagenesRegistro(r),y);}
+    const evidenciasAdicionales=codigos.length?obtenerEvidenciasGeneralesPositivas(r):obtenerImagenesRegistro(r);
+    if(evidenciasAdicionales.length){
+      if(y+55>M.bottom){doc.addPage();header();y=M.top;}
+      y=bloque("EVIDENCIA FOTOGRÁFICA GENERAL / POSITIVA",y);
+      y=await agregarFotos(evidenciasAdicionales,y);
+    }else if(!codigos.length){
+      y=bloque("EVIDENCIA FOTOGRÁFICA",y);
+      y=await agregarFotos([],y);
+    }
     const total=doc.getNumberOfPages();for(let page=1;page<=total;page++){doc.setPage(page);footer(page,total);}
     doc.save((r.folio||"Auditoria_Recibo")+".pdf");
     return true;
